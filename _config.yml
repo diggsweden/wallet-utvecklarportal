@@ -1,0 +1,12 @@
+title: Wallet Utvecklarportal
+description: Dokumentation och hjälp för det svenska plånbokssystemet.
+theme: jekyll-theme-slate
+remote_theme: pages-themes/slate@v0.2.0
+
+# Site settings
+lang: sv-SE
+
+# Google Fonts
+google_fonts:
+  - family: Ubuntu
+    weights: [400, 700]
