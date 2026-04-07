@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: default
 title: Wallet Utvecklarportal
 ---
 
@@ -24,4 +24,3 @@ Det svenska plånbokssystemet bygger på EU:s ramverk för digital identitet (EU
 ## Resurser
 
 *   [**Wallet Ecosystem (GitHub)**](https://github.com/diggsweden/wallet-ecosystem) – Huvudprojektet för lokal utvecklingsmiljö.
-*   [**Dokumentation**](https://github.com/diggsweden/wallet-ecosystem/tree/main/docs) – Tekniska specifikationer och arkitekturbeskrivningar.
