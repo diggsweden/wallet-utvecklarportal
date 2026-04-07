@@ -9,7 +9,8 @@ Välkommen till den officiella utvecklarportalen för det svenska plånbokssyste
 
 Är du en förlitande part (Verifier) som vill börja testa att ta emot digitala intyg?
 
-*   [**Onboarding-guide: Anslut till Sandbox**](onboarding.md) – Steg-för-steg instruktioner för att sätta upp en lokal miljö och ansluta mot Diggs Sandbox.
+*   [**Onboarding-guide: Anslut till Sandbox**](pages/onboarding.md)
+ – Steg-för-steg instruktioner för att sätta upp en lokal miljö och ansluta mot Diggs Sandbox.
 
 ## Om projektet
 
