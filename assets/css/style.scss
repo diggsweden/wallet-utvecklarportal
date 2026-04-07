@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+@import "jekyll-theme-slate";
+
+// Custom Variables from Figma Designsystem
+$primary-olive: #546850;
+$accent-red: #CD796D;
+$text-dark: #2B2A28;
+$bg-light: #F5F5F5;
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  color: $text-dark;
+  background-color: #ffffff;
+}
+
+header {
+  background: $primary-olive !important;
+  color: #ffffff !important;
+  border-bottom: 4px solid $accent-red;
+
+  h1, h2 {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+  }
+
+  .view {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primary-olive;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 700;
+}
+
+a {
+  color: $accent-red;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.2s;
+
+  &:hover {
+    border-bottom: 1px solid $accent-red;
+  }
+}
+
+.main-content {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  code {
+    background: $bg-light;
+    color: $text-dark;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+
+  pre {
+    background: $text-dark;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+}
+
+footer {
+  border-top: 1px solid $bg-light;
+  margin-top: 50px;
+  color: #666;
+  font-size: 0.9em;
+}
