@@ -1,7 +1,7 @@
 title: Wallet Utvecklarportal
-description: Dokumentation och hjälp för det svenska plånbokssystemet.
 theme: jekyll-theme-slate
 remote_theme: pages-themes/slate@v0.2.0
+logo: /assets/images/logo_white.png
 
 # Site settings
 lang: sv-SE

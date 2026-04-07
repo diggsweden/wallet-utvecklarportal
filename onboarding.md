@@ -19,7 +19,7 @@ Syftet med denna guide är att ge dig en snabbstart för att sätta upp en egen 
 För att din verifierare ska fungera i Sandbox-miljön behöver du hantera två typer av certifikat.
 
 ### 1.1 Hämta publika certifikat från Digg
-Du behöver hämta följande filer från Diggs Confluence (kontakta **Magnus** för åtkomst):
+Du behöver hämta följande filer från Diggs Confluence (kontakta **digitalwallet@digg.se** för åtkomst):
 - `sandbox_root_ca.pem`: Ekosystemets gemensamma rot-certifikat. Detta används för att validera att plånboken och dess intyg är äkta.
 - `pid_issuer.pem`: Certifikatet för den part som utfärdar Personidentitetsdata (PID) i Sandbox.
 
@@ -81,7 +81,7 @@ services:
 ## Support och fördjupning
 
 ### Kontakt
-För tekniska frågor och hjälp med certifikatsutbyte, kontakta **Magnus** på Digg.
+För tekniska frågor och hjälp med certifikatsutbyte, kontakta **digitalwallet@digg.se** på Digg.
 
 ### Dokumentation och specifikationer
 För en djupare förståelse av hur hela plånbokssystemet hänger ihop, se dokumentationen i huvudprojektet:
