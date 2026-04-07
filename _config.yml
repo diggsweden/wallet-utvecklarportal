@@ -10,3 +10,10 @@ lang: sv-SE
 google_fonts:
   - family: Ubuntu
     weights: [400, 700]
+
+# Exclude files from the final site
+exclude:
+  - DEVELOPMENT.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
