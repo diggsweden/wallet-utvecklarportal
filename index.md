@@ -3,8 +3,6 @@ layout: default
 title: Wallet Utvecklarportal
 ---
 
-# Wallet Utvecklarportal
-
 Välkommen till den officiella utvecklarportalen för det svenska plånbokssystemet (EUDI Wallet). Denna portal är avsedd för tekniska intressenter som vill förstå, integrera och testa lösningar mot Diggs testmiljöer.
 
 ## Kom igång
