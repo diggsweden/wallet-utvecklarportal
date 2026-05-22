@@ -12,6 +12,11 @@ Välkommen till den officiella utvecklarportalen för det svenska plånbokssyste
 *   [**Onboarding-guide: Anslut till Sandbox**](pages/onboarding.md)
  – Steg-för-steg instruktioner för att sätta upp en lokal miljö och ansluta mot Diggs Sandbox.
 
+Vill du testa mobilappen under utveckling?
+
+*   [**Guide: Prova plånboksappen under utveckling**](pages/prova-planboksappen.md)
+ – Instruktioner för hur du laddar ned, installerar och startar appen på iOS eller Android samt hämtar ett test-ID (PID).
+
 ## Om projektet
 
 Det svenska plånbokssystemet bygger på EU:s ramverk för digital identitet (EUDI Wallet). Vi använder öppna standarder som:

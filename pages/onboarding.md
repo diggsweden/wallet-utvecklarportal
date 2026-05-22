@@ -1,3 +1,9 @@
+---
+layout: default
+title: "Onboarding-guide: Anslut som extern förlitande part till Sandbox"
+---
+
+
 # Onboarding-guide: Anslut som extern förlitande part till Sandbox
 
 Välkommen till Det svenska plånbokssystemet! Denna guide beskriver steg-för-steg hur du som extern tjänsteleverantör (förlitande part) sätter upp en testmiljö lokalt och ansluter den mot Diggs **Sandbox-miljö**.
@@ -6,7 +12,8 @@ Välkommen till Det svenska plånbokssystemet! Denna guide beskriver steg-för-s
 1. [Syfte](#syfte)
 2. [Steg 1: Hantera certifikat och tillit](#steg-1-hantera-certifikat-och-tillit)
 3. [Steg 2: Konfigurera och starta backend](#steg-2-konfigurera-och-starta-backend)
-4. [Support och fördjupning](#support-och-fördjupning)
+4. [Steg 3: Verifiera med mobilappen](#steg-3-verifiera-med-mobilappen)
+5. [Support och fördjupning](#support-och-fördjupning)
 
 ---
 
@@ -19,7 +26,7 @@ Syftet med denna guide är att ge dig en snabbstart för att sätta upp en egen 
 För att din verifierare ska fungera i Sandbox-miljön behöver du hantera två typer av certifikat.
 
 ### 1.1 Hämta publika certifikat från Digg
-Du behöver hämta följande filer från Diggs Confluence (kontakta **digitalwallet@digg.se** för åtkomst):
+Du behöver hämta följande filer från Diggs Confluence (kontakta [digitalwallet@digg.se](mailto:digitalwallet@digg.se) för åtkomst):
 - `sandbox_root_ca.pem`: Ekosystemets gemensamma rot-certifikat. Detta används för att validera att plånboken och dess intyg är äkta.
 - `pid_issuer.pem`: Certifikatet för den part som utfärdar Personidentitetsdata (PID) i Sandbox.
 
@@ -77,15 +84,28 @@ services:
       # ... se projektets README för samtliga variabler ...
 ```
 
+## Steg 3: Verifiera med mobilappen
+
+För att verifiera att din uppsatta miljö fungerar och kan kommunicera med plånboken behöver du installera plånboksappen under utveckling på en mobil enhet.
+
+Se den fullständiga [guiden för att prova plånboksappen](prova-planboksappen.md) för detaljerade instruktioner om hur du:
+1. Får åtkomst till och installerar appen på iOS eller Android.
+2. Startar upp appen och hämtar ett test-ID (PID) med testanvändare som *Sune Nilsson*.
+3. Utför testinloggningar och verifierar integrationsflödet.
+
+När appen är installerad och laddad med en PID kan du rikta appen mot din lokalt körande verifierares startlänk eller QR-kod för att genomföra ett presentationstest.
+
+---
 
 ## Support och fördjupning
 
 ### Kontakt
-För tekniska frågor och hjälp med certifikatsutbyte, kontakta **digitalwallet@digg.se** på Digg.
+För tekniska frågor och hjälp med certifikatsutbyte, kontakta [digitalwallet@digg.se](mailto:digitalwallet@digg.se) på Digg.
 
 ### Dokumentation och specifikationer
 För en djupare förståelse av hur hela plånbokssystemet hänger ihop, se dokumentationen i huvudprojektet:
 [https://github.com/diggsweden/wallet-ecosystem](https://github.com/diggsweden/wallet-ecosystem)
 
 ---
-*Denna guide är ett första utkast för onboarding i Sandbox-miljön per mars 2026.*
+*Denna guide uppdaterades senast maj 2026.*
+oarding i Sandbox-miljön per mars 2026.*
