@@ -69,7 +69,7 @@ När du öppnar appen första gången behöver du konfigurera den och ladda den 
 6. **Bekräfta PIN-koden** genom att ange samma kod igen och klicka på **Nästa**.
 7. Nu är det dags att ladda på en PID i plånboken. Klicka på **Hämta personuppgifter**.
 8. Klicka på **Logga in** för att identifiera dig mot Diggs PID-utfärdare.
-9. Välj en av de fördefinierade testanvändarna i listan (till exempel **Sune Nilsson**) och genomför inloggningen.
+9. Välj en av de fördefinierade testanvändarna i listan och genomför inloggningen.
 10. Ditt hämtade attributsintyg visas på skärmen. Granska uppgifterna och klicka på **Godkänn** längst ner på sidan.
 11. Grattis! Du har nu ett test-ID (PID) sparat i din plånbok.
 
@@ -108,6 +108,5 @@ Du kan utföra testet på två olika sätt:
 
 ## Återkoppling och Support
 
-När du har testat appen får du mer än gärna lämna feedback. 
-* Gå till sidan för [Återkoppling på plånboksappen](https://confluence.digg.se/spaces/PTU/pages/24406073/%C3%85terkoppling+p%C3%A5+pl%C3%A5nboksappen) (kräver åtkomst) för att dela dina tankar med oss.
-* Vid frågor eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).
+När du har testat appen får du mer än gärna lämna feedback.
+* Vid frågor, feedback eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).

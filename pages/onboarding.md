@@ -90,7 +90,7 @@ För att verifiera att din uppsatta miljö fungerar och kan kommunicera med plå
 
 Se den fullständiga [guiden för att prova plånboksappen](prova-planboksappen.md) för detaljerade instruktioner om hur du:
 1. Får åtkomst till och installerar appen på iOS eller Android.
-2. Startar upp appen och hämtar ett test-ID (PID) med testanvändare som *Sune Nilsson*.
+2. Startar upp appen och hämtar ett test-ID (PID) med testanvändare.
 3. Utför testinloggningar och verifierar integrationsflödet.
 
 När appen är installerad och laddad med en PID kan du rikta appen mot din lokalt körande verifierares startlänk eller QR-kod för att genomföra ett presentationstest.
@@ -108,4 +108,3 @@ För en djupare förståelse av hur hela plånbokssystemet hänger ihop, se doku
 
 ---
 *Denna guide uppdaterades senast maj 2026.*
-oarding i Sandbox-miljön per mars 2026.*
