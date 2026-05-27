@@ -17,3 +17,8 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+
+# Plugins
+plugins:
+  - jekyll-relative-links
+
