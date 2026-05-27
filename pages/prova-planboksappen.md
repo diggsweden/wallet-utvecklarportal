@@ -107,6 +107,4 @@ Du kan utföra testet på två olika sätt:
 ---
 
 ## Återkoppling och Support
-
-När du har testat appen får du mer än gärna lämna feedback.
 * Vid frågor, feedback eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).

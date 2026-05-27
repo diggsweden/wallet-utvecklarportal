@@ -42,4 +42,3 @@ megalinter-reports/
 *.log
 logs/
 tmp/
-
