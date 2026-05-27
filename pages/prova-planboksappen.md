@@ -57,21 +57,13 @@ När du öppnar appen första gången behöver du konfigurera den och ladda den 
 
 1. **Öppna appen** och klicka på **Nästa** i introvyn.
 2. Bocka i checkboxen för **Samtycke** och klicka på **Nästa**.
-3. **Ange ditt telefonnummer** i fältet och klicka på **Nästa**.
-   > ⚠️
-   > Ingen bekräftelsekod skickas till ditt telefonnummer under utveckling/test. 
-   > Ange testkoden **`123456`** och klicka på **Nästa**.
-4. **Ange din e-postadress** i det översta fältet, bekräfta den genom att skriva in den igen i fältet under, och klicka på **Nästa**.
-   > ⚠️
-   > Ingen bekräftelsekod skickas till din e-post under utveckling/test. 
-   > Ange testkoden **`123456`** och klicka på **Nästa**.
-5. **Skapa en PIN-kod** (välj en kod du vill använda för att logga in i appen framöver) och klicka på **Nästa**.
-6. **Bekräfta PIN-koden** genom att ange samma kod igen och klicka på **Nästa**.
-7. Nu är det dags att ladda på en PID i plånboken. Klicka på **Hämta personuppgifter**.
-8. Klicka på **Logga in** för att identifiera dig mot Diggs PID-utfärdare.
-9. Välj en av de fördefinierade testanvändarna i listan och genomför inloggningen.
-10. Ditt hämtade attributsintyg visas på skärmen. Granska uppgifterna och klicka på **Godkänn** längst ner på sidan.
-11. Grattis! Du har nu ett test-ID (PID) sparat i din plånbok.
+3. **Skapa en PIN-kod** (välj en kod du vill använda för att logga in i appen framöver) och klicka på **Nästa**.
+4. **Bekräfta PIN-koden** genom att ange samma kod igen och klicka på **Nästa**.
+5. Nu är det dags att ladda på en PID i plånboken. Klicka på **Hämta personuppgifter**.
+6. Klicka på **Logga in** för att identifiera dig mot Diggs PID-utfärdare.
+7. Välj en av de fördefinierade testanvändarna i listan och genomför inloggningen.
+8. Ditt hämtade attributsintyg visas på skärmen. Granska uppgifterna och klicka på **Godkänn** längst ner på sidan.
+9. Grattis! Du har nu ett test-ID (PID) sparat i din plånbok.
 
 ---
 
