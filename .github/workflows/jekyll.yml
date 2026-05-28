@@ -29,9 +29,10 @@ jobs:
       - name: Install mermaid-cli
         run: npm install -g @mermaid-js/mermaid-cli
       
+
       - name: Create puppeteer config
         run: |
-          echo '{"args": ["--no-sandbox"]}' > /tmp/puppeteer.json
+          echo '{"args": ["--no-sandbox"], "executablePath": "/usr/bin/google-chrome"}' > /tmp/puppeteer.json
       
       - name: Generate diagrams
         run: rake diagrams
@@ -48,4 +49,5 @@ jobs:
           path: ./_site
       
       - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: actions/deploy-pages@v4
