@@ -6,7 +6,7 @@
 
 // Custom Variables from Figma Designsystem
 $primary-olive: #546850;
-$accent-red: #CD796D;
+$accent-red: #A0483C; // Darkened from #CD796D to meet WCAG AA contrast
 $text-dark: #2B2A28;
 $bg-light: #F5F5F5;
 
@@ -22,7 +22,7 @@ body {
 }
 .inner {
   position: relative;
-  max-width: 940px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px 10px;
 }
@@ -126,6 +126,60 @@ a {
 #main_content {
   background: #ffffff;
   padding: 40px 10px;
+}
+
+// 2-Column Layout
+.layout-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar {
+  nav {
+    position: sticky;
+    top: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  a {
+    display: block;
+    padding: 10px 15px;
+    color: $text-dark;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $bg-light;
+      border-color: #ddd;
+    }
+
+    &.active {
+      background: rgba($primary-olive, 0.1);
+      color: $primary-olive;
+      font-weight: bold;
+      border-color: rgba($primary-olive, 0.3);
+    }
+  }
+}
+
+.content-body {
+  min-width: 0; /* Prevents grid blowout */
 }
 
 // Copy Code Button

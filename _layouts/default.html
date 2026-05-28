@@ -11,7 +11,7 @@
   <body>
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a href="{{ "/" | relative_url }}" id="logo_home_link"></a>
+          <a href="{{ "/" | relative_url }}" id="logo_home_link" aria-label="Till startsidan"></a>
           <h1 id="project_title">{{ site.title | default: site.github.repository_name }}</h1>
         </header>
     </div>
@@ -24,9 +24,22 @@
     </div>
 
     <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        {{ content }}
-      </section>
+      <main id="main_content" class="inner">
+        <div class="layout-wrapper">
+          <aside class="sidebar">
+            <nav>
+              <ul>
+                <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Startsida</a></li>
+                <li><a href="{{ "/pages/onboarding.html" | relative_url }}" class="{% if page.url == '/pages/onboarding.html' or page.url == '/pages/onboarding/' %}active{% endif %}">Onboarding Sandbox</a></li>
+                <li><a href="{{ "/pages/prova-planboksappen.html" | relative_url }}" class="{% if page.url == '/pages/prova-planboksappen.html' or page.url == '/pages/prova-planboksappen/' %}active{% endif %}">Testa plånboksappen</a></li>
+              </ul>
+            </nav>
+          </aside>
+          <div class="content-body">
+            {{ content }}
+          </div>
+        </div>
+      </main>
     </div>
 
     <div id="footer_wrap" class="outer">
