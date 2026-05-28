@@ -3,8 +3,6 @@ name: Build and Deploy
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 permissions:
   contents: read
@@ -31,12 +29,10 @@ jobs:
       - name: Install mermaid-cli
         run: npm install -g @mermaid-js/mermaid-cli
       
-      - name: Install Puppeteer browsers
-        run: npx puppeteer browsers install chrome-headless-shell
-      
+
       - name: Create puppeteer config
         run: |
-          echo '{"args": ["--no-sandbox"]}' > /tmp/puppeteer.json
+          echo '{"args": ["--no-sandbox"], "executablePath": "/usr/bin/google-chrome"}' > /tmp/puppeteer.json
       
       - name: Generate diagrams
         run: rake diagrams
