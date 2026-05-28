@@ -8,7 +8,7 @@ title: Wallet Utvecklarportal
 Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet). Portalen riktar sig till tekniska intressenter som vill ansluta sina tjänster eller prova på tekniken bakom den statliga identitetsplånboken.
 
 ## Mål & Vision
-Syftet med denna portal är att sänka tröskeln för teknisk integration i det svenska plånbokssystemet. Vårt mål är att skapa en säker, integritetsbevarande och användarvänlig infrastruktur för digitala identiteter som fungerar sömlöst i hela EU. Genom att tillhandahålla öppna testmiljöer och tydlig dokumentation vill vi främja innovation och snabbare anslutning för både offentliga och privata aktörer.
+Den här portalen finns för att göra det enklare att integrera tekniskt mot det svenska plånbokssystemet. Här hittar du dokumentation och testmiljöer (Sandbox) för att du som utvecklare snabbt ska kunna komma igång och ansluta dina tjänster till infrastrukturen för digitala identiteter.
 
 ## Förutsättningar
 För att kunna följa instruktionerna på denna sida och integrera mot Sandbox-miljön behöver du:
