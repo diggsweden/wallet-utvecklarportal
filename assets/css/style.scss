@@ -35,29 +35,34 @@ body {
   border-bottom: none; /* Removed border because we have the sub-header now */
 
   header {
-  background: transparent !important;
-  padding: 20px 0;
+    background: transparent !important;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
-  #project_title {      display: flex;
-      align-items: center;
-      gap: 20px;
+    #logo_home_link {
+      display: inline-block;
+      width: 180px; 
+      height: 90px;
+      background: url("../images/logo_white.png") no-repeat;
+      background-size: contain;
+      background-position: center;
+      flex-shrink: 0;
+      border: none;
+
+      &:hover {
+        border: none;
+      }
+    }
+
+    #project_title {
       font-family: 'Ubuntu', sans-serif;
       font-weight: 700;
       color: #ffffff !important;
       text-shadow: none !important;
       font-size: 2.5em;
       margin: 0;
-
-      &::before {
-        content: "";
-        display: inline-block;
-        width: 180px; 
-        height: 90px;
-        background: url("../images/logo_white.png") no-repeat;
-        background-size: contain;
-        background-position: center;
-        flex-shrink: 0;
-      }
     }
   }
 }
