@@ -1,0 +1,21 @@
+flowchart TD
+    subgraph Issuers["Utfärdare"]
+        A["2. PID-utfärdare"]
+        B["Övriga Attesteringsutfärdare (kommande)"]
+    end
+
+    subgraph RelyingParties["Förlitande parter"]
+        C["3. Förlitande part"]
+        D["Övriga förlitande parter (kommande)"]
+    end
+
+    E["4. Wallet Provider"]
+    F["1. Svenska statliga plånboken (Digital plånbok)"]
+    G["5. Tillitsinfrastruktur"]
+
+    A -->|Utfärdar attesteringar till| F
+    E -->|Levererar WIA/KA| F
+    F -->|Presenterar attribut för| C
+    G -->|Säkerställer tillit| A
+    G -->|Säkerställer tillit| E
+    G -->|Säkerställer tillit| C
