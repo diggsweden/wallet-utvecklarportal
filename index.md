@@ -37,7 +37,7 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 Systemet bygger på öppna europeiska standarder och vi strävar efter att vara kompatibla med **WEBUILD**.
 
 ### Protokoll och Format
-Vi använder beprövade protokoll för att säkerställa säkerhet och interoperabilitet:
+För integrationen använder vi följande protokoll och format:
 *   [**OpenID4VP**](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) – För säker presentation av intyg från plånboken till en förlitande part.
 *   [**SD-JWT VC**](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/) – Ett format för verifierbara intyg som möjliggör *selektivt utlämnande*, vilket innebär att användaren kan dela enstaka uppgifter utan att avslöja hela sitt intyg.
 
