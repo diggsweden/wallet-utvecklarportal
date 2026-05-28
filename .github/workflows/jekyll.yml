@@ -16,6 +16,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -49,5 +52,6 @@ jobs:
           path: ./_site
       
       - name: Deploy to GitHub Pages
+        id: deployment
         if: github.ref == 'refs/heads/main'
         uses: actions/deploy-pages@v4
