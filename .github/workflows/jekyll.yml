@@ -29,7 +29,8 @@ jobs:
         run: npm install -g @mermaid-js/mermaid-cli
       
       - name: Create puppeteer config
-        run: echo '{"args": ["--no-sandbox"]}' > /tmp/puppeteer.json
+        run: |
+          echo '{"args": ["--no-sandbox"]}' > /tmp/puppeteer.json
       
       - name: Generate diagrams
         run: rake diagrams
