@@ -34,7 +34,7 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 ---
 
 ## Integration & Teknik
-Systemet bygger på öppna europeiska standarder och vi strävar efter att vara kompatibla med **WEBUILD**.
+Systemet bygger på öppna europeiska standarder och vi strävar efter att vara kompatibla med [**WEBUILD**](https://github.com/webuild-consortium).
 
 ### Protokoll och Format
 För integrationen använder vi följande protokoll och format:
