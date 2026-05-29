@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Standarder & Profiler
-permalink: /pages/standarder-och-profiler/
 ---
 
 # Standarder & Profiler
