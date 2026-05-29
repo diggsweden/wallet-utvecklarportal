@@ -18,16 +18,16 @@ Vårt ekosystem utvecklas i linje med det europeiska ramverket för digital iden
 ## Utfärdande av Intyg (Issuance)
 
 För att utfärda den personliga identiteten (PID) och andra intyg till plånboken använder vi:
-* **[OpenID for Verifiable Credential Issuance (OpenID4VCI)](https://openid.net/specs/openid4vc-issuance-1_0.html)**
+* **[OpenID for Verifiable Credential Issuance (OpenID4VCI)](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html)**
   * Vi använder proof-type `openid4vci-proof+jwt`.
 * **[DPoP (Demonstrating Proof-of-Possession)](https://datatracker.ietf.org/doc/html/rfc9449)** används för att binda tokens till klienten.
 
 ## Presentation av Intyg (Verification)
 
 När en e-tjänst (förlitande part) vill verifiera identitet eller attribut från plånboken sker detta via:
-* **[OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid4vp-1_0.html)**
+* **[OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)**
   * Vi stöder svarsläget (response mode) `direct_post`.
-* **[Digital Credentials Query Language (DCQL)](https://openid.net/specs/openid4vp-dcql-1_0.html)**
+* **[Digital Credentials Query Language (DCQL)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l)**
   * Används för att konstruera detaljerade och selektiva förfrågningar av claims från plånboken.
 
 ## Kredentialformat & Kryptografi
