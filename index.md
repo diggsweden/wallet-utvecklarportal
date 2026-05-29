@@ -51,6 +51,7 @@ I dagsläget använder vi enbart **fiktiva identiteter** i våra testmiljöer. D
 
 *   [**Guide: Prova mobilappen**](pages/prova-planboksappen.md) – Instruktioner för hur du installerar betaversionen och hämtar ditt första test-ID.
 *   [**Onboarding: Anslut till Sandbox**](pages/onboarding.md) – Steg-för-steg för dig som vill integrera din tjänst som förlitande part.
+*   [**Teknisk Referens: Standarder & Profiler**](pages/standarder-och-profiler.md) – Läs mer om de öppna standarder (t.ex. OpenID4VCI, SD-JWT) som ekosystemet bygger på.
 
 ---
 *Har du frågor? Kontakta oss på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).*
