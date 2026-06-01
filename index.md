@@ -20,6 +20,10 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 
 1.  **Digital plånbok (EUDI Wallet)** – Den mobila appen där användaren lagrar och väljer att dela sina intyg.
 2.  **PID-utfärdare** – Diggs tjänst som utfärdar och signerar det grundläggande identitetsintyget (PID).
+    <div style="background: #e7f5ff; padding: 12px; border-radius: 4px; border-left: 4px solid #0066cc; margin: 10px 0 15px 25px;" role="note">
+      <span style="color: #0052cc; margin-right: 8px;" aria-label="Information">ℹ️</span>
+      Vi använder enbart fiktiva identiteter med svenska testpersonnummer.
+    </div>
 3.  **Förlitande part** – Den organisation eller tjänst som tar emot och verifierar intyg via en **Verifier Backend**.
 4.  **Wallet Provider** – Leverantören som tillhandahåller plånboksinfrastrukturen och kommunikationsprotokollen.
 5.  **Tillitsinfrastruktur** – De tillitslistor och certifikat som säkerställer att alla parter litar på varandra.
@@ -30,19 +34,6 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 </figure>
 
 
-
----
-
-## Integration & Teknik
-Systemet bygger på öppna europeiska standarder och vi strävar efter att vara kompatibla med [**WEBUILD**](https://github.com/webuild-consortium).
-
-### Protokoll och Format
-För integrationen använder vi följande protokoll och format:
-*   [**OpenID4VP**](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) – För säker presentation av intyg från plånboken till en förlitande part.
-*   [**SD-JWT VC**](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/) – Ett format för verifierbara intyg som möjliggör *selektivt utlämnande*, vilket innebär att användaren kan dela enstaka uppgifter utan att avslöja hela sitt intyg.
-
-### Hantering av personnummer i PID
-I dagsläget använder vi enbart **fiktiva identiteter** i våra testmiljöer. Det är för närvarande inte möjligt att använda sin egen riktiga identitet eller sitt faktiska personnummer i Sandbox-miljön.
 
 ---
 
