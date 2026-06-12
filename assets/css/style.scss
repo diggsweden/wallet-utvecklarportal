@@ -5,15 +5,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 // Custom Variables from Figma Designsystem
-$primary-olive: #546850;
-$accent-red: #A0483C;
+$bg-white: #FFFFFF;
+$bg-light-gray: #D4D9D3;
 $text-dark: #2B2A28;
 $bg-light: #F5F5F5;
+$primary-green: #546850;
+$light-green: #D6E0D2;
+$accent-red: #A0483C;
 
 body {
   font-family: 'Ubuntu', sans-serif;
   color: $text-dark;
-  background-color: #ffffff;
+  background-color: $bg-white;
 }
 
 // Global Outer/Inner from Slate
@@ -29,9 +32,9 @@ body {
 
 // Main Header Wrap
 #header_wrap {
-  background: $primary-olive !important;
+  background: $bg-white !important;
   background-image: none !important;
-  color: #ffffff !important;
+  color: $text-dark !important;
   border-bottom: none; /* Removed border because we have the sub-header now */
 
   header {
@@ -45,7 +48,7 @@ body {
       display: inline-block;
       width: 180px; 
       height: 90px;
-      background: url("../images/logo_white.png") no-repeat;
+      background: url("../images/digg_logo_color.svg") no-repeat;
       background-size: contain;
       background-position: center;
       flex-shrink: 0;
@@ -59,7 +62,7 @@ body {
     #project_title {
       font-family: 'Ubuntu', sans-serif;
       font-weight: 700;
-      color: #ffffff !important;
+      color: $text-dark !important;
       text-shadow: none !important;
       font-size: 2.5em;
       margin: 0;
@@ -69,8 +72,8 @@ body {
 
 // The Figma Style Sub-Header Bar
 #sub_header_bar {
-  background: $accent-red !important;
-  color: #ffffff !important;
+  background: $bg-light-gray !important;
+  color: $text-dark !important;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.1em;
   font-weight: 400;
@@ -86,16 +89,21 @@ body {
 
 // Footer Wrap
 #footer_wrap {
-  background: $primary-olive !important;
+  background: $light-green !important;
   background-image: none !important;
-  color: #ffffff !important;
+  color: $text-dark !important;
   padding: 40px 0;
 
   footer {
     background: transparent !important;
-    color: #ffffff !important;
+    color: $text-dark !important;
+    
+    p, .copyright {
+      color: $text-dark !important;
+    }
+    
     a {
-      color: #ffffff !important;
+      color: $text-dark !important;
       text-decoration: underline;
     }
   }
@@ -110,21 +118,22 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: $accent-red;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-bottom 0.2s;
+  text-decoration: underline;
+  text-decoration-color: rgba($accent-red, 0.4);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.2s;
 
   &:hover {
-    border-bottom: 1px solid $accent-red;
+    text-decoration-color: $accent-red;
   }
 }
 
 #main_content_wrap {
-  background: #ffffff;
+  background: $bg-white;
 }
 
 #main_content {
-  background: #ffffff;
+  background: $bg-white;
   padding: 40px 10px;
 }
 
@@ -170,10 +179,10 @@ a {
     }
 
     &.active {
-      background: rgba($primary-olive, 0.1);
-      color: $primary-olive;
+      background: rgba($primary-green, 0.1);
+      color: $primary-green;
       font-weight: bold;
-      border-color: rgba($primary-olive, 0.3);
+      border-color: rgba($primary-green, 0.3);
     }
   }
 }
