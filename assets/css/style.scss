@@ -5,15 +5,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 // Custom Variables from Figma Designsystem
-$primary-olive: #FFFFFF;
-$accent-red: #D4D9D3;
+$bg-white: #FFFFFF;
+$bg-light-gray: #D4D9D3;
 $text-dark: #2B2A28;
 $bg-light: #F5F5F5;
+$primary-green: #546850;
+$light-green: #D6E0D2;
+$accent-red: #A0483C;
 
 body {
   font-family: 'Ubuntu', sans-serif;
   color: $text-dark;
-  background-color: #ffffff;
+  background-color: $bg-white;
 }
 
 // Global Outer/Inner from Slate
@@ -29,7 +32,7 @@ body {
 
 // Main Header Wrap
 #header_wrap {
-  background: $primary-olive !important;
+  background: $bg-white !important;
   background-image: none !important;
   color: $text-dark !important;
   border-bottom: none; /* Removed border because we have the sub-header now */
@@ -69,7 +72,7 @@ body {
 
 // The Figma Style Sub-Header Bar
 #sub_header_bar {
-  background: $accent-red !important;
+  background: $bg-light-gray !important;
   color: $text-dark !important;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.1em;
@@ -86,7 +89,7 @@ body {
 
 // Footer Wrap
 #footer_wrap {
-  background: #D6E0D2 !important;
+  background: $light-green !important;
   background-image: none !important;
   color: $text-dark !important;
   padding: 40px 0;
@@ -114,23 +117,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: #A0483C;
+  color: $accent-red;
   text-decoration: underline;
-  text-decoration-color: rgba(#A0483C, 0.4);
+  text-decoration-color: rgba($accent-red, 0.4);
   text-underline-offset: 2px;
   transition: text-decoration-color 0.2s;
 
   &:hover {
-    text-decoration-color: #A0483C;
+    text-decoration-color: $accent-red;
   }
 }
 
 #main_content_wrap {
-  background: #ffffff;
+  background: $bg-white;
 }
 
 #main_content {
-  background: #ffffff;
+  background: $bg-white;
   padding: 40px 10px;
 }
 
@@ -176,10 +179,10 @@ a {
     }
 
     &.active {
-      background: rgba(#546850, 0.1);
-      color: #546850;
+      background: rgba($primary-green, 0.1);
+      color: $primary-green;
       font-weight: bold;
-      border-color: rgba(#546850, 0.3);
+      border-color: rgba($primary-green, 0.3);
     }
   }
 }
