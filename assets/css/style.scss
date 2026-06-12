@@ -5,8 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
 
 // Custom Variables from Figma Designsystem
-$primary-olive: #546850;
-$accent-red: #A0483C;
+$primary-olive: #FFFFFF;
+$accent-red: #D4D9D3;
 $text-dark: #2B2A28;
 $bg-light: #F5F5F5;
 
@@ -31,7 +31,7 @@ body {
 #header_wrap {
   background: $primary-olive !important;
   background-image: none !important;
-  color: #ffffff !important;
+  color: $text-dark !important;
   border-bottom: none; /* Removed border because we have the sub-header now */
 
   header {
@@ -45,7 +45,7 @@ body {
       display: inline-block;
       width: 180px; 
       height: 90px;
-      background: url("../images/logo_white.png") no-repeat;
+      background: url("../images/digg_logo_color.svg") no-repeat;
       background-size: contain;
       background-position: center;
       flex-shrink: 0;
@@ -59,7 +59,7 @@ body {
     #project_title {
       font-family: 'Ubuntu', sans-serif;
       font-weight: 700;
-      color: #ffffff !important;
+      color: $text-dark !important;
       text-shadow: none !important;
       font-size: 2.5em;
       margin: 0;
@@ -70,7 +70,7 @@ body {
 // The Figma Style Sub-Header Bar
 #sub_header_bar {
   background: $accent-red !important;
-  color: #ffffff !important;
+  color: $text-dark !important;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.1em;
   font-weight: 400;
@@ -86,7 +86,7 @@ body {
 
 // Footer Wrap
 #footer_wrap {
-  background: $primary-olive !important;
+  background: #546850 !important;
   background-image: none !important;
   color: #ffffff !important;
   padding: 40px 0;
@@ -109,13 +109,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: $accent-red;
+  color: #A0483C;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: border-bottom 0.2s;
 
   &:hover {
-    border-bottom: 1px solid $accent-red;
+    border-bottom: 1px solid #A0483C;
   }
 }
 
@@ -170,10 +170,10 @@ a {
     }
 
     &.active {
-      background: rgba($primary-olive, 0.1);
-      color: $primary-olive;
+      background: rgba(#546850, 0.1);
+      color: #546850;
       font-weight: bold;
-      border-color: rgba($primary-olive, 0.3);
+      border-color: rgba(#546850, 0.3);
     }
   }
 }
