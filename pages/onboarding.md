@@ -1,12 +1,12 @@
 ---
 layout: default
-title: "Onboarding-guide: Anslut som extern förlitande part till Sandbox"
+title: "Onboarding-guide: Anslut som förlitande part till Sandbox"
 ---
 
 
-# Onboarding-guide: Anslut som extern förlitande part till Sandbox
+# Onboarding-guide: Anslut som förlitande part till Sandbox
 
-Välkommen till Det svenska plånbokssystemet! Denna guide beskriver steg-för-steg hur du som extern tjänsteleverantör (förlitande part) sätter upp en testmiljö lokalt och ansluter den mot Diggs **Sandbox-miljö**.
+Välkommen till Det svenska plånbokssystemet! Denna guide beskriver steg-för-steg hur du som förlitande part sätter upp en testmiljö lokalt och ansluter den mot Diggs **Sandbox-miljö**.
 
 <figure style="text-align: center;">
   <img src="{{ site.baseurl }}/assets/images/diagrams/service-provider-onboarding-architecture.svg" alt="Arkitektur för service provider onboarding" width="800" style="display: block; margin: 0 auto;">
