@@ -1,0 +1,17 @@
+flowchart TB
+    subgraph External["Extern förlitande part (Det ni tillhandahåller)"]
+        E["e-tjänst"]
+        VB["Verifier Backend\n`exempelvis eudi-srv-verifier-endpoint`"]
+    end
+
+    subgraph Digg["Diggs ekosystem (Det vi tillhandahåller)"]
+        PID["PID-utfärdare"]
+        Root["Root CA
+(certifikat)"]
+        Wallet["Plånbok"]
+    end
+
+    E -->|Inleder verifiering| VB
+    VB -->|Verifierar intyg| Wallet
+    VB -->|Litar på rotcertifikat| Root
+    VB -->|Litar på PID-utfärdare| PID

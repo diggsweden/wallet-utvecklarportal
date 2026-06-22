@@ -8,6 +8,11 @@ title: "Onboarding-guide: Anslut som extern förlitande part till Sandbox"
 
 Välkommen till Det svenska plånbokssystemet! Denna guide beskriver steg-för-steg hur du som extern tjänsteleverantör (förlitande part) sätter upp en testmiljö lokalt och ansluter den mot Diggs **Sandbox-miljö**.
 
+<figure style="text-align: center;">
+  <img src="{{ site.baseurl }}/assets/images/diagrams/service-provider-onboarding-architecture.svg" alt="Arkitektur för service provider onboarding" width="800" style="display: block; margin: 0 auto;">
+  <figcaption style="font-style: italic; font-size: 0.9em; color: #666; margin-top: 0.5em;">Översikt av onboarding-arkitekturen för extern förlitande part.</figcaption>
+</figure>
+
 ## Innehåll
 1. [Syfte](#syfte)
 2. [Steg 1: Hantera certifikat och tillit](#steg-1-hantera-certifikat-och-tillit)
@@ -26,7 +31,7 @@ Syftet med denna guide är att ge dig en snabbstart för att sätta upp en egen 
 För att din verifierare ska fungera i Sandbox-miljön behöver du hantera två typer av certifikat.
 
 ### 1.1 Hämta publika certifikat från Digg
-Du behöver hämta följande filer från Diggs Confluence (kontakta [digitalwallet@digg.se](mailto:digitalwallet@digg.se) för åtkomst):
+Maila [digitalwallet@digg.se](mailto:digitalwallet@digg.se) för att få följande certifikat:
 - `sandbox_root_ca.pem`: Ekosystemets gemensamma rot-certifikat. Detta används för att validera att plånboken och dess intyg är äkta.
 - `pid_issuer.pem`: Certifikatet för den part som utfärdar Personidentitetsdata (PID) i Sandbox.
 
@@ -100,7 +105,7 @@ När appen är installerad och laddad med en PID kan du rikta appen mot din loka
 ## Support och fördjupning
 
 ### Kontakt
-För tekniska frågor och hjälp med certifikatsutbyte, kontakta [digitalwallet@digg.se](mailto:digitalwallet@digg.se) på Digg.
+För tekniska frågor och hjälp med certifikatsutbyte, kontakta [digitalwallet@digg.se](mailto:digitalwallet@digg.se).
 
 ### Dokumentation och specifikationer
 För en djupare förståelse av hur hela plånbokssystemet hänger ihop, se dokumentationen i huvudprojektet:
