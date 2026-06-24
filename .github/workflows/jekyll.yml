@@ -33,6 +33,11 @@ jobs:
       - name: Install mermaid-cli
         run: npm install -g @mermaid-js/mermaid-cli
       
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3' # Ensure we use a modern Ruby version
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Create puppeteer config
         run: |
@@ -44,12 +49,6 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3' # Ensure we use a modern Ruby version
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
