@@ -5,7 +5,7 @@ title: Wallet Utvecklarportal
 
 # Välkommen till Utvecklarportalen
 
-Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet). Portalen riktar sig till tekniska intressenter som vill ansluta sina tjänster eller prova på tekniken bakom den statliga identitetsplånboken.
+Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet). Portalen riktar sig till utvecklare och förlitande parter som vill ansluta sina tjänster eller prova på tekniken bakom den statliga identitetsplånboken.
 
 ## Mål & Vision
 Den här portalen finns för att göra det enklare att integrera tekniskt mot det svenska plånbokssystemet. Här hittar du dokumentation och testmiljöer (Sandbox) för att du som utvecklare snabbt ska kunna komma igång och ansluta dina tjänster till infrastrukturen för digitala identiteter.
@@ -26,11 +26,11 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
     </div>
 3.  **Förlitande part** – Den organisation eller tjänst som tar emot och verifierar intyg via en **Verifier Backend**.
 4.  **Wallet Provider** – Leverantören som tillhandahåller plånboksinfrastrukturen och kommunikationsprotokollen.
-5.  **Tillitsinfrastruktur** – De tillitslistor och certifikat som säkerställer att alla parter litar på varandra.
+5.  **Tillitsramverk** – Det regelverk och den tekniska infrastruktur (t.ex. tillitslistor) som säkerställer att alla aktörer litar på varandra.
 
 <figure style="text-align: center;">
   <img src="{{ site.baseurl }}/assets/images/diagrams/sandbox.svg" alt="Översikt av ekosystemet" width="800" style="display: block; margin: 0 auto;">
-  <figcaption style="font-style: italic; font-size: 0.9em; color: #666; margin-top: 0.5em;">Översikt av ekosystemets komponenter och deras samspel. Inkluderar Digital plånbok, PID-utfärdare, Förlitande part, Wallet Provider och Tillitsinfrastruktur.</figcaption>
+  <figcaption style="font-style: italic; font-size: 0.9em; color: #666; margin-top: 0.5em;">Översikt av ekosystemets komponenter och deras samspel. Inkluderar Digital plånbok, PID-utfärdare, Förlitande part, Wallet Provider och Tillitsramverk.</figcaption>
 </figure>
 
 
@@ -43,6 +43,7 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 *   [**Guide: Prova mobilappen**](pages/prova-planboksappen.md) – Instruktioner för hur du installerar betaversionen och hämtar ditt första test-ID.
 *   [**Onboarding: Anslut till Sandbox**](pages/onboarding.md) – Steg-för-steg för dig som vill integrera din tjänst som förlitande part.
 *   [**Teknisk Referens: Standarder & Profiler**](pages/standarder-och-profiler.md) – Läs mer om de öppna standarder (t.ex. OpenID4VCI, SD-JWT) som ekosystemet bygger på.
+*   [**Ordlista**](pages/ordlista.md) – En ordlista med de vanligast förekommande termerna och begreppen
 
 ---
 *Har du frågor? Kontakta oss på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).*

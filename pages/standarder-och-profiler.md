@@ -5,7 +5,7 @@ title: Standarder & Profiler
 
 # Standarder & Profiler
 
-För att underlätta för integratörer att ansluta sina e-tjänster till ekosystemet för den svenska digitala identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på. Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
+För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på. Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
 
 Istället för att återskapa specifikationer i detalj här, refererar vi direkt till de officiella standarderna. 
 
