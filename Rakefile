@@ -9,7 +9,7 @@ task :diagrams do
   
   Dir.glob("#{mermaid_dir}/*.mmd").each do |mmd_file|
     svg_file = File.join(svg_dir, File.basename(mmd_file, '.mmd') + '.svg')
-    sh "mmdc -p /tmp/puppeteer.json -i #{mmd_file} -o #{svg_file}"
+    sh "mmdc -p /tmp/puppeteer.json -c config/mermaid.config.json -i #{mmd_file} -o #{svg_file}"
   end
   
   puts "Generated #{Dir.glob("#{svg_dir}/*.svg").length} SVG diagrams"
