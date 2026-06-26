@@ -36,7 +36,7 @@ Den övergripande administrativa och förberedande processen för en organisatio
 > **Källa:** [eIDAS-förordningen (EU 2024/1183)](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R1183) och [EUDI ARF, Avsnitt 3.4](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/architecture-and-reference-framework-main.md#34-person-identification-data-pid-providers)
 
 ### PID-utfärdare (PID Issuer)
-Den centrala tjänsten (tillhandahållen av Digg i Sverige) som utfärdar och signerar användarens grundläggande identitetsdata (PID) till plånboken.
+Den centrala tjänst som utfärdar och signerar användarens grundläggande identitetsdata (PID) till plånboken. I den framtida svenska produktionsmiljön är det Polismyndigheten som är PID-utfärdare (via den statliga e-legitimationen Sverige-id), men i testplattformen tillhandahålls denna tjänst av Digg.
 > **Källa:** [EUDI ARF, Avsnitt 3.4](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/architecture-and-reference-framework-main.md#34-person-identification-data-pid-providers)
 
 ### Sandbox
