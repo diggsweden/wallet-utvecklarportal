@@ -23,10 +23,10 @@ Vårt ekosystem utvecklas i linje med det europeiska ramverket för digital iden
 
 Det är viktigt att skilja på de komponenter vi använder i testmiljön (Sandbox) och hur rollfördelningen är planerad att se ut i den framtida produktionsmiljön.
 
-| Funktion / Roll | Sandbox (Testmiljö) | Produktion (Framtida målbild) |
-| :--- | :--- | :--- |
-| **Identitetshantering** | **Keycloak** används för att hantera testanvändare och simulera inloggning. | **Polismyndigheten** utfärdar den statliga e-legitimationen [**Sverige-id**](https://polisen.se/tjanster-tillstand/pass-och-nationellt-id-kort/statlig-e-legitimation-sverige-id/). |
-| **PID-utfärdare** | Digg tillhandahåller en testtjänst som utfärdar fiktiva PID (Personidentitetsdata). | **Polismyndigheten** är officiell PID-utfärdare via Sverige-id (planerad lansering 1 december 2026). |
+| Funktion / Roll | Sandbox (Testmiljö)                                                                                                                                                                                                  | Produktion (Framtida målbild) |
+| :--- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :--- |
+| **Identitetshantering** | **Keycloak** används för att hantera testanvändare och simulera inloggning.                                                                                                                                          | **Polismyndigheten** utfärdar den statliga e-legitimationen [**Sverige-id**](https://polisen.se/tjanster-tillstand/pass-och-nationellt-id-kort/statlig-e-legitimation-sverige-id/). |
+| **PID-utfärdare** | En testtjänst som i dagsläget tillhandahålls av Digg för att utfärda fiktiva PID (Personidentitetsdata).                                                                                                             | **Polismyndigheten** är officiell PID-utfärdare via Sverige-id (planerad lansering 1 december 2026). |
 | **Tillitsvalidering** | EU:s referensimplementation för tillitsvalidering ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)) används för att kontrollera certifikat och tillitslistor. | **[Post- och telestyrelsen (PTS)](https://www.pts.se)** agerar tillsynsmyndighet för betrodda tjänster under eIDAS. |
 
 ---
@@ -36,7 +36,7 @@ Det är viktigt att skilja på de komponenter vi använder i testmiljön (Sandbo
 För att utfärda den personliga identiteten (PID) och andra intyg till plånboken använder vi:
 * **[OpenID for Verifiable Credential Issuance (OpenID4VCI)](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html)**
   * Vi använder proof-type `openid4vci-proof+jwt`.
-* **[DPoP (Demonstrating Proof-of-Possession)](https://datatracker.ietf.org/doc/html/rfc9449)** – Används för att kryptografiskt binda tokens till plånboksklienten.
+* **[DPoP (Demonstrating Proof-of-Possession)](https://datatracker.ietf.org/doc/html/rfc9449)** – Används för att kryptografiskt binda tokens till plånboksinstansen.
 
 ---
 
@@ -45,7 +45,7 @@ För att utfärda den personliga identiteten (PID) och andra intyg till plånbok
 När en e-tjänst (förlitande part) vill verifiera identitet eller attribut från plånboken sker detta via:
 * **[OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)**
   * Vi stöder svarsläget (response mode) `direct_post`.
-* **[Digital Credentials Query Language (DCQL)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l)** – Används för att konstruera detaljerade och selektiva förfrågningar av claims från plånboken.
+* **[Digital Credentials Query Language (DCQL)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l)** – Används för att konstruera detaljerade och selektiva förfrågningar av attribut (claims) från plånboken.
 
 ---
 
