@@ -19,7 +19,7 @@ För att kunna följa instruktionerna på denna sida och integrera mot Sandbox-m
 Det svenska plånbokssystemet består av fem centrala delar som samverkar för ett säkert informationsutbyte:
 
 1.  **Digital plånbok (EUDI Wallet)** – Den mobila appen där användaren lagrar och väljer att dela sina intyg.
-2.  **PID-utfärdare** – Diggs tjänst som utfärdar och signerar det grundläggande identitetsintyget (PID).
+2.  **PID-utfärdare** – Tjänsten som utfärdar och signerar det grundläggande identitetsintyget (PID) – i testmiljön tillhandahålls denna i dagsläget av Digg (i framtida produktion är det Polismyndigheten).
     <div style="background: #e7f5ff; padding: 12px; border-radius: 4px; border-left: 4px solid #0066cc; margin: 10px 0 15px 25px;" role="note">
       <span style="color: #0052cc; margin-right: 8px;" aria-label="Information">ℹ️</span>
       Vi använder enbart fiktiva identiteter med svenska testpersonnummer.
