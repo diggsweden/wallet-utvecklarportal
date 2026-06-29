@@ -41,7 +41,7 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 Är du redo att börja testa?
 
 *   [**Guide: Prova mobilappen**](pages/prova-planboksappen.md) – Instruktioner för hur du installerar betaversionen och hämtar ditt första test-ID.
-*   [**Onboarding: Anslut till Sandbox**](pages/onboarding.md) – Steg-för-steg för dig som vill integrera din tjänst som förlitande part.
+*   [**Anslut som förlitande part**](pages/anslutning-fp.md) – Steg-för-steg för dig som vill integrera din tjänst som förlitande part.
 *   [**Teknisk Referens: Standarder & Profiler**](pages/standarder-och-profiler.md) – Läs mer om de öppna standarder (t.ex. OpenID4VCI, SD-JWT) som ekosystemet bygger på.
 *   [**Ordlista**](pages/ordlista.md) – En ordlista med de vanligast förekommande termerna och begreppen
 
