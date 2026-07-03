@@ -29,7 +29,7 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 5.  **Tillitsramverk** – Det regelverk och den tekniska infrastruktur (t.ex. tillitslistor) som säkerställer att alla aktörer litar på varandra.
 
 <figure style="text-align: center;">
-  <img src="{{ site.baseurl }}/assets/images/diagrams/sandbox.svg" alt="Översikt av ekosystemet" width="800" style="display: block; margin: 0 auto;">
+  <img src="{{ site.baseurl }}/assets/images/diagrams/sandbox.png" alt="Översikt av ekosystemet" width="800" style="display: block; margin: 0 auto;">
   <figcaption style="font-style: italic; font-size: 0.9em; color: #666; margin-top: 0.5em;">Översikt av ekosystemets komponenter och deras samspel. Inkluderar Digital plånbok, PID-utfärdare, Förlitande part, Wallet Provider och Tillitsramverk.</figcaption>
 </figure>
 
