@@ -47,5 +47,3 @@ tmp/
 core
 *.core
 
-# Generated diagrams (created by rake diagrams / CI workflow)
-assets/images/diagrams/

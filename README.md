@@ -8,7 +8,7 @@ En utvecklarportal med information och hjälp riktad till parter som vill anslut
 
 ## Diagram (Mermaid)
 
-Mermaid-diagram lagras i `_mermaid/` som `.mmd`-filer och renderas till SVG i `assets/images/diagrams/`.
+Mermaid-diagram lagras i `_mermaid/` som `.mmd`-filer och renderas till önskat filformat i `assets/images/diagrams/`.
 
 ### Lägg till nytt diagram
 1. Lägg till `.mmd`-fil i `_mermaid/`
@@ -32,7 +32,7 @@ rake && jekyll serve
 
 ### Förutsättningar
 
-| Beroende | Syfte | Installation |
-|----------|-------|--------------|
-| **Node.js** (v20+) + `@mermaid-js/mermaid-cli` | Renderar Mermaid-diagram (.mmd → SVG) | `npm install -g @mermaid-js/mermaid-cli` |
-| **Ruby** (v3.0+) + Bundler | Bygger webbplatsen med Jekyll | `gem install bundler && bundle install` |
+| Beroende | Syfte                                           | Installation |
+|----------|-------------------------------------------------|--------------|
+| **Node.js** (v20+) + `@mermaid-js/mermaid-cli` | Renderar Mermaid-diagram till önskat filformat | `npm install -g @mermaid-js/mermaid-cli` |
+| **Ruby** (v3.0+) + Bundler | Bygger webbplatsen med Jekyll                   | `gem install bundler && bundle install` |
