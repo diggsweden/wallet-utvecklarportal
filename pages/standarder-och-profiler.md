@@ -77,8 +77,8 @@ För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, 
 
 ## Koppling till WE BUILD
 
-Det svenska plånbokssystemets testmiljö är utformad för att vara kompatibel med de tekniska profiler som utvecklas inom det europeiska pilotkonsortiet [**WE BUILD**](https://github.com/webuild-consortium). 
+Det svenska plånbokssystemets testmiljö är utformad för att, där det är tillämpligt, efterleva de tekniska profiler och specifikationer som utvecklas inom det europeiska storskaliga pilotkonsortiet [**WE BUILD**](https://github.com/webuild-consortium). 
 
 Syftet med detta är att:
-* Säkerställa att en plånbok som är certifierad och fungerar i andra EU-länder också kan användas sömlöst mot de svenska förlitande parternas e-tjänster.
+* Säkerställa att svenska förlitande parters e-tjänster har de tekniska förutsättningarna som krävs för att kunna ta emot och fungera med plånböcker som följer de gemensamma europeiska profilerna
 * Ge utvecklare en testmiljö som speglar de internationella kraven på interoperabilitet inför den skarpa driftsättningen av EUDI-plånböckerna.
