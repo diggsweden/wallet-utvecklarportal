@@ -55,9 +55,16 @@ Webbplatsen byggs om automatiskt när du gör ändringar i filerna.
 
 Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du mergar till `main`:
 
-1.  Gå till [Inställningar för GitHub Pages](https://github.com/diggsweden/wallet-utvecklarportal/settings/pages).
-2.  Under **Build and deployment**, ändra **Branch** från "main" till namnet på din branch (t.ex. `feat/min-ändring`).
-3.  Klicka på **Save**.
-4.  Det tar ungefär 1 minut innan ändringarna visas på [https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/).
+> [!IMPORTANT]
+> För att detta ska fungera och för att undvika det inbyggda, felaktiga GitHub Pages-bygget (som inte får med alla resurser som diagram och skapar ett race condition) måste GitHub Pages vara konfigurerat för att använda **GitHub Actions** som källa. Det ställs in under **Settings** -> **Pages** -> **Build and deployment** -> **Source: GitHub Actions**.
 
-**Viktigt:** Glöm inte att ändra tillbaka till **main** när du är klar med testningen!
+När detta är konfigurerat kan du testa en branch på följande sätt:
+
+1. Gå till [Actions](https://github.com/diggsweden/wallet-utvecklarportal/actions) i repot.
+2. Välj workflowet **Build and Deploy** i listan till vänster.
+3. Klicka på **Run workflow**-knappen till höger.
+4. Välj den branch du vill testa (t.ex. `feat/min-ändring`) under **Use workflow from**.
+5. Klicka på den gröna **Run workflow**-knappen.
+6. Det tar ungefär 1-2 minuter innan ändringarna visas på [https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/).
+
+**Viktigt:** Glöm inte att köra workflowet mot **main** igen när du är klar med testningen, så att den publika sidan återställs till det som är mergat i main!
