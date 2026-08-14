@@ -5,6 +5,17 @@ title: Wallet Utvecklarportal
 
 # Välkommen till Utvecklarportalen
 
+<div style="background: #FFF8E7; padding: 16px; border-radius: 6px; border: 1px solid #ECD2A5; border-left: 6px solid #D9822B; color: #2B2A28; margin: 20px 0;" role="note">
+  <span style="font-size: 1.2em; margin-right: 8px;">⚠️</span><strong>Viktig information om testdata och sandbox-miljön</strong>
+  <p style="margin: 10px 0 10px 0; font-size: 0.95em;">Denna utvecklarportal och dess tillhörande Sandbox-miljö (inklusive testplånbok, test-PID, testutfärdare och verifieringsflöden) är enbart avsedda för test, demonstration och utvecklingsändamål.</p>
+  <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; line-height: 1.5;">
+    <li><strong>Endast fiktiv testdata:</strong> Sandboxen och alla testflöden använder uteslutande fiktiv testdata.</li>
+    <li><strong>Inga verkliga personuppgifter:</strong> Miljön får under inga omständigheter användas med verkliga personuppgifter eller produktionsdata.</li>
+    <li><strong>Ej i produktion:</strong> Testtjänsterna (såsom Diggs test-PID-utfärdare och testplånbok) är inte produktionssatta tjänster och representerar inte en skarp driftsättning eller färdiga produktionsmiljöer.</li>
+  </ul>
+</div>
+
+
 Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet). Portalen riktar sig till utvecklare och förlitande parter som vill ansluta sina tjänster eller prova på tekniken bakom den statliga identitetsplånboken.
 
 ## Mål & Vision
