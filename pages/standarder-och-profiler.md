@@ -75,6 +75,15 @@ För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, 
 
 ---
 
+## Tillitsramverk & Tillitslistor (LoTE)
+
+För att etablera och distribuera tillit i ekosystemet används standardiserade tillitslistor:
+* **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** – *List of Trusted Entities (LoTE)*. Definierar formatet för maskinläsbara tillitslistor för plånboksleverantörer och utfärdare.
+  * Tillitslistan publiceras som en kryptografiskt signerad JWS (JSON Web Signature) med algoritmen **ES256**.
+  * I Sandbox-miljön publiceras tillitslistan på `https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json` och konsumeras dynamiskt av tillitsvaliderare ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)).
+
+---
+
 ## Koppling till WE BUILD
 
 Det svenska plånbokssystemets testmiljö är utformad för att, där det är tillämpligt, efterleva de tekniska profiler och specifikationer som utvecklas inom det europeiska storskaliga pilotkonsortiet [**WE BUILD**](https://github.com/webuild-consortium). 
@@ -82,3 +91,4 @@ Det svenska plånbokssystemets testmiljö är utformad för att, där det är ti
 Syftet med detta är att:
 * Säkerställa att svenska förlitande parters e-tjänster har de tekniska förutsättningarna som krävs för att kunna ta emot och fungera med plånböcker som följer de gemensamma europeiska profilerna
 * Ge utvecklare en testmiljö som speglar de internationella kraven på interoperabilitet inför den skarpa driftsättningen av EUDI-plånböckerna.
+

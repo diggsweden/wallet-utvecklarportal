@@ -46,9 +46,9 @@ Den test- och experimentmiljö som tillhandahålls av Digg där utvecklare och b
 *Selective Disclosure for JWTs Verifiable Credentials*. Det kredentialformat som används för identitetsintygen i det svenska plånbokssystemet. Det tillåter selektivt utlämnande, vilket innebär att användaren kan välja att enbart dela specifika uppgifter (t.ex. bekräfta att man är över 18 år) utan att avslöja hela sitt personnummer eller namn.
 > **Källa:** [IETF OAuth Selective Disclosure for JWTs (SD-JWT)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt) och [EUDI Standards and Technical Specifications](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications)
 
-### Tillitslista (Trusted List)
-En kryptografiskt signerad förteckning (lista) över godkända och betrodda aktörer i plånbokssystemet, till exempel utfärdare av intyg (PID/QEAA) och plånboksleverantörer. Genom att läsa av tillitslistan kan plånböcker och verifierare kontrollera att ett intyg eller en komponent är utfärdad av en behörig part inom tillitsramverket.
-> **Källa:** [EUDI ARF, Avsnitt 3.5](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/architecture-and-reference-framework-main.md#35-trusted-list-or-lote-provider)
+### Tillitslista / LoTE (List of Trusted Entities)
+En kryptografiskt signerad förteckning (lista) över godkända och betrodda aktörer i plånbokssystemet enligt standarden **ETSI TS 119 602**, till exempel utfärdare av intyg (PID/QEAA) och plånboksleverantörer. Genom att läsa av tillitslistan (som publiceras som en signerad JWS) kan tillitsvaliderare automatiskt och dynamiskt verifiera att en part är behörig och att dess certifikat är giltiga inom tillitsramverket, utan manuellt certifikatsutbyte.
+> **Källa:** [EUDI ARF, Avsnitt 3.5](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/architecture-and-reference-framework-main.md#35-trusted-list-or-lote-provider) och [ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)
 
 ### Tillitsramverk
 Det gemensamma regelverk och den tekniska infrastruktur (såsom tillitslistor) som säkerställer att alla anslutna aktörer i plånbokssystemet kan lita på varandras identitet, behörighet och intyg.
