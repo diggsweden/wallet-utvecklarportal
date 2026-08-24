@@ -15,91 +15,54 @@ title: "Anslut som förlitande part"
 
 Oavsett vilken teknisk implementation du väljer, följer anslutningsprocessen dessa grundläggande steg:
 
-1. **Etablera tillit (LoTE)** – Tillitsförhållanden etableras dynamiskt genom Sandboxens publika tillitslista (**LoTE** – *List of Trusted Entities* enligt ETSI TS 119 602). Inget manuellt certifikatsutbyte via e-post krävs.
-2. **Skapa din identitet (Signing Key)** – Generera den privata nyckeln och det certifikat som identifierar din Verifier Backend.
-3. **Konfigurera din Verifier Backend & Trust Validator** – Ställ in din verifierartjänst samt tillitsvalidering mot Sandboxens LoTE.
-4. **Testa med testplånbok** – Verifiera att din integration fungerar mot Diggs Sandbox-miljö och testplånboksapp.
+1. **Skapa certifikatkedja & keystore** – Generera lokal Root CA och signerat verifierarcertifikat i en `.p12`-fil.
+2. **Starta tjänsterna med Docker Compose** – Kör Verifier Backend, Trust Validator och Demo Web UI.
+3. **Starta HTTPS-tunnel (för lokal testning)** – Exponera verifieraren över publik HTTPS så att den fysiska plånboksappen kan ansluta (eller använd egna servrar med HTTPS).
+4. **Testa med plånboksappen** – Skanna QR-koden och verifiera ditt test-PID.
 
 ---
 
-## Detaljerad genomgång
+## Steg 1: Skapa certifikatkedja & keystore
 
-### Steg 1: Etablera tillit med Sandbox LoTE
+Verifierarens backend (`eudi-srv-verifier-endpoint`) signerar förfrågningar enligt OpenID4VP och kräver en PKCS#12-keystore (`verifier_backend.p12`) med en 2-stegs certifikatkedja (Root CA + certifikat).
 
-Plånbokssystemet använder en maskinläsbar tillitslista (**LoTE** – *List of Trusted Entities*) baserad på standarden **ETSI TS 119 602**. Tillitslistan publiceras som en kryptografiskt signerad JWT (JWS med ES256) som innehåller certifikatkedjor och beviljad status för samtliga godkända aktörer i Sandbox-miljön (både PID-utfärdare och Wallet Providers).
-
-#### 1.1 Sandbox LoTE-endpoint
-
-I Diggs Sandbox-miljö publiceras den aktuella LoTE-filen publikt på följande URL:
-
-```
-https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json
-```
-
-Du kan själv inspektera innehållet i tillitslistan med `curl` och valfritt JWT-verktyg:
+Kopiera och kör följande script i terminalen för att generera en lokal test-CA och ett signerat certifikat:
 
 ```bash
-# Hämta LoTE JWT från Sandbox
-curl -s https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json | cut -d'.' -f2 | base64 -d 2>/dev/null | jq .
-```
+# 1. Skapa lokal Root CA (EC P-256)
+openssl ecparam -name prime256v1 -genkey -noout -out ca_key.pem
+openssl req -new -x509 -key ca_key.pem -out ca_cert.pem -days 3650 \
+  -subj "/C=SE/O=Test CA/CN=Test Verifier Root CA"
 
-Payloaden innehåller strukturerad information om beviljade tjänster:
-- **PID-utfärdande:** `http://uri.etsi.org/19602/SvcType/PID/Issuance`
-- **Plånboksutfärdande:** `http://uri.etsi.org/19602/SvcType/WalletSolution/Issuance`
+# 2. Skapa privat nyckel och CSR för Verifier Backend
+openssl ecparam -name prime256v1 -genkey -noout -out verifier_key.pem
 
-#### 1.2 Hur tilliten valideras
+cat << 'EOF' > verifier_ext.cnf
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, nonRepudiation
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = DNS:localhost
+EOF
 
-I stället för att manuellt ladda ner och konfigurera statiska truststores (`.p12`) hos varje förlitande part, använder verifieraren en tillitsvalideringstjänst (**Trust Validator**, referensimplementation `ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator`). Trust Validator läser kontinuerligt in och cachar LoTE från Sandboxens endpoint och validerar inkommande intyg och plånbokssignaturer automatiskt.
+openssl req -new -key verifier_key.pem -out verifier_csr.pem \
+  -subj "/C=SE/O=Min Organisation/CN=Verifier Backend"
 
----
+# 3. Signera verifierarcertifikatet med Root CA
+openssl x509 -req -in verifier_csr.pem -CA ca_cert.pem -CAkey ca_key.pem \
+  -CAcreateserial -out verifier_cert.pem -days 365 -extfile verifier_ext.cnf
 
-### Steg 2: Skapa din digitala identitet (Signing Key)
-
-En **Signing Key** är din förlitande parts privata kryptografiska nyckel. Den används för att:
-- Signera förfrågningar (Request Objects / Authorization Requests) enligt OpenID4VP-protokollet.
-- Identifiera din specifika **Verifier Backend-instans** gentemot plånboken.
-- Säkerställa integriteten på presentationsflödet.
-
-#### Om Signing Key
-
-| Aspekt | Beskrivning |
-|--------|--------------|
-| **Syfte** | Signerar förfrågningar till plånboken enligt OpenID4VP-protokollet |
-| **Skapas av** | Din organisation (för test: självsignerat certifikat; för produktion: CA-signerat certifikat) |
-| **Identifierar** | Din specifika **Verifier Backend-instans** (teknisk klient), inte organisationen i sig |
-| **Format** | EC P-256 privat nyckel + tillhörande X.509-certifikat (publika nyckeln) paketerat i PKCS#12 (`.p12`) |
-| **Klient-ID typ** | `x509_san_dns` (klientens ID matchar SAN DNS-namnet i certifikatet) |
-
-#### 2.1 Generera Signing Key & Certifikat (för test)
-
-För Sandbox-miljön och lokala tester skapar du ett självsignerat EC P-256 certifikat och paketerar det i en `.p12`-fil:
-
-```bash
-# 1. Generera privat EC-nyckel (P-256) och självsignerat X.509-certifikat
-openssl req -x509 -newkey ec:<(openssl ecparam -name prime256v1) -nodes \
-  -keyout verifier_key.pem -out verifier_cert.pem -days 365 \
-  -subj "/C=SE/O=Min Organisation/CN=Verifier Backend" \
-  -addext "subjectAltName=DNS:localhost,DNS:din-verifierare.example.se"
-
-# 2. Paketera nyckeln och certifikatet i en PKCS#12-fil (verifier_backend.p12)
-openssl pkcs12 -export -in verifier_cert.pem -inkey verifier_key.pem \
+# 4. Paketera certifikatkedjan i verifier_backend.p12
+cat verifier_cert.pem ca_cert.pem > full_chain.pem
+openssl pkcs12 -export -in full_chain.pem -inkey verifier_key.pem \
   -out verifier_backend.p12 -name "verifier_backend" -passout pass:pass1234
 ```
 
-> **Säkerhetsnotis:** Självsignerade certifikat används enbart i testmiljöer. I framtida produktion krävs certifikat utfärdat av en godkänd certifikatutfärdare (CA) under det nationella tillitsramverket.
+## Steg 2: Starta tjänsterna med Docker Compose
 
----
-
-### Steg 3: Konfigurera Verifier Backend & Trust Validator
-
-Verifieraren ansvarar för att:
-1. Skapa och signera presentationsförfrågningar (Presentation Requests med DCQL).
-2. Ta emot presentationsresponsen från plånboken via `DirectPost`.
-3. Anropa **Trust Validator** för att verifiera att intygen och plånboken finns med och är beviljade i Sandbox LoTE.
-
-#### Komplett Docker Compose-exempel
-
-Nedan finns en komplett, körbar `docker-compose.yaml` som sätter upp både EU:s referens-verifierare (`eudi-srv-verifier-endpoint:v0.11.0`) och tillitsvalideraren (`eudi-srv-trust-validator:0.2.2-alpha`), förkonfigurerad mot Diggs Sandbox LoTE:
+Skapa en `docker-compose.yaml` i samma mapp som `verifier_backend.p12`. Den sätter upp:
+- **`verifier-backend`**: EU:s referens-verifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
+- **`trust-validator`**: EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.2.2-alpha`), förkonfigurerad mot Diggs Sandbox LoTE (`https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json`).
+- **`demo-verifier`**: Test-webbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10`) på port `3002`.
 
 ```yaml
 services:
@@ -110,8 +73,8 @@ services:
       - ./verifier_backend.p12:/opt/common/verifier_backend.p12:ro
     environment:
       SPRING_WEBFLUX_BASEPATH: "/verifier"
-      VERIFIER_PUBLICURL: "https://din-verifierare.example.se/verifier"
-      VERIFIER_ORIGINALCLIENTID: "localhost"
+      VERIFIER_PUBLICURL: "${VERIFIER_PUBLIC_URL:-http://localhost:8080}/verifier"
+      VERIFIER_ORIGINALCLIENTID: "${VERIFIER_CLIENT_ID:-localhost}"
       VERIFIER_CLIENTIDPREFIX: "x509_san_dns"
       SPRING_PROFILES_ACTIVE: "self-signed"
       VERIFIER_ACCESS_CERTIFICATE_SIGNING_ALGORITHM: "ES256"
@@ -123,6 +86,8 @@ services:
       VERIFIER_DEFEAULTHTTPRESPONSEMODE: "DirectPost"
       VERIFIER_ATTESTATIONCLASSIFICATIONS_PID_VCTS: "urn:eudi:pid:1"
       VERIFIER_TRUST_VALIDATOR_SERVICE_URL: "http://trust-validator:8080/trust-validator/trust"
+      LOGGING_LEVEL_EU_EUROPA_EC_EUDI_VERIFIER_ENDPOINT: "DEBUG"
+      JAVA_OPTS: "-XX:MaxDirectMemorySize=128M"
     ports:
       - "8080:8080"
     depends_on:
@@ -141,45 +106,116 @@ services:
       TRUST_VALIDATOR_TRUST_SOURCES_WALLET_PROVIDERS_LOTE_LOCATION: "https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json"
       TRUST_VALIDATOR_TRUST_SOURCES_WALLET_PROVIDERS_LOTE_ISSUANCE_SERVICE: "http://uri.etsi.org/19602/SvcType/WalletSolution/Issuance"
       TRUST_VALIDATOR_TRUST_SOURCES_WALLET_PROVIDERS_LOTE_REVOCATION_SERVICE: "http://uri.etsi.org/19602/SvcType/WalletSolution/Revocation"
+
+  demo-verifier:
+    image: ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10
+    container_name: demo-verifier
+    environment:
+      HOST_API: "http://verifier-backend:8080/verifier"
+      PORT: "3002"
+      NITRO_PORT: "3002"
+      NUXT_PUBLIC_BASE_URL: "${DEMO_PUBLIC_BASE_URL:-http://localhost:3002}/demo-verifier"
+      NUXT_APP_BASE_URL: "/demo-verifier"
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
+    ports:
+      - "3002:3002"
+    depends_on:
+      - verifier-backend
+```
+
+Starta tjänsterna:
+```bash
+docker compose up -d
 ```
 
 ---
 
-### Steg 4: Testa med Diggs testplånbok
+## Steg 3: Exponera över HTTPS (Tunnel för lokal testanvändning)
 
-För att verifiera att din uppsatta miljö fungerar och kan kommunicera med plånboken, använder du **Diggs test-plånboksapp**.
+Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`). Okrypterad `http://` avvisas av säkerhetsskäl av appen.
 
-#### Hur du testar
+> **Obs:** Instruktionerna nedan beskriver hur du sätter upp en temporär HTTPS-tunnel (t.ex. med Cloudflare Tunnel) för lokal testanvändning och utveckling mot en fysisk mobiltelefon. Om den förlitande parten istället hostar dessa tjänster på egna servrar konfigureras HTTPS och domännamn direkt i den egna servermiljön.
 
-1. **Installera test-plånboksappen** – Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att få tillgång via TestFlight (iOS) eller Google Play (Android).
-2. **Hämta test-ID (PID)** – Logga in mot Diggs testutfärdare i appen för att ladda ner en test-PID.
-3. **Initiera förfrågan** – Från din Verifier Backend, skapa en presentationsförfrågan (Authorization Request).
-4. **Presentera intyg** – Skanna QR-koden eller öppna länken i test-plånboksappen och godkänn delningen.
-5. **Validera svar** – Din Verifier Backend tar emot svaret via `DirectPost` och verifierar intyget och dess utfärdare mot Sandbox LoTE via Trust Validator.
+När du testar lokalt från en fysisk telefon exponerar du verifierarporten (`8080`) via en snabbtunnel (t.ex. Cloudflare Tunnel):
+
+### 3.1 Starta tunneln
+
+Kör följande i en separat terminal:
+
+```bash
+# Ladda ner och starta Cloudflare Tunnel mot port 8080
+curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /tmp/cloudflared && chmod +x /tmp/cloudflared
+/tmp/cloudflared tunnel --url http://localhost:8080
+```
+
+Kopiera den tilldelade HTTPS-adressen från loggen (t.ex. `https://random-namn.trycloudflare.com`).
+
+### 3.2 Uppdatera konfiguration & certifikat med tunnel-domänen
+
+Kör följande script för att uppdatera `.env`, förnya certifikatet för tunneldomänen och starta om verifieraren:
+
+```bash
+TUNNEL_URL="https://random-namn.trycloudflare.com" # Ersätt med din URL
+TUNNEL_HOST=$(echo "$TUNNEL_URL" | sed -e 's|^https://||' -e 's|/.*||')
+
+# 1. Skapa .env
+cat << EOF > .env
+VERIFIER_PUBLIC_URL=${TUNNEL_URL}
+VERIFIER_CLIENT_ID=${TUNNEL_HOST}
+DEMO_PUBLIC_BASE_URL=http://localhost:3002
+EOF
+
+# 2. Uppdatera certifikatets SAN med tunnel-domänen
+cat << EOF > verifier_ext.cnf
+basicConstraints = CA:FALSE
+keyUsage = digitalSignature, nonRepudiation
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = DNS:localhost,DNS:${TUNNEL_HOST}
+EOF
+
+openssl x509 -req -in verifier_csr.pem -CA ca_cert.pem -CAkey ca_key.pem \
+  -CAcreateserial -out verifier_cert.pem -days 365 -extfile verifier_ext.cnf
+
+cat verifier_cert.pem ca_cert.pem > full_chain.pem
+openssl pkcs12 -export -in full_chain.pem -inkey verifier_key.pem \
+  -out verifier_backend.p12 -name "verifier_backend" -passout pass:pass1234
+
+# 3. Starta om verifieraren
+docker compose up -d --force-recreate
+```
 
 ---
 
-### Support och fördjupning
+## Steg 4: Testa och logga in med plånboksappen
 
-#### Kontakt
+1. **Installera testappen & hämta PID:**
+    - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din telefon.
+    - Öppna appen, välj **Hämta personuppgifter**, logga in mot Sandbox-utfärdaren med en testanvändare och spara ditt test-PID.
+2. **Öppna test-webbplatsen på datorn:**
+    - Gå till **[http://localhost:3002/demo-verifier](http://localhost:3002/demo-verifier)** i din webbläsare.
+    - Välj ett scenario (t.ex. *Vaccincentralen* eller *Biocentralen*).
+    - Klicka på **Logga in med din digitala plånbok** -> **Starta inloggningen**.
+3. **Skanna & verifiera:**
+    - Skanna den genererade QR-koden med plånboksappen på din telefon.
+    - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
+    - Plånboken signerar presentationen via Sandbox HSM och skickar den till din lokala Verifier Backend via HTTPS-tunneln.
+    - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
 
-För tekniska frågor och hjälp med anslutningsprocessen eller testmiljön, kontakta: [digitalwallet@digg.se](mailto:digitalwallet@digg.se).
+---
 
-#### Dokumentation och specifikationer
+## Support och fördjupning
+
+### Kontakt
+
+För tekniska frågor och hjälp med anslutningsprocessen & testmiljön kontakta: [digitalwallet@digg.se](mailto:digitalwallet@digg.se)
+
+### Dokumentation och specifikationer
+
+För en djupare förståelse av plånbokssystemet:
 
 - **Huvudprojekt:** [diggsweden/wallet-ecosystem](https://github.com/diggsweden/wallet-ecosystem)
-- **Tekniska standarder:** [Standarder & Profiler](standarder-och-profiler.md) (OpenID4VP, OpenID4VCI, SD-JWT VC, ETSI TS 119 602)
+- **Tekniska standarder:** [Standarder & Profiler](standarder-och-profiler.md) (OpenID4VP, OpenID4VCI, SD-JWT VC).
 - **EUDIW dokumentation:** [eudi-doc-architecture-and-reference-framework](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/)
-
----
-
-### Sammanfattning: Checklista
-
-- [ ] Har genererat Signing Key och PKCS#12-keystore (`verifier_backend.p12`)
-- [ ] Har konfigurerat Trust Validator mot Sandbox LoTE (`https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json`)
-- [ ] Har startat och konfigurerat Verifier Backend
-- [ ] Har installerat Diggs test-plånboksapp
-- [ ] Har genomfört en lyckad presentation och validering med testplånboken
 
 ---
 
