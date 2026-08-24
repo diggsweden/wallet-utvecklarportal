@@ -37,7 +37,7 @@ Beroende på vilken plattform du använder följer du instruktionerna nedan när
 
 #### Installera på iOS (Apple)
 1. Om du inte redan har appen **TestFlight** installerad på din telefon, ladda ned den från **App Store**.
-2. Öppna e-postmeddelandet med din inbjudan och klicka på inbjudningslänken. En sida öppnas nu i webbläsaren (testflight.apple.com).
+2. Öppna e-postmeddelandet med din inbjudan och klicka på inbjudningslänken från din telefon. En sida öppnas nu i webbläsaren (testflight.apple.com).
 3. Klicka på **Öppna** i TestFlight-bannern högst upp på sidan:
 
    <img src="../assets/images/screenshots/testflight-banner-oppna.jpg" alt="TestFlight-banner högst upp i webbläsaren med knappen Öppna" width="500" style="display: block;">
