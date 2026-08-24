@@ -37,9 +37,16 @@ Beroende på vilken plattform du använder följer du instruktionerna nedan när
 
 #### Installera på iOS (Apple)
 1. Om du inte redan har appen **TestFlight** installerad på din telefon, ladda ned den från **App Store**.
-2. Öppna e-postmeddelandet med din inbjudan och notera din **inbjudningskod**.
-3. Öppna **TestFlight**, klicka på *Redeem* (Lös in) och fyll i koden.
-4. Klicka på **Installera** för att hämta plånboksappen.
+2. Öppna e-postmeddelandet med din inbjudan och klicka på inbjudningslänken från din telefon. En sida öppnas nu i webbläsaren (testflight.apple.com).
+3. Klicka på **Öppna** i TestFlight-bannern högst upp på sidan:
+
+   <img src="../assets/images/screenshots/testflight-banner-oppna.jpg" alt="TestFlight-banner högst upp i webbläsaren med knappen Öppna" width="500" style="display: block;">
+
+   Alternativt kan du scrolla ned till *Identitetsplånboken - Demo Beta* och klicka på **View in TestFlight** (Visa i TestFlight):
+
+   <img src="../assets/images/screenshots/testflight-view-in-testflight.png" alt="Sidan på testflight.apple.com som visar Identitetsplånboken - Demo Beta med knappen View in TestFlight" width="350" style="display: block;">
+
+4. TestFlight öppnas med din inbjudan. Klicka på **Godkänn** (Accept) och därefter på **Installera** för att hämta plånboksappen.
 5. Appen är nu installerad och redo att öppnas!
 
 #### Installera på Android (Google)
@@ -56,14 +63,13 @@ Beroende på vilken plattform du använder följer du instruktionerna nedan när
 När du öppnar appen första gången behöver du konfigurera den och ladda den med ett test-ID (Personidentitetsdata / PID).
 
 1. **Öppna appen** och klicka på **Nästa** i introvyn.
-2. Bocka i checkboxen för **Samtycke** och klicka på **Nästa**.
-3. **Skapa en PIN-kod** (välj en kod du vill använda för att logga in i appen framöver) och klicka på **Nästa**.
-4. **Bekräfta PIN-koden** genom att ange samma kod igen och klicka på **Nästa**.
-5. Nu är det dags att ladda på en PID i plånboken. Klicka på **Hämta personuppgifter**.
-6. Klicka på **Logga in** för att identifiera dig mot Diggs test-PID-utfärdare.
-7. Välj en av de fördefinierade testanvändarna i listan och genomför inloggningen.
-8. Ditt hämtade attributsintyg visas på skärmen. Granska uppgifterna och klicka på **Godkänn** längst ner på sidan.
-9. Grattis! Du har nu ett test-ID (PID) sparat i din plånbok.
+2. **Skapa en PIN-kod** (välj en kod du vill använda för att logga in i appen framöver) och klicka på **Nästa**.
+3. **Bekräfta PIN-koden** genom att ange samma kod igen och klicka på **Nästa**.
+4. Nu är det dags att ladda på en PID i plånboken. Klicka på **Begär personuppgifter**.
+5. Klicka på **Logga in** för att identifiera dig mot Diggs test-PID-utfärdare.
+6. Välj en av de fördefinierade testanvändarna i listan och genomför inloggningen.
+7. Ditt hämtade attributsintyg visas på skärmen. Granska uppgifterna och klicka på **Godkänn** längst ner på sidan.
+8. Grattis! Du har nu ett test-ID (PID) sparat i din plånbok.
 
 ---
 
