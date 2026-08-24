@@ -13,22 +13,59 @@ title: "Anslut som förlitande part"
 
 ## Generellt anslutningsflöde
 
+> Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`). Okrypterad `http://` avvisas av säkerhetsskäl av appen.
+Vid lokal utveckling och testning mot en fysisk mobiltelefon används därför en HTTPS-tunnel (t.ex. Cloudflare Tunnel). Om tjänsterna istället körs i en servermiljö används er befintliga publika domän.
+
 Oavsett vilken teknisk implementation du väljer, följer anslutningsprocessen dessa grundläggande steg:
 
-1. **Skapa certifikatkedja & keystore** – Generera lokal Root CA och signerat verifierarcertifikat i en `.p12`-fil.
-2. **Starta tjänsterna med Docker Compose** – Kör Verifier Backend, Trust Validator och Demo Web UI.
-3. **Starta HTTPS-tunnel (för lokal testning)** – Exponera verifieraren över publik HTTPS så att den fysiska plånboksappen kan ansluta (eller använd egna servrar med HTTPS).
+1. **Förbered publik HTTPS-adress & `.env`** – Starta en temporär HTTPS-tunnel.
+2. **Skapa certifikatkedja & keystore** – Generera en lokal Root CA och signerat verifierarcertifikat matchat mot domänen.
+3. **Starta tjänsterna med Docker Compose** – Kör Verifier Backend, Trust Validator och Demo Web UI.
 4. **Testa med plånboksappen** – Skanna QR-koden och verifiera ditt test-PID.
 
 ---
 
-## Steg 1: Skapa certifikatkedja & keystore
+## Steg 1: Förbered publik HTTPS-adress & `.env`
 
-Verifierarens backend (`eudi-srv-verifier-endpoint`) signerar förfrågningar enligt OpenID4VP och kräver en PKCS#12-keystore (`verifier_backend.p12`) med en 2-stegs certifikatkedja (Root CA + certifikat).
+### Lokal testning med Cloudflare Tunnel 
 
-Kopiera och kör följande script i terminalen för att generera en lokal test-CA och ett signerat certifikat:
+Om du utvecklar lokalt och vill kunna skanna QR-koden med en fysisk telefon exponerar du verifierarporten (`8080`) via en snabbtunnel.
+
+Ladda ner och starta Cloudflare Tunnel i en separat terminal:
 
 ```bash
+curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /tmp/cloudflared && chmod +x /tmp/cloudflared
+/tmp/cloudflared tunnel --url http://localhost:8080
+```
+
+Kopiera den tilldelade HTTPS-adressen från loggen (t.ex. `https://random-namn.trycloudflare.com`) och skapa filen `.env` i din projektmapp:
+
+```bash
+TUNNEL_URL="https://random-namn.trycloudflare.com" # Ersätt med din faktiska tunnel-URL
+TUNNEL_HOST=$(echo "$TUNNEL_URL" | sed -e 's|^https://||' -e 's|/.*||')
+
+cat << EOF > .env
+VERIFIER_PUBLIC_URL=${TUNNEL_URL}
+VERIFIER_CLIENT_ID=${TUNNEL_HOST}
+DEMO_PUBLIC_BASE_URL=http://localhost:3002
+EOF
+```
+
+---
+
+## Steg 2: Skapa certifikatkedja & keystore
+
+Verifierarens backend (`eudi-srv-verifier-endpoint`) signerar förfrågningar enligt OpenID4VP och kräver en PKCS#12-keystore (`verifier_backend.p12`) med en 2-stegs certifikatkedja (Root CA + verifierarcertifikat). Certifikatets SAN (*Subject Alternative Name*) måste matcha verifierarens `client_id` (tunneldomänen).
+
+Kör följande script i samma mapp för att generera certifikaten och keystoren:
+
+```bash
+# Läs domän från .env (eller använd localhost som fallback)
+if [ -f .env ]; then
+  export $(grep -v '^#' .env | xargs)
+fi
+CLIENT_HOST="${VERIFIER_CLIENT_ID:-localhost}"
+
 # 1. Skapa lokal Root CA (EC P-256)
 openssl ecparam -name prime256v1 -genkey -noout -out ca_key.pem
 openssl req -new -x509 -key ca_key.pem -out ca_cert.pem -days 3650 \
@@ -37,11 +74,11 @@ openssl req -new -x509 -key ca_key.pem -out ca_cert.pem -days 3650 \
 # 2. Skapa privat nyckel och CSR för Verifier Backend
 openssl ecparam -name prime256v1 -genkey -noout -out verifier_key.pem
 
-cat << 'EOF' > verifier_ext.cnf
+cat << EOF > verifier_ext.cnf
 basicConstraints = CA:FALSE
 keyUsage = digitalSignature, nonRepudiation
 extendedKeyUsage = serverAuth, clientAuth
-subjectAltName = DNS:localhost
+subjectAltName = DNS:localhost,DNS:${CLIENT_HOST}
 EOF
 
 openssl req -new -key verifier_key.pem -out verifier_csr.pem \
@@ -55,11 +92,16 @@ openssl x509 -req -in verifier_csr.pem -CA ca_cert.pem -CAkey ca_key.pem \
 cat verifier_cert.pem ca_cert.pem > full_chain.pem
 openssl pkcs12 -export -in full_chain.pem -inkey verifier_key.pem \
   -out verifier_backend.p12 -name "verifier_backend" -passout pass:pass1234
+
+# 5. Sätt läsrättigheter så att containern kan läsa filen
+chmod 644 verifier_backend.p12
 ```
 
-## Steg 2: Starta tjänsterna med Docker Compose
+---
 
-Skapa en `docker-compose.yaml` i samma mapp som `verifier_backend.p12`. Den sätter upp:
+## Steg 3: Starta tjänsterna med Docker Compose
+
+Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier_backend.p12`. Den sätter upp:
 - **`verifier-backend`**: EU:s referens-verifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
 - **`trust-validator`**: EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.2.2-alpha`), förkonfigurerad mot Diggs Sandbox LoTE (`https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json`).
 - **`demo-verifier`**: Test-webbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10`) på port `3002`.
@@ -130,62 +172,6 @@ docker compose up -d
 
 ---
 
-## Steg 3: Exponera över HTTPS (Tunnel för lokal testanvändning)
-
-Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`). Okrypterad `http://` avvisas av säkerhetsskäl av appen.
-
-> **Obs:** Instruktionerna nedan beskriver hur du sätter upp en temporär HTTPS-tunnel (t.ex. med Cloudflare Tunnel) för lokal testanvändning och utveckling mot en fysisk mobiltelefon. Om den förlitande parten istället hostar dessa tjänster på egna servrar konfigureras HTTPS och domännamn direkt i den egna servermiljön.
-
-När du testar lokalt från en fysisk telefon exponerar du verifierarporten (`8080`) via en snabbtunnel (t.ex. Cloudflare Tunnel):
-
-### 3.1 Starta tunneln
-
-Kör följande i en separat terminal:
-
-```bash
-# Ladda ner och starta Cloudflare Tunnel mot port 8080
-curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /tmp/cloudflared && chmod +x /tmp/cloudflared
-/tmp/cloudflared tunnel --url http://localhost:8080
-```
-
-Kopiera den tilldelade HTTPS-adressen från loggen (t.ex. `https://random-namn.trycloudflare.com`).
-
-### 3.2 Uppdatera konfiguration & certifikat med tunnel-domänen
-
-Kör följande script för att uppdatera `.env`, förnya certifikatet för tunneldomänen och starta om verifieraren:
-
-```bash
-TUNNEL_URL="https://random-namn.trycloudflare.com" # Ersätt med din URL
-TUNNEL_HOST=$(echo "$TUNNEL_URL" | sed -e 's|^https://||' -e 's|/.*||')
-
-# 1. Skapa .env
-cat << EOF > .env
-VERIFIER_PUBLIC_URL=${TUNNEL_URL}
-VERIFIER_CLIENT_ID=${TUNNEL_HOST}
-DEMO_PUBLIC_BASE_URL=http://localhost:3002
-EOF
-
-# 2. Uppdatera certifikatets SAN med tunnel-domänen
-cat << EOF > verifier_ext.cnf
-basicConstraints = CA:FALSE
-keyUsage = digitalSignature, nonRepudiation
-extendedKeyUsage = serverAuth, clientAuth
-subjectAltName = DNS:localhost,DNS:${TUNNEL_HOST}
-EOF
-
-openssl x509 -req -in verifier_csr.pem -CA ca_cert.pem -CAkey ca_key.pem \
-  -CAcreateserial -out verifier_cert.pem -days 365 -extfile verifier_ext.cnf
-
-cat verifier_cert.pem ca_cert.pem > full_chain.pem
-openssl pkcs12 -export -in full_chain.pem -inkey verifier_key.pem \
-  -out verifier_backend.p12 -name "verifier_backend" -passout pass:pass1234
-
-# 3. Starta om verifieraren
-docker compose up -d --force-recreate
-```
-
----
-
 ## Steg 4: Testa och logga in med plånboksappen
 
 1. **Installera testappen & hämta PID:**
@@ -198,7 +184,7 @@ docker compose up -d --force-recreate
 3. **Skanna & verifiera:**
     - Skanna den genererade QR-koden med plånboksappen på din telefon.
     - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
-    - Plånboken signerar presentationen via Sandbox HSM och skickar den till din lokala Verifier Backend via HTTPS-tunneln.
+    - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
     - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
 
 ---
