@@ -63,13 +63,13 @@ Beroende på vilken plattform du använder följer du instruktionerna nedan när
 När du öppnar appen första gången behöver du konfigurera den och ladda den med ett test-ID (Personidentitetsdata / PID).
 
 1. **Öppna appen** och klicka på **Nästa** i introvyn.
-3. **Skapa en PIN-kod** (välj en kod du vill använda för att logga in i appen framöver) och klicka på **Nästa**.
-4. **Bekräfta PIN-koden** genom att ange samma kod igen och klicka på **Nästa**.
-5. Nu är det dags att ladda på en PID i plånboken. Klicka på **Begär personuppgifter**.
-6. Klicka på **Logga in** för att identifiera dig mot Diggs test-PID-utfärdare.
-7. Välj en av de fördefinierade testanvändarna i listan och genomför inloggningen.
-8. Ditt hämtade attributsintyg visas på skärmen. Granska uppgifterna och klicka på **Godkänn** längst ner på sidan.
-9. Grattis! Du har nu ett test-ID (PID) sparat i din plånbok.
+2. **Skapa en PIN-kod** (välj en kod du vill använda för att logga in i appen framöver) och klicka på **Nästa**.
+3. **Bekräfta PIN-koden** genom att ange samma kod igen och klicka på **Nästa**.
+4. Nu är det dags att ladda på en PID i plånboken. Klicka på **Begär personuppgifter**.
+5. Klicka på **Logga in** för att identifiera dig mot Diggs test-PID-utfärdare.
+6. Välj en av de fördefinierade testanvändarna i listan och genomför inloggningen.
+7. Ditt hämtade attributsintyg visas på skärmen. Granska uppgifterna och klicka på **Godkänn** längst ner på sidan.
+8. Grattis! Du har nu ett test-ID (PID) sparat i din plånbok.
 
 ---
 
