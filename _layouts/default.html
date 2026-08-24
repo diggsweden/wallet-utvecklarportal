@@ -32,7 +32,13 @@
                 <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Startsida</a></li>
                 <li><a href="{{ "/pages/anslutning-fp.html" | relative_url }}" class="{% if page.url == '/pages/anslutning-fp.html' or page.url == '/pages/anslutning-fp/' %}active{% endif %}">Anslut som förlitande part</a></li>
                 <li><a href="{{ "/pages/standarder-och-profiler.html" | relative_url }}" class="{% if page.url == '/pages/standarder-och-profiler.html' or page.url == '/pages/standarder-och-profiler/' %}active{% endif %}">Standarder & Profiler</a></li>
-                <li><a href="{{ "/pages/prova-planboksappen.html" | relative_url }}" class="{% if page.url == '/pages/prova-planboksappen.html' or page.url == '/pages/prova-planboksappen/' %}active{% endif %}">Testa plånboksappen</a></li>
+                <li class="nav-section">
+                  <span class="nav-section-title">Plånboksappen</span>
+                  <ul>
+                    <li><a href="{{ "/pages/planboksappen/prova-planboksappen.html" | relative_url }}" class="{% if page.url == '/pages/planboksappen/prova-planboksappen.html' or page.url == '/pages/planboksappen/prova-planboksappen/' %}active{% endif %}">Testa plånboksappen</a></li>
+                    <li><a href="{{ "/pages/planboksappen/openid4vp.html" | relative_url }}" class="{% if page.url == '/pages/planboksappen/openid4vp.html' or page.url == '/pages/planboksappen/openid4vp/' %}active{% endif %}">OpenID4VP-stöd</a></li>
+                  </ul>
+                </li>
                 <li><a href="{{ "/pages/ordlista.html" | relative_url }}" class="{% if page.url == '/pages/ordlista.html' or page.url == '/pages/ordlista/' %}active{% endif %}">Ordlista</a></li>
               </ul>
             </nav>
