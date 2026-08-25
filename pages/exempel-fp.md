@@ -1,11 +1,11 @@
 ---
 layout: default
-title: "Anslut som förlitande part"
+title: "Anslut som förlitande part med exempel"
 ---
 
 # Anslut som förlitande part med exempel
 
-> **Obs:** Läs [Anslut som förlitande part](anslutning-fp.md) först 
+> **Obs:** Läs [Anslut som förlitande part](anslutning-fp.md) först.
 
 ---
 
@@ -14,15 +14,15 @@ title: "Anslut som förlitande part"
 > Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`). Okrypterad `http://` avvisas av säkerhetsskäl av appen.
 Vid lokal utveckling och testning mot en fysisk mobiltelefon används därför en HTTPS-tunnel (t.ex. Cloudflare Tunnel). Om tjänsterna istället körs i en servermiljö används er befintliga publika domän.
 
-Här följer ett exempel som använder docker compose för att använda Diggs verifierar-frontend med EU:s referensimplementation-backend för OpenID4VP.
+Här följer ett exempel som använder Docker Compose för att köra Diggs verifierar-frontend tillsammans med EU:s referensimplementation av en verifierar-backend för OpenID4VP.
 
 ---
 
-## Steg 1: Förbered publik HTTPS-adress & .env
+## Steg 1: Förbered publik HTTPS-adress och .env
 
-### Lokal testning med Cloudflare Tunnel 
+### Lokal testning med Cloudflare Tunnel
 
-Om du utvecklar lokalt och vill kunna skanna QR-koden med en fysisk telefon kan du exponera  verifierarporten (`8080`) via en snabbtunnel. Trafiken kommer då gå igenom en betrodd https-domän på internet.
+Om du utvecklar lokalt och vill kunna skanna QR-koden med en fysisk telefon kan du exponera verifierarporten (`8080`) via en snabbtunnel. Trafiken kommer då att gå via en betrodd HTTPS-domän över internet.
 
 Ladda ner och starta Cloudflare Tunnel i en separat terminal:
 
@@ -46,11 +46,11 @@ EOF
 
 ---
 
-## Steg 2: Skapa certifikatkedja & keystore
+## Steg 2: Skapa certifikatkedja och keystore
 
-Verifierarens backend (`eudi-srv-verifier-endpoint`) signerar förfrågningar enligt OpenID4VP och kräver en PKCS#12-keystore (`verifier_backend.p12`) med en 2-stegs certifikatkedja (Root CA + verifierarcertifikat). Certifikatets SAN (*Subject Alternative Name*) måste matcha verifierarens `client_id` (tunneldomänen).
+Verifierarens backend (`eudi-srv-verifier-endpoint`) signerar förfrågningar enligt OpenID4VP och kräver en PKCS#12-keystore (`verifier_backend.p12`) med en tvåstegs certifikatkedja (Root CA + verifierarcertifikat). Certifikatets SAN (*Subject Alternative Name*) måste matcha verifierarens `client_id` (tunneldomänen).
 
-Kör följande script i samma mapp för att generera certifikaten och keystoren:
+Kör följande skript i samma mapp för att generera certifikaten och keystore:
 
 ```bash
 # Läs domän från .env (eller använd localhost som fallback)
@@ -95,9 +95,9 @@ chmod 644 verifier_backend.p12
 ## Steg 3: Starta tjänsterna med Docker Compose
 
 Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier_backend.p12`. Den sätter upp:
-- **`verifier-backend`**: EU:s referens-verifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
+- **`verifier-backend`**: EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
 - **`trust-validator`**: EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.2.2-alpha`), förkonfigurerad mot Diggs Sandbox LoTE (`https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json`).
-- **`demo-verifier`**: Test-webbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10`) på port `3002`.
+- **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10`) på port `3002`.
 
 ```yaml
 services:
@@ -118,7 +118,7 @@ services:
       VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_PASSWORD: "pass1234"
       VERIFIER_ACCESS_CERTIFICATE_ALIAS: "verifier_backend"
       VERIFIER_ACCESS_CERTIFICATE_PASSWORD: "pass1234"
-      VERIFIER_DEFEAULTHTTPRESPONSEMODE: "DirectPost"
+      VERIFIER_DEFAULTHTTPRESPONSEMODE: "DirectPost"
       VERIFIER_ATTESTATIONCLASSIFICATIONS_PID_VCTS: "urn:eudi:pid:1"
       VERIFIER_TRUST_VALIDATOR_SERVICE_URL: "http://trust-validator:8080/trust-validator/trust"
       LOGGING_LEVEL_EU_EUROPA_EC_EUDI_VERIFIER_ENDPOINT: "DEBUG"
@@ -167,16 +167,17 @@ docker compose up -d
 
 ## Steg 4: Testa och logga in med plånboksappen
 
-1. **Installera testappen & hämta PID:**
+1. **Installera testappen och hämta PID:**
     - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din telefon.
     - Öppna appen, välj **Hämta personuppgifter**, logga in mot Sandbox-utfärdaren med en testanvändare och spara ditt test-PID.
-2. **Öppna test-webbplatsen på datorn:**
+2. **Öppna testwebbplatsen på datorn:**
     - Gå till **[http://localhost:3002/demo-verifier](http://localhost:3002/demo-verifier)** i din webbläsare.
     - Välj ett scenario (t.ex. *Vaccincentralen* eller *Biocentralen*).
     - Klicka på **Logga in med din digitala plånbok** -> **Starta inloggningen**.
-3. **Skanna & verifiera:**
+3. **Skanna och verifiera:**
     - Skanna den genererade QR-koden med plånboksappen på din telefon.
     - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
     - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
     - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
+
 
