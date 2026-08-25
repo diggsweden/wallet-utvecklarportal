@@ -151,7 +151,7 @@ För att verifiera att din uppsatta miljö fungerar och kan kommunicera med plå
 
 ### Hur du testar
 
-1. **Installera test-plånboksappen** – Följ [Guiden för att prova plånboksappen](prova-planboksappen.md) för detaljerade instruktioner.
+1. **Installera test-plånboksappen** – Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för detaljerade instruktioner.
 2. **Hämta test-ID (PID)** – Använd testanvändare för att ladda ner ett test-intyg.
 3. **Initiera förfrågan** – Från din backend, skapa en förfrågan om intyg (t.ex. PID).
 4. **Presentera intyg** – Använd test-plånboksappen för att skanna QR-koden eller följa länken.
