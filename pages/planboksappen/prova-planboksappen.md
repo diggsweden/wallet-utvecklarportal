@@ -33,28 +33,10 @@ För att kunna ladda ned appen under utvecklingsfasen behöver du först bli inb
 
 ### 2. Installera appen
 
-Beroende på vilken plattform du använder följer du instruktionerna nedan när du har fått din inbjudan.
+Installationen skiljer sig åt beroende på vilken plattform du använder. Följ instruktionerna för din plattform när du har fått din inbjudan:
 
-#### Installera på iOS (Apple)
-1. Om du inte redan har appen **TestFlight** installerad på din telefon, ladda ned den från **App Store**.
-2. Öppna e-postmeddelandet med din inbjudan och klicka på inbjudningslänken från din telefon. En sida öppnas nu i webbläsaren (testflight.apple.com).
-3. Klicka på **Öppna** i TestFlight-bannern högst upp på sidan:
-
-   <img src="../assets/images/screenshots/testflight-banner-oppna.jpg" alt="TestFlight-banner högst upp i webbläsaren med knappen Öppna" width="500" style="display: block;">
-
-   Alternativt kan du scrolla ned till *Identitetsplånboken - Demo Beta* och klicka på **View in TestFlight** (Visa i TestFlight):
-
-   <img src="../assets/images/screenshots/testflight-view-in-testflight.png" alt="Sidan på testflight.apple.com som visar Identitetsplånboken - Demo Beta med knappen View in TestFlight" width="350" style="display: block;">
-
-4. TestFlight öppnas med din inbjudan. Klicka på **Godkänn** (Accept) och därefter på **Installera** för att hämta plånboksappen.
-5. Appen är nu installerad och redo att öppnas!
-
-#### Installera på Android (Google)
-1. Öppna e-postmeddelandet med din inbjudan och klicka på inbjudningslänken.
-2. Säkerställ att du är inloggad i webbläsaren/Google Play med exakt samma e-postadress som du angav när du ansökte om åtkomst.
-3. Klicka på **Accept invite** (Acceptera inbjudan).
-4. Klicka på länken *download it on Google Play* för att slussas till Google Play Store och installera appen.
-5. Appen är nu installerad och redo att öppnas!
+* [Installera på iOS (Apple)](installera-ios.md) – via TestFlight.
+* [Installera på Android (Google)](installera-android.md) – via Google Play.
 
 ---
 
