@@ -1,4 +1,6 @@
 # wallet-utvecklarportal
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/diggsweden/
+{wallet-utvecklarportal}/badge)](https://securityscorecards.dev/viewer/?uri=github.com/diggsweden/wallet-utvecklarportal)
 
 En utvecklarportal med information och hjälp riktad till parter som vill ansluta till svenska plånbokssystemets testmiljö.
 
