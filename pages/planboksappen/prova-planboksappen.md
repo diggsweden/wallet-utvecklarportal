@@ -29,6 +29,8 @@ För att kunna ladda ned appen under utvecklingsfasen behöver du först bli inb
    - **E-postadress:** Den e-postadress som är kopplad till din telefons Google-konto (för Android/Google Play) eller Apple-konto (för iOS/TestFlight).
 3. Vänta på att du får en inbjudningslänk skickad till dig.
 
+**Systemkrav:** Appen kräver **iOS 17.6 eller senare** respektive **Android 12 (API-nivå 31) eller senare**. Kontrollera att din telefon uppfyller kravet innan du ansöker om åtkomst.
+
 ---
 
 ### 2. Installera appen
