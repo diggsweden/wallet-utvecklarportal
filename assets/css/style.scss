@@ -229,3 +229,9 @@ a {
     background: #e0e0e0;
   }
 }
+
+// Page table of contents: sub-items carry their own 1.1-style numbers
+.page-toc ul {
+  list-style: none;
+  padding-left: 20px;
+}

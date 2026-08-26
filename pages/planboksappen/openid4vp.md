@@ -14,24 +14,25 @@ Observera att dokumentet inte är komplett och uppdateras löpande i takt med at
 
 ## Innehåll
 
-- [1. Authorization request](#authorization-request)
-  - [1.1 Parametrar](#parametrar)
-  - [1.2 Scope values](#scope-values)
-  - [1.3 Response type vp_token](#response-type-vp-token)
-  - [1.4 Client identifiers och prefixes](#client-identifiers-och-prefixes)
-  - [1.5 Request URI method POST](#request-uri-method-post)
-  - [1.6 Verifier info](#verifier-info)
-- [2. Digital Credentials Query Language (DCQL)](#dcql)
-  - [2.1 Credential query](#credential-query)
-  - [2.2 Trusted authorities query](#trusted-authorities-query)
-  - [2.3 Credential set query](#credential-set-query)
-  - [2.4 Claims och claim sets](#claims-och-claim-sets)
-- [3. Response](#response)
-  - [3.1 Response modes](#response-modes)
-- [4. Djuplänkning](#djuplankning)
-- [5. Wallet metadata](#wallet-metadata)
-- [6. Verifier attestation JWT](#verifier-attestation-jwt)
-- [7. High Assurance Interoperability Profile (HAIP)](#haip)
+1. [Authorization request](#authorization-request)
+   - [1.1 Parametrar](#parametrar)
+   - [1.2 Scope values](#scope-values)
+   - [1.3 Response type vp_token](#response-type-vp-token)
+   - [1.4 Client identifiers och prefixes](#client-identifiers-och-prefixes)
+   - [1.5 Request URI method POST](#request-uri-method-post)
+   - [1.6 Verifier info](#verifier-info)
+2. [Digital Credentials Query Language (DCQL)](#dcql)
+   - [2.1 Credential query](#credential-query)
+   - [2.2 Trusted authorities query](#trusted-authorities-query)
+   - [2.3 Credential set query](#credential-set-query)
+   - [2.4 Claims och claim sets](#claims-och-claim-sets)
+3. [Response](#response)
+   - [3.1 Response modes](#response-modes)
+4. [Djuplänkning](#djuplankning)
+5. [Wallet metadata](#wallet-metadata)
+6. [Verifier attestation JWT](#verifier-attestation-jwt)
+7. [High Assurance Interoperability Profile (HAIP)](#haip)
+   {: .page-toc}
 
 ---
 
