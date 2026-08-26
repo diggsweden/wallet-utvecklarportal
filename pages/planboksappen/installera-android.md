@@ -12,6 +12,12 @@ Du behöver först ha blivit inbjuden som testare och fått en inbjudningslänk 
 
 ---
 
+## Systemkrav
+
+Appen kräver en **Android-telefon med Android 12 (API-nivå 31) eller senare**. Den kan inte installeras på enheter med äldre Android-version.
+
+---
+
 ## Steg-för-steg
 
 1. Öppna e-postmeddelandet med din inbjudan och klicka på inbjudningslänken.

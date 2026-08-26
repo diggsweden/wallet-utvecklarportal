@@ -12,6 +12,12 @@ Du behöver först ha blivit inbjuden som testare och fått en inbjudningslänk 
 
 ---
 
+## Systemkrav
+
+Appen kräver en **iPhone med iOS 17.6 eller senare**. Den kan inte installeras på enheter med äldre iOS-version.
+
+---
+
 ## Steg-för-steg
 
 1. Om du inte redan har appen **TestFlight** installerad på din telefon, ladda ned den från **App Store**.
