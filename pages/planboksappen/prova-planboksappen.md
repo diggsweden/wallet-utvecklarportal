@@ -22,12 +22,13 @@ Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar d
 ### 1. Få åtkomst till appen
 
 För att kunna ladda ned appen under utvecklingsfasen behöver du först bli inbjuden som testare. 
+Meddela kontaktpersonen i din organisation att du vill testa. Ange följande uppgifter beroende på vilken plattform du vill testa:
+   - **iOS:**
+   Meddela att du vill testa iOS klienten och du kommer få en inbjudningslänk skickad till dig av kontaktpersonen.
 
-1. Skriv ett e-postmeddelande till [digitalwallet@digg.se](mailto:digitalwallet@digg.se) och meddela att du vill testa appen.
-2. I ditt mejl behöver du specificera:
-   - **Plattform:** Android eller iOS.
-   - **E-postadress:** Den e-postadress som är kopplad till din telefons Google-konto (för Android/Google Play) eller Apple-konto (för iOS/TestFlight).
-3. Vänta på att du får en inbjudningslänk skickad till dig.
+   - **Android:**
+   Meddela att du vill testa Android klienten samt tillhandahåll e-postadressen som är kopplad till din telefons Google-konto. Det är viktigt att du anger just den adress som kontot på telefonen är registrerad med, eftersom inbjudan kopplas till det kontot. 
+   Kontaktpersonen behöver sedan anmäla din e-postadress till Digg. Efter att Digg har bekräftat att e-posten har lagts till som testanvändare kan inbjudningslänken skickas ut av kontaktpersonen.
 
 **Systemkrav:** Appen kräver **iOS 17.6 eller senare** respektive **Android 12 (API-nivå 31) eller senare**. Kontrollera att din telefon uppfyller kravet innan du ansöker om åtkomst.
 
