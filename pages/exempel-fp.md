@@ -179,5 +179,3 @@ docker compose up -d
     - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
     - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
     - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
-
-
