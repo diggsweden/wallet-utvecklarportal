@@ -11,11 +11,13 @@ Denna guide beskriver hur du sätter upp en lokal miljö för att utveckla och f
 ## Installation
 
 ### 1. Installera systemberoenden
+
 ```bash
 sudo apt update && sudo apt install ruby-full build-essential zlib1g-dev -y
 ```
 
 ### 2. Konfigurera lokal gem-sökväg
+
 För att undvika att installera gems systemvitt (och behöva `sudo`), lägg till följande i din `~/.bashrc`:
 
 ```bash
@@ -26,6 +28,7 @@ source ~/.bashrc
 ```
 
 ### 3. Installera Jekyll och Bundler
+
 ```bash
 gem install jekyll bundler
 ```
@@ -33,16 +36,19 @@ gem install jekyll bundler
 ## Lokal utveckling
 
 1. **Klona repot och navigera till mappen**:
+
    ```bash
    cd diggsweden/wallet-utvecklarportal
    ```
 
 2. **Installera projektberoenden**:
+
    ```bash
    bundle install
    ```
 
 3. **Starta servern**:
+
    ```bash
    bundle exec jekyll serve
    ```

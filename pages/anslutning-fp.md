@@ -25,13 +25,13 @@ title: "Anslut som förlitande part"
 ## Testa med plånboksappen
 
 1. **Installera testappen och hämta PID:**
-    - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din telefon.
-    - Öppna appen, välj **Hämta personuppgifter**, logga in mot Sandbox-utfärdaren med en testanvändare och spara ditt test-PID.
+   - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din telefon.
+   - Öppna appen, välj **Hämta personuppgifter**, logga in mot Sandbox-utfärdaren med en testanvändare och spara ditt test-PID.
 2. **Starta presentation i er tjänst:**
-    - Gå till er tjänst i en webbläsare och starta ett presentationsflöde.
-    - Skanna QR-koden eller öppna OpenID4VP-länken i telefonen för att öppna Diggs plånboksapp.
-    - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
-    - Verifierarens callback tar emot presentationen och uppgifterna verifieras.
+   - Gå till er tjänst i en webbläsare och starta ett presentationsflöde.
+   - Skanna QR-koden eller öppna OpenID4VP-länken i telefonen för att öppna Diggs plånboksapp.
+   - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
+   - Verifierarens callback tar emot presentationen och uppgifterna verifieras.
 
 ---
 
@@ -44,9 +44,8 @@ För tekniska frågor och hjälp med anslutningsprocessen och testmiljön, konta
 ### Dokumentation och specifikationer
 
 För en djupare förståelse av plånbokssystemet:
+
 - **Exempel på en lokal uppsättning:** [Anslut som förlitande part med exempel](exempel-fp.md)
 - **Huvudprojekt:** [diggsweden/wallet-ecosystem](https://github.com/diggsweden/wallet-ecosystem)
 - **Tekniska standarder:** [Standarder & Profiler](standarder-och-profiler.md) (OpenID4VP, OpenID4VCI, SD-JWT VC).
 - **EUDIW-dokumentation:** [eudi-doc-architecture-and-reference-framework](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/)
-
-

@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+name: Pull Request Workflow
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pr-checks:
+    uses: diggsweden/reusable-ci/.github/workflows/pullrequest-orchestrator.yml@d31c989acd139c3e8754e116496c826af8dbbca0 # v2.8.2
+    permissions:
+      contents: read
+      packages: read
+      security-events: write
+    secrets: inherit
+    with:
+      reusable-ci-ref: v2.8.2
+      project-type: meta
+      # Use devbase-check linting (replaces megalint, commitlint, licenselint)
+      linters.devbasecheck: true
+      linters.megalint: false
+      linters.commitlint: false
+      linters.licenselint: false

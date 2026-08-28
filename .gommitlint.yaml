@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+gommitlint:
+  crypto_signature:
+    required: true
+  repo:
+    max_commits_ahead: 20
