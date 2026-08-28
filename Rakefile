@@ -5,7 +5,7 @@ task :diagrams do
   mermaid_dir = '_mermaid'
   output_dir = 'assets/images/diagrams'
   
-  FileUtils.mkdir_p(svg_dir)
+  FileUtils.mkdir_p(output_dir)
   
   Dir.glob("#{mermaid_dir}/*.mmd").each do |mmd_file|
     output_file = File.join(output_dir, File.basename(mmd_file, '.mmd') + '.png')
