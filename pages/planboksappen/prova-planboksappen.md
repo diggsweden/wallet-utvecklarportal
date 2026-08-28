@@ -8,6 +8,11 @@ description: Instruktioner för hur du får åtkomst till, installerar och prova
 
 Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar den statliga identitetsplånboksappen (hädanefter kallad appen) under utveckling i Diggs Sandbox-miljö.
 
+> **Obs:** Testning av plånboksappen är endast tillgänglig för
+> organisationer som har bjudits in av Digg.
+> För att få åtkomst behöver du tillhöra en inbjuden organisation
+> och bli registrerad som testare via organisationens kontaktperson.
+
 ## Innehåll
 1. [Få åtkomst till appen](#1-få-åtkomst-till-appen)
 2. [Installera appen](#2-installera-appen)
