@@ -6,6 +6,8 @@ title: "Anslut som förlitande part med exempel"
 # Anslut som förlitande part med exempel
 
 > **Obs:** Läs [Anslut som förlitande part](anslutning-fp.md) först.
+> Specifikt begär åtkomst till plånboksappen
+> så att du har tillgång till den när det är dags att testa anslutningen.
 
 ---
 
@@ -179,5 +181,3 @@ docker compose up -d
     - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
     - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
     - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
-
-
