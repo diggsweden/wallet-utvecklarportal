@@ -6,6 +6,8 @@ title: "Anslut som förlitande part med exempel"
 # Anslut som förlitande part med exempel
 
 > **Obs:** Läs [Anslut som förlitande part](anslutning-fp.md) först.
+> Specifikt begär åtkomst till plånboksappen
+> så att du har tillgång till den när det är dags att testa anslutningen.
 
 ---
 
