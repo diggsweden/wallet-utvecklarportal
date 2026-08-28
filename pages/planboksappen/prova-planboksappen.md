@@ -9,6 +9,7 @@ description: Instruktioner för hur du får åtkomst till, installerar och prova
 Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar den statliga identitetsplånboksappen (hädanefter kallad appen) under utveckling i Diggs Sandbox-miljö.
 
 ## Innehåll
+
 1. [Få åtkomst till appen](#1-få-åtkomst-till-appen)
 2. [Installera appen](#2-installera-appen)
 3. [Första uppstart och hämtning av test-ID](#3-första-uppstart-av-appen-och-hämtning-av-test-id-pid)
@@ -21,13 +22,14 @@ Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar d
 
 ### 1. Få åtkomst till appen
 
-För att kunna ladda ned appen under utvecklingsfasen behöver du först bli inbjuden som testare. 
+För att kunna ladda ned appen under utvecklingsfasen behöver du först bli inbjuden som testare.
 Meddela kontaktpersonen i din organisation att du vill testa. Ange följande uppgifter beroende på vilken plattform du vill testa:
-   - **iOS:**
+
+- **iOS:**
    Meddela att du vill testa iOS klienten och du kommer få en inbjudningslänk skickad till dig av kontaktpersonen.
 
-   - **Android:**
-   Meddela att du vill testa Android klienten samt tillhandahåll e-postadressen som är kopplad till din telefons Google-konto. Det är viktigt att du anger just den adress som kontot på telefonen är registrerad med, eftersom inbjudan kopplas till det kontot. 
+- **Android:**
+   Meddela att du vill testa Android klienten samt tillhandahåll e-postadressen som är kopplad till din telefons Google-konto. Det är viktigt att du anger just den adress som kontot på telefonen är registrerad med, eftersom inbjudan kopplas till det kontot.
    Kontaktpersonen behöver sedan anmäla din e-postadress till Digg. Efter att Digg har bekräftat att e-posten har lagts till som testanvändare kan inbjudningslänken skickas ut av kontaktpersonen.
 
 **Systemkrav:** Appen kräver **iOS 17.6 eller senare** respektive **Android 12 (API-nivå 31) eller senare**. Kontrollera att din telefon uppfyller kravet innan du ansöker om åtkomst.
@@ -38,8 +40,8 @@ Meddela kontaktpersonen i din organisation att du vill testa. Ange följande upp
 
 Installationen skiljer sig åt beroende på vilken plattform du använder. Följ instruktionerna för din plattform när du har fått din inbjudan:
 
-* [Installera på iOS (Apple)](installera-ios.md) – via TestFlight.
-* [Installera på Android (Google)](installera-android.md) – via Google Play.
+- [Installera på iOS (Apple)](installera-ios.md) – via TestFlight.
+- [Installera på Android (Google)](installera-android.md) – via Google Play.
 
 ---
 
@@ -65,6 +67,7 @@ För att testa hur plånboksappen kan användas för att logga in eller dela upp
 Du kan utföra testet på två olika sätt:
 
 #### Alternativ 1: Utför hela flödet på samma mobila enhet
+
 1. Öppna webbläsaren på din mobil (där plånboksappen är installerad) och gå till:  
    [wallet.sandbox.digg.se/demo-verifier/vaccincentralen](https://wallet.sandbox.digg.se/demo-verifier/vaccincentralen)
 2. Klicka på **Logga in med din digitala plånbok**.
@@ -76,6 +79,7 @@ Du kan utföra testet på två olika sätt:
 8. Du slussas tillbaka till webbläsaren och möts av ett meddelande om att inloggningen lyckades, samt ser de uppgifter som delats med tjänsten!
 
 #### Alternativ 2: Besök tjänsten på en annan enhet (t.ex. PC) och skanna QR-kod
+
 1. Öppna webbläsaren på din dator eller en annan enhet och gå till:  
    [wallet.sandbox.digg.se/demo-verifier/vaccincentralen](https://wallet.sandbox.digg.se/demo-verifier/vaccincentralen)
 2. Klicka på **Logga in med din digitala plånbok**.
@@ -90,4 +94,5 @@ Du kan utföra testet på två olika sätt:
 ---
 
 ## Återkoppling och Support
-* Vid frågor, feedback eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).
+
+- Vid frågor, feedback eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).

@@ -33,4 +33,5 @@ Appen kräver en **Android-telefon med Android 12 (API-nivå 31) eller senare**.
 Gå vidare till [Första uppstart av appen och hämtning av test-ID (PID)](prova-planboksappen.md#3-första-uppstart-av-appen-och-hämtning-av-test-id-pid).
 
 ## Återkoppling och Support
+
 * Vid frågor, feedback eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).

@@ -24,21 +24,21 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-      
+
       - name: Install mermaid-cli
         run: npm install -g @mermaid-js/mermaid-cli
-      
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3' # Ensure we use a modern Ruby version
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -47,12 +47,12 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
-      
+
       - name: Deploy to GitHub Pages
         id: deployment
         if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
