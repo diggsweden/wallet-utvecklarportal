@@ -3,7 +3,7 @@
 # Global configuration options
 [global]
 # List of rules to disable
-disable = ["MD033", "MD013"]
+disable = []
 
 # List of rules to enable exclusively (if provided, only these rules will run)
 # enable = ["MD001", "MD003", "MD004"]
@@ -37,23 +37,13 @@ respect-gitignore = true
 # Options: mkdocs, gfm, commonmark
 # flavor = "mkdocs"
 
-# Rule-specific configurations (uncomment and modify as needed)
+# Rule-specific configurations
 
-# [MD003]
-# style = "atx"  # Heading style (atx, atx_closed, setext)
+[MD013]
+line-length = 120
+code-blocks = false
+tables = false
 
-# [MD004]
-# style = "asterisk"  # Unordered list style (asterisk, plus, dash, consistent)
+[MD033]
+allowed_elements = ["div", "span", "strong", "p", "ul", "li", "figure", "img", "figcaption", "a", "br"]
 
-# [MD007]
-# indent = 4  # Unordered list indentation
-
-# [MD013]
-# line-length = 100  # Line length
-# code-blocks = false  # Exclude code blocks from line length check
-# tables = false  # Exclude tables from line length check
-# headings = true  # Include headings in line length check
-
-# [MD044]
-# names = ["rumdl", "Markdown", "GitHub"]  # Proper names that should be capitalized correctly
-# code-blocks = false  # Check code blocks for proper names (default: false, skips code blocks)
