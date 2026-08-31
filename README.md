@@ -15,7 +15,7 @@ Mermaid-diagram lagras i `_mermaid/` som `.mmd`-filer och renderas till önskat 
 ### Lägg till nytt diagram
 
 1. Lägg till `.mmd`-fil i `_mermaid/`
-2. Kör `rake diagrams` (se till att `/tmp/puppeteer.json` existerar först, se nedan)
+2. Kör `rake diagrams` (se till att `puppeteer.json` existerar i rotkatalogen, se nedan)
 
 ### Generera om alla diagram
 
@@ -33,12 +33,12 @@ rake && jekyll serve
 
 ### Förutsättningar
 
-Projektet använder [mise](https://mise.jdx.dev/) för att automatiskt hantera alla nödvändiga verktyg och versioner (såsom Ruby, Node.js, Mermaid-CLI samt alla linting-verktyg).
+Projektet använder [mise](https://mise.jdx.dev/) och [just](https://github.com/casey/just) för att automatiskt hantera alla nödvändiga verktyg, versioner och linting-skript.
 
-För att installera alla verktyg lokalt, kör:
+För att installera alla verktyg och linter-skript lokalt, kör:
 
 ```bash
-mise install
+just install
 ```
 
 | Beroende | Syfte |
