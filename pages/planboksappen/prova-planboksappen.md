@@ -8,6 +8,11 @@ description: Instruktioner för hur du får åtkomst till, installerar och prova
 
 Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar den statliga identitetsplånboksappen (hädanefter kallad appen) under utveckling i Diggs Sandbox-miljö.
 
+> **Obs:** Testning av plånboksappen är endast tillgänglig för
+> organisationer som har bjudits in av Digg.
+> För att få åtkomst behöver du tillhöra en inbjuden organisation
+> och bli registrerad som testare via organisationens kontaktperson.
+
 ## Innehåll
 1. [Få åtkomst till appen](#1-få-åtkomst-till-appen)
 2. [Installera appen](#2-installera-appen)
@@ -21,16 +26,22 @@ Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar d
 
 ### 1. Få åtkomst till appen
 
-För att kunna ladda ned appen under utvecklingsfasen behöver du först bli inbjuden som testare. 
-Meddela kontaktpersonen i din organisation att du vill testa. Ange följande uppgifter beroende på vilken plattform du vill testa:
+Kontakta kontaktpersonen för plånbokstestning i din organisation
+och ange vilken plattform du vill använda:
+
    - **iOS:**
-   Meddela att du vill testa iOS klienten och du kommer få en inbjudningslänk skickad till dig av kontaktpersonen.
+   Meddela att du vill testa iOS-klienten.
+   När du har registrerats som testare får du en inbjudningslänk från kontaktpersonen.
 
    - **Android:**
-   Meddela att du vill testa Android klienten samt tillhandahåll e-postadressen som är kopplad till din telefons Google-konto. Det är viktigt att du anger just den adress som kontot på telefonen är registrerad med, eftersom inbjudan kopplas till det kontot. 
-   Kontaktpersonen behöver sedan anmäla din e-postadress till Digg. Efter att Digg har bekräftat att e-posten har lagts till som testanvändare kan inbjudningslänken skickas ut av kontaktpersonen.
+   Meddela att du vill testa Android-klienten
+   och ange e-postadressen som är kopplad till Google-kontot på din telefon.
+   Kontaktpersonen anmäler adressen till Digg
+   och skickar inbjudningslänken när du har registrerats som testanvändare.
 
-**Systemkrav:** Appen kräver **iOS 17.6 eller senare** respektive **Android 12 (API-nivå 31) eller senare**. Kontrollera att din telefon uppfyller kravet innan du ansöker om åtkomst.
+**Systemkrav:** Appen kräver **iOS 17.6 eller senare**
+respektive **Android 12 (API-nivå 31) eller senare**.
+Kontrollera att din telefon uppfyller kraven innan du begär åtkomst.
 
 ---
 
