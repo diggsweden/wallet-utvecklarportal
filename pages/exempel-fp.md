@@ -28,6 +28,16 @@ Om du utvecklar lokalt och vill kunna skanna QR-koden med en fysisk telefon kan 
 
 Ladda ner och starta Cloudflare Tunnel i en separat terminal:
 
+> **Obs:**
+> Exemplet nedan är anpassat för Linux.
+> Om du kör instruktionerna på en annan plattform
+> kan du själv ladda ner rätt variant av
+> [Cloudflares mjukvara](https://github.com/cloudflare/cloudflared/releases/latest)
+> och sedan starta tunneln:
+> ```
+> <path-to-cloudflared> tunnel --url http://localhost:8080
+> ```
+
 ```bash
 curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o /tmp/cloudflared && chmod +x /tmp/cloudflared
 /tmp/cloudflared tunnel --url http://localhost:8080
