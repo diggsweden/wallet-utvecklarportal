@@ -1,0 +1,12 @@
+{
+  "default": false,
+  "rules": {
+    "no-empty-links": true,
+    "external-link": {
+      "severity": "error",
+      "skipPatterns": ["^https?://localhost"]
+    }
+  },
+  "include": ["index.md", "README.md", "DEVELOPMENT.md", "pages"],
+  "output": "text"
+}
