@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: EUPL-1.2
+
 desc "Generate diagrams from Mermaid files"
 task :diagrams do
   require 'fileutils'

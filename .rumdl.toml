@@ -1,9 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
 # rumdl configuration file
 
 # Global configuration options
 [global]
 # List of rules to disable
-disable = []
+disable = ["MD041"]
 
 # List of rules to enable exclusively (if provided, only these rules will run)
 # enable = ["MD001", "MD003", "MD004"]

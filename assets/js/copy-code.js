@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+//
+// SPDX-License-Identifier: EUPL-1.2
+
 document.addEventListener('DOMContentLoaded', function () {
   const codeBlocks = document.querySelectorAll('pre');
 

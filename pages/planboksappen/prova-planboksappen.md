@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
 layout: default
 title: Prova plånboksappen under utveckling
 description: Instruktioner för hur du får åtkomst till, installerar och provar den statliga identitetsplånboksappen under utveckling i Diggs Sandbox-miljö.
@@ -30,11 +34,11 @@ Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar d
 Kontakta kontaktpersonen för plånbokstestning i din organisation
 och ange vilken plattform du vill använda:
 
-   - **iOS:**
+- **iOS:**
    Meddela att du vill testa iOS-klienten.
    När du har registrerats som testare får du en inbjudningslänk från kontaktpersonen.
 
-   - **Android:**
+- **Android:**
    Meddela att du vill testa Android-klienten
    och ange e-postadressen som är kopplad till Google-kontot på din telefon.
    Kontaktpersonen anmäler adressen till Digg
