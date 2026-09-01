@@ -33,7 +33,7 @@ Den övergripande administrativa och förberedande processen för en organisatio
 
 ### Personidentitetsdata (PID)
 *Personal Identity Data*. Det grundläggande identitetsintyget (t.ex. namn, personnummer, födelsedatum) som utfärdas av den statliga PID-utfärdaren till användarens plånbok.
-> **Källa:** [eIDAS-förordningen (EU 2024/1183)](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R1183) och [EUDI ARF, avsnitt 3.4 – Person Identification Data (PID) Providers](https://eudi.dev/3.0.0/main/03-roles-within-the-eudi-wallet-ecosystem/#34-person-identification-data-pid-providers)
+> **Källa:** [eIDAS-förordningen (EU 2024/1183)](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R1183) och [EUDI ARF, avsnitt A.2 – Definitions from the European Digital Identity Regulation](https://eudi.dev/3.0.0/annexes/annex-1/annex-1-definitions/#a2-definitions-from-the-european-digital-identity-regulation)
 
 ### PID-utfärdare (PID Issuer)
 Den centrala tjänst som utfärdar och signerar användarens grundläggande identitetsdata (PID) till plånboken. I den framtida svenska produktionsmiljön är det Polismyndigheten som är PID-utfärdare (via den statliga e-legitimationen Sverige-id), men i testplattformen tillhandahålls denna tjänst i dagsläget av Digg.
