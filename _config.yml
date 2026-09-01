@@ -17,7 +17,17 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
-  - mise.toml
+  - .mise.toml
+  - justfile
+  - package.json
+  - package-lock.json
+  - puppeteer.json
+  - Rakefile
+  - REUSE.toml
+  - LICENSES
+  - node_modules
+  - CODEOWNERS
+  - config
 
 # Plugins
 plugins:
