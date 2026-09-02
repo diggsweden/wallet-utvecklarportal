@@ -193,7 +193,7 @@ docker compose up -d
    - Välj ett scenario (t.ex. *Vaccincentralen* eller *Biocentralen*).
    - Klicka på **Logga in med din digitala plånbok** -> **Starta inloggningen**.
 3. **Skanna och verifiera:**
-    - Skanna den genererade QR-koden med plånboksappen på din telefon.
-    - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
-    - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
-    - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
+   - Skanna den genererade QR-koden med plånboksappen på din telefon.
+   - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
+   - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
+   - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!

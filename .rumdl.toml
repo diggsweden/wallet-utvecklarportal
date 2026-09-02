@@ -7,7 +7,7 @@
 # Global configuration options
 [global]
 # List of rules to disable
-disable = []
+disable = ["MD041"]
 
 # List of rules to enable exclusively (if provided, only these rules will run)
 # enable = ["MD001", "MD003", "MD004"]
