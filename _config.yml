@@ -27,6 +27,7 @@ exclude:
   - package-lock.json
   - puppeteer.json
   - Rakefile
+  - REUSE.toml
   - LICENSES
   - "*.license"
   - node_modules

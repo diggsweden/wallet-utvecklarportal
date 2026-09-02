@@ -3,3 +3,12 @@
 # SPDX-License-Identifier: CC0-1.0
 
 version = 1
+
+# Bilder och diagramresurser
+[[annotations]]
+path = [
+  "assets/images/**",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Digg - Agency for Digital Government"
+SPDX-License-Identifier = "CC0-1.0"
