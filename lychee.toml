@@ -1,0 +1,24 @@
+# lychee.toml
+# Configuration for Lychee link checker
+# Docs: https://lychee.cli.rs/configuration/
+
+# Maximum number of retries per request
+max_retries = 3
+
+# Website timeout in seconds from connect to response finished
+timeout = 20
+
+# Accept these status codes as valid (202 Accepted is returned by eur-lex.europa.eu)
+accept = [200, 202, 206]
+
+# Exclude URLs from checking (regex)
+exclude = [
+  '^https?://(localhost|127\.0\.0\.1)(:\d+)?',
+  '^mailto:'
+]
+
+# User agent string to avoid blocking by bot protection
+user_agent = "Mozilla/5.0 (compatible; DiggWalletDocsLinkChecker/1.0)"
+
+# Do not check code/verbatim blocks as they contain example URIs, namespaces, and mock endpoints
+include_verbatim = false

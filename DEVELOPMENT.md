@@ -51,6 +51,26 @@ Servern kommer nu att finnas tillgänglig på: **[http://localhost:4000](http://
 
 Webbplatsen byggs om automatiskt när du gör ändringar i filerna.
 
+### Snabbkommandon med `just`
+
+Projektet har en `justfile` för vanliga utvecklingsuppgifter:
+
+```bash
+just --list          # Visa alla tillgängliga kommandon
+just build           # Bygg Jekyll-webbplatsen
+just serve           # Starta den lokala utvecklingsservern
+just check-links     # Bygg och validera alla interna och externa länkar med Lychee
+```
+
+## Länkverifiering
+
+För att säkerställa att inga brutna externa eller interna länkar publiceras används **[Lychee](https://github.com/lycheeverse/lychee)**:
+
+* **Lokalt:** Kör `just check-links` innan du skapar en PR.
+* **Vid Pull Request:** GitHub Actions validerar alla länkar och blockerar PR:en om brutna länkar upptäcks.
+* **Schemalagt:** Ett veckovis cron-jobb körs varje måndag och öppnar automatiskt ett issue om externa länkar dör.
+* **Konfiguration:** Regler och undantag styrs via `lychee.toml`.
+
 ## Testa och driftsätt din branch
 
 Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du mergar till `main`:
