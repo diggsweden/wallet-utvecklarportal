@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
 title: Wallet Utvecklarportal
 theme: jekyll-theme-slate
 remote_theme: pages-themes/slate@v0.2.0
@@ -23,8 +27,8 @@ exclude:
   - package-lock.json
   - puppeteer.json
   - Rakefile
-  - REUSE.toml
   - LICENSES
+  - "*.license"
   - node_modules
   - CODEOWNERS
   - config

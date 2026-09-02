@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # wallet-utvecklarportal
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/diggsweden/wallet-utvecklarportal/badge)](https://securityscorecards.dev/viewer/?uri=github.com/diggsweden/wallet-utvecklarportal)
