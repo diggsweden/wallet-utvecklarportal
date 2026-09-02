@@ -50,6 +50,17 @@ Servern kommer nu att finnas tillgänglig på: **[http://localhost:4000](http://
 
 Webbplatsen byggs om automatiskt när du gör ändringar i filerna.
 
+### Snabbkommandon med `just`
+
+Projektet har en `justfile` för vanliga utvecklingsuppgifter:
+
+```bash
+just --list          # Visa alla tillgängliga kommandon
+just build           # Bygg Jekyll-webbplatsen
+just serve           # Starta den lokala utvecklingsservern
+just check-links     # Bygg och validera alla interna och externa länkar med Lychee
+```
+
 ## Testa och driftsätt din branch
 
 Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du mergar till `main`:
