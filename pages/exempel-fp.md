@@ -68,6 +68,8 @@ Verifierarens backend (`eudi-srv-verifier-endpoint`) signerar förfrågningar en
 
 Kör följande skript i samma mapp för att generera certifikaten och keystore:
 
+[//]: # (spell-checker:disable)
+
 ```bash
 # Läs domän från .env (eller använd localhost som fallback)
 if [ -f .env ]; then
@@ -106,6 +108,8 @@ openssl pkcs12 -export -in full_chain.pem -inkey verifier_key.pem \
 chmod 644 verifier_backend.p12
 ```
 
+[//]: # (spell-checker:enable)
+
 ---
 
 ## Steg 3: Starta tjänsterna med Docker Compose
@@ -115,6 +119,8 @@ Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier_backend.p12
 - **`verifier-backend`**: EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
 - **`trust-validator`**: EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.2.2-alpha`), förkonfigurerad mot Diggs Sandbox LoTE (`https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json`).
 - **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10`) på port `3002`.
+
+[//]: # (spell-checker:disable)
 
 ```yaml
 services:
@@ -174,6 +180,8 @@ services:
     depends_on:
       - verifier-backend
 ```
+
+[//]: # (spell-checker:enable)
 
 Starta tjänsterna:
 
