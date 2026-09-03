@@ -32,7 +32,7 @@ default:
 
 # ▪ Install devtools and tools
 [group('setup')]
-install: setup-devtools tools-install npm-install
+install: setup-devtools tools-install npm-install bundle-install
 
 # ▪ Setup devtools (clone or update)
 [group('setup')]
@@ -71,6 +71,11 @@ tools-install: _ensure-devtools
 [group('setup')]
 npm-install:
     npm ci --include=dev
+
+# Install Ruby dependencies (for Jekyll)
+[group('setup')]
+bundle-install:
+    bundle install
 
 # ==================================================================================== #
 # VERIFY - Quality assurance

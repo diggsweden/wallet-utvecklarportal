@@ -21,17 +21,9 @@ disable = ["MD041"]
 
 # List of file/directory patterns to exclude from linting
 exclude = [
-    # Common directories to exclude
     ".git",
     ".github",
     "node_modules",
-    "vendor",
-    "dist",
-    "build",
-
-    # Specific files or patterns
-    "CHANGELOG.md",
-    "LICENSE.md",
 ]
 
 # Respect .gitignore files when scanning directories (default: true)
@@ -50,4 +42,3 @@ tables = false
 
 [MD033]
 allowed_elements = ["div", "span", "strong", "p", "ul", "li", "figure", "img", "figcaption", "a", "br"]
-
