@@ -1,5 +1,28 @@
 {
   "import": ["@cspell/dict-sv/cspell-ext.json"],
   "language": "sv, sv_SE, en_GB",
+  "words": [
+    "Cloudflares",
+    "DCQL",
+    "Digg",
+    "Diggs",
+    "diggsweden",
+    "EUDI",
+    "EUDIW",
+    "identitetsdatan",
+    "kredentialformat",
+    "QEAA",
+    "referensverifierare",
+    "testappen",
+    "testwebbgränssnitt",
+    "tillitsvaliderare",
+    "tvåstegs",
+    "verifierarcertifikat",
+    "verifierare",
+    "verifieraren",
+    "verifierarens",
+    "verifierarporten",
+    "WSCD"
+  ],
   "flagWords": []
 }
