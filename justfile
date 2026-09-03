@@ -86,6 +86,11 @@ bundle-install:
 verify: _ensure-devtools check-tools
     @{{devtools_dir}}/scripts/verify.sh
 
+# Check spelling
+[group('verify')]
+spell-check:
+    npx cspell 'pages/*.md'
+
 # ==================================================================================== #
 # LINT - Code quality checks
 # ==================================================================================== #
