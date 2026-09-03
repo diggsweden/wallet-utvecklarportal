@@ -70,12 +70,12 @@ tools-install: _ensure-devtools
 # Install npm dependencies (for mermaid-cli)
 [group('setup')]
 npm-install:
-    npm ci --include=dev
+    mise exec -- npm ci --include=dev
 
 # Install Ruby dependencies (for Jekyll)
 [group('setup')]
 bundle-install:
-    bundle install
+    mise exec -- bundle install
 
 # ==================================================================================== #
 # VERIFY - Quality assurance
