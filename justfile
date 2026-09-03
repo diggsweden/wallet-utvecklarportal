@@ -83,8 +83,7 @@ bundle-install:
 
 # ▪ Run all checks (linters only)
 [group('verify')]
-verify: _ensure-devtools check-tools
-    @{{devtools_dir}}/scripts/verify.sh
+verify: _ensure-devtools check-tools lint-all spell-check
 
 # Check spelling
 [group('verify')]
