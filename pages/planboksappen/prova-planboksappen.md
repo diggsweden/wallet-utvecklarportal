@@ -102,7 +102,7 @@ Du kan utföra testet på två olika sätt:
    - *iOS:* Klicka på länken *Öppna i id-plånboken* som dyker upp efter skanningen.
 5. Granska uppgifterna som efterfrågas i plånboksappen på din telefon.
 6. Klicka på **Skicka**.
-7. Webbbläsaren på din dator uppdateras nu automatiskt och visar att inloggningen lyckades tillsammans med den delade datan!
+7. Webbläsaren på din dator uppdateras nu automatiskt och visar att inloggningen lyckades tillsammans med den delade datan!
    - *Android:* Plånboksappen visar också en bekräftelse på att sändningen lyckades.
 
 ---
