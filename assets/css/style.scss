@@ -1,4 +1,7 @@
 ---
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: EUPL-1.2
 ---
 @use "jekyll-theme-slate" as *;
 
@@ -234,4 +237,12 @@ a {
 .page-toc ul {
   list-style: none;
   padding-left: 20px;
+}
+
+dl dt {
+  margin-top: 2ex;
+}
+
+dl dd {
+  margin-top: 0.5ex;
 }

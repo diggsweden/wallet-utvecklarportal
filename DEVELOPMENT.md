@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+
+SPDX-License-Identifier: CC0-1.0
+-->
+
 # Utveckling av Wallet Utvecklarportal
 
 Denna guide beskriver hur du sätter upp en lokal miljö för att utveckla och förhandsgranska portalen.
@@ -8,41 +14,34 @@ Denna guide beskriver hur du sätter upp en lokal miljö för att utveckla och f
 - Ruby 3.2+
 - Build-essential (gcc, make)
 
-## Installation
+## Installation och uppsättning
 
-### 1. Installera systemberoenden
+Projektet använder [mise](https://mise.jdx.dev/) för verktygshantering och [just](https://github.com/casey/just) som task runner. Det innebär att alla beroenden (Ruby, Node, Mermaid-CLI, bundler, linters) installeras automatiskt i projektet.
+
+### Förutsättningar
+
+- Du behöver ha `mise` installerat på din maskin. Om du inte har det, följ [mises installationsguide](https://mise.jdx.dev/getting-started.html).
+- Systemberoenden för att kompilera eventuella gems (t.ex. `build-essential`, `gcc`, `make` på Ubuntu/Debian).
+
+### 1. Installera utvecklingsverktyg och beroenden
+
+Kör följande kommando från projektets rot:
+
 ```bash
-sudo apt update && sudo apt install ruby-full build-essential zlib1g-dev -y
+just install
 ```
 
-### 2. Konfigurera lokal gem-sökväg
-För att undvika att installera gems systemvitt (och behöva `sudo`), lägg till följande i din `~/.bashrc`:
+Detta kommando installerar:
 
-```bash
-echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
-echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
-echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-```
-
-### 3. Installera Jekyll och Bundler
-```bash
-gem install jekyll bundler
-```
+- Rätt Ruby- och Node.js-versioner lokalt för projektet.
+- Alla linters och utvecklingsverktyg.
+- Alla npm-paket lokalt (`mermaid-cli`).
+- Alla Ruby-gems (`bundle install`).
 
 ## Lokal utveckling
 
-1. **Klona repot och navigera till mappen**:
-   ```bash
-   cd diggsweden/wallet-utvecklarportal
-   ```
+1. **Starta servern**:
 
-2. **Installera projektberoenden**:
-   ```bash
-   bundle install
-   ```
-
-3. **Starta servern**:
    ```bash
    bundle exec jekyll serve
    ```

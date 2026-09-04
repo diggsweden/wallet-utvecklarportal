@@ -1,0 +1,13 @@
+{
+  "name": "wallet-utvecklarportal",
+  "version": "1.0.0",
+  "description": "Utvecklarportal för det svenska plånbokssystemets testmiljö",
+  "private": true,
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.2.0"
+  },
+  "allowScripts": {
+    "puppeteer@25.9.0": true
+  }
+}

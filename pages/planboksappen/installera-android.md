@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
 layout: default
 title: Installera plånboksappen på Android
 description: Instruktioner för hur du installerar den statliga identitetsplånboksappen på Android via Google Play.
@@ -33,4 +37,5 @@ Appen kräver en **Android-telefon med Android 12 (API-nivå 31) eller senare**.
 Gå vidare till [Första uppstart av appen och hämtning av test-ID (PID)](prova-planboksappen.md#3-första-uppstart-av-appen-och-hämtning-av-test-id-pid).
 
 ## Återkoppling och Support
+
 * Vid frågor, feedback eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).

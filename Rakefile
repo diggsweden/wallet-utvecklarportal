@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: EUPL-1.2
+
 desc "Generate diagrams from Mermaid files"
 task :diagrams do
   require 'fileutils'
@@ -9,7 +13,7 @@ task :diagrams do
   
   Dir.glob("#{mermaid_dir}/*.mmd").each do |mmd_file|
     output_file = File.join(output_dir, File.basename(mmd_file, '.mmd') + '.png')
-    sh "mmdc -p /tmp/puppeteer.json -c config/mermaid.config.json -i #{mmd_file} -o #{output_file} --scale 3"
+    sh "npx mmdc -p puppeteer.json -c config/mermaid.config.json -i #{mmd_file} -o #{output_file} --scale 3"
   end
 
   puts "Generated #{Dir.glob("#{output_dir}/*.png").length} diagrams"

@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
 layout: default
 title: "Anslut som förlitande part med exempel"
 ---
@@ -107,6 +111,7 @@ chmod 644 verifier_backend.p12
 ## Steg 3: Starta tjänsterna med Docker Compose
 
 Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier_backend.p12`. Den sätter upp:
+
 - **`verifier-backend`**: EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
 - **`trust-validator`**: EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.2.2-alpha`), förkonfigurerad mot Diggs Sandbox LoTE (`https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json`).
 - **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10`) på port `3002`.
@@ -171,6 +176,7 @@ services:
 ```
 
 Starta tjänsterna:
+
 ```bash
 docker compose up -d
 ```
@@ -180,14 +186,14 @@ docker compose up -d
 ## Steg 4: Testa och logga in med plånboksappen
 
 1. **Installera testappen och hämta PID:**
-    - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din telefon.
-    - Öppna appen, välj **Hämta personuppgifter**, logga in mot Sandbox-utfärdaren med en testanvändare och spara ditt test-PID.
+   - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din telefon.
+   - Öppna appen, välj **Hämta personuppgifter**, logga in mot Sandbox-utfärdaren med en testanvändare och spara ditt test-PID.
 2. **Öppna testwebbplatsen på datorn:**
-    - Gå till **[http://localhost:3002/demo-verifier](http://localhost:3002/demo-verifier)** i din webbläsare.
-    - Välj ett scenario (t.ex. *Vaccincentralen* eller *Biocentralen*).
-    - Klicka på **Logga in med din digitala plånbok** -> **Starta inloggningen**.
+   - Gå till **[http://localhost:3002/demo-verifier](http://localhost:3002/demo-verifier)** i din webbläsare.
+   - Välj ett scenario (t.ex. *Vaccincentralen* eller *Biocentralen*).
+   - Klicka på **Logga in med din digitala plånbok** -> **Starta inloggningen**.
 3. **Skanna och verifiera:**
-    - Skanna den genererade QR-koden med plånboksappen på din telefon.
-    - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
-    - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
-    - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
+   - Skanna den genererade QR-koden med plånboksappen på din telefon.
+   - Granska de begärda uppgifterna i appen och tryck **Godkänn / Skicka**.
+   - Plånboken signerar presentationen via Sandbox HSM och skickar den till din Verifier Backend via den publika HTTPS-adressen.
+   - Webbläsaren på datorn uppdateras automatiskt och visar de verifierade personuppgifterna!
