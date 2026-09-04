@@ -52,4 +52,4 @@ För en djupare förståelse av plånbokssystemet:
 - **Exempel på en lokal uppsättning:** [Anslut som förlitande part med exempel](exempel-fp.md)
 - **Huvudprojekt:** [diggsweden/wallet-ecosystem](https://github.com/diggsweden/wallet-ecosystem)
 - **Tekniska standarder:** [Standarder & Profiler](standarder-och-profiler.md) (OpenID4VP, OpenID4VCI, SD-JWT VC).
-- **EUDIW-dokumentation:** [eudi-doc-architecture-and-reference-framework](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/)
+- **EUDIW-dokumentation:** [eudi-doc-architecture-and-reference-framework](https://eudi.dev/)

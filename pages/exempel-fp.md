@@ -36,7 +36,7 @@ Ladda ner och starta Cloudflare Tunnel i en separat terminal:
 > Exemplet nedan är anpassat för Linux.
 > Om du kör instruktionerna på en annan plattform
 > kan du själv ladda ner rätt variant av
-> [Cloudflares mjukvara](https://github.com/cloudflare/cloudflared/releases/latest)
+> [Cloudflares mjukvara](https://github.com/cloudflare/cloudflared)
 > och sedan starta tunneln:
 > ```
 > <path-to-cloudflared> tunnel --url http://localhost:8080

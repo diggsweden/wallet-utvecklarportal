@@ -79,12 +79,37 @@ bundle-install:
     mise exec -- bundle install
 
 # ==================================================================================== #
+# BUILD & SERVE - Site operations
+# ==================================================================================== #
+
+# Build the Jekyll site
+[group('build')]
+build:
+    mise exec -- bundle exec jekyll build
+
+# Start local Jekyll development server
+[group('build')]
+serve:
+    mise exec -- bundle exec jekyll serve
+
+# Generate Mermaid diagrams
+[group('build')]
+diagrams:
+    mise exec -- bundle exec rake diagrams
+
+# Build site and verify all internal and external links
+[group('verify')]
+check-links: build
+    mise exec -- lychee --config lychee.toml --root-dir {{justfile_directory()}}/_site _site
+
+# ==================================================================================== #
 # VERIFY - Quality assurance
 # ==================================================================================== #
 
-# ▪ Run all checks (linters only)
+# ▪ Run all checks (linters + link checks)
 [group('verify')]
-verify: _ensure-devtools check-tools lint-all
+verify: _ensure-devtools check-tools lint-all check-links
+
 
 # ==================================================================================== #
 # LINT - Code quality checks
