@@ -71,5 +71,5 @@ Wallet Secure Cryptographic Device (WSCD)
 : **Källa:** [EUDI ARF, avsnitt 4.3.2 – Components of a Wallet Unit](https://eudi.dev/3.0.0/main/04-high-level-architecture/#432-components-of-a-wallet-unit) och [avsnitt 4.5 – WSCD Architecture Types](https://eudi.dev/3.0.0/main/04-high-level-architecture/#45-wscd-architecture-types)
 
 Wallet Unit Attestation (WUA)
-: Ettt kryptografiskt intyg utfärdat på enhetsnivå som bekräftar att en specifik plånboksapplikation körs i en godkänd och säker miljö som uppfyller kraven i tillitsramverket och ARF.
+: Ett kryptografiskt intyg utfärdat på enhetsnivå som bekräftar att en specifik plånboksapplikation körs i en godkänd och säker miljö som uppfyller kraven i tillitsramverket och ARF.
 : **Källa:** [EUDI Standards and Technical Specifications, TS-3: Wallet Unit Attestation](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/5924eb77ab4495d4dc0a874e54ac3e5de1fbd5b1/docs/technical-specifications/ts3-wallet-unit-attestation.md)

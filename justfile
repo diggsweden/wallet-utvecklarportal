@@ -9,6 +9,7 @@ devtools_repo := env("DEVBASE_CHECK_REPO", "https://github.com/diggsweden/devbas
 devtools_dir := env("XDG_DATA_HOME", env("HOME") + "/.local/share") + "/devbase-check"
 lint := devtools_dir + "/linters"
 colors := devtools_dir + "/utils/colors.sh"
+mise_tool := devtools_dir + "/utils/mise-tool.sh"
 
 # Color variables
 CYAN_BOLD := "\\033[1;36m"
@@ -83,8 +84,7 @@ bundle-install:
 
 # ▪ Run all checks (linters only)
 [group('verify')]
-verify: _ensure-devtools check-tools
-    @{{devtools_dir}}/scripts/verify.sh
+verify: _ensure-devtools check-tools lint-all
 
 # ==================================================================================== #
 # LINT - Code quality checks
@@ -92,7 +92,7 @@ verify: _ensure-devtools check-tools
 
 # ▪ Run all linters with summary
 [group('lint')]
-lint-all: _ensure-devtools
+lint-all: _ensure-devtools lint-spelling
     @{{devtools_dir}}/scripts/verify.sh
 
 # Validate version control
@@ -149,6 +149,31 @@ lint-container:
 lint-xml:
     @{{lint}}/xml.sh
 
+# Check spelling
+[group('lint')]
+lint-spelling:
+    #!/usr/bin/env bash
+    source "{{colors}}"
+    source "{{mise_tool}}"
+    print_header "SPELLING"
+    echo
+    if npx cspell 'pages/**/*.md' 2> /dev/null; then
+      print_success "No spelling errors detected"
+      emit_status "pass" "ok"
+      exit 0
+    else
+      echo
+      print_error "At least one spelling error was detected!
+
+      Please check each reported error and either:
+
+        1. correct the spelling, or
+        2. add a new entry to the list of allowed words."
+
+      emit_status "fail" "failed"
+      exit 1
+    fi
+
 # ==================================================================================== #
 # LINT-FIX - Auto-fix code issues
 # ==================================================================================== #
@@ -182,4 +207,3 @@ lint-shell-fmt-fix:
 [private]
 _ensure-devtools:
     @just setup-devtools
-
