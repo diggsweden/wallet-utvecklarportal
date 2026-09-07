@@ -63,4 +63,5 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 * [**Ordlista**](pages/ordlista.md) – En ordlista med de vanligast förekommande termerna och begreppen
 
 ---
+
 *Har du frågor? Kontakta oss på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).*

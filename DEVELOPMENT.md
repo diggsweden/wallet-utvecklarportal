@@ -59,6 +59,8 @@ just --list          # Visa alla tillgängliga kommandon
 just build           # Bygg Jekyll-webbplatsen
 just serve           # Starta den lokala utvecklingsservern
 just check-links     # Bygg och validera alla interna och externa länkar med Lychee
+just check-a11y      # Bygg och validera tillgänglighet (a11y) med Lighthouse CI
+just verify          # Kör alla linters, länkar och tillgänglighetskontroller
 ```
 
 ## Testa och driftsätt din branch

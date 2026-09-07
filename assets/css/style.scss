@@ -210,6 +210,30 @@ a {
 
 .content-body {
   min-width: 0; /* Prevents grid blowout */
+  line-height: 1.6;
+
+  ol, ul {
+    li {
+      margin: 4px 0;
+      line-height: 1.6;
+
+      > a {
+        display: inline-block;
+        min-height: 24px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  // Syntax highlighting contrast fixes for WCAG AA
+  .highlight {
+    span.nb {
+      color: #006f94;
+    }
+    span.c, span.c1, span.cm, span.cp, span.cs {
+      color: #595955;
+    }
+  }
 }
 
 // Copy Code Button
@@ -234,9 +258,21 @@ a {
 }
 
 // Page table of contents: sub-items carry their own 1.1-style numbers
-.page-toc ul {
-  list-style: none;
-  padding-left: 20px;
+.page-toc {
+  li {
+    margin: 4px 0;
+  }
+
+  a {
+    display: inline-block;
+    min-height: 24px;
+    line-height: 24px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 20px;
+  }
 }
 
 dl dt {

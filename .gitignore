@@ -37,6 +37,7 @@ pnpm-debug.log*
 
 # Quality Tools
 megalinter-reports/
+.lighthouseci/
 
 # Temporary files
 *.log
