@@ -95,15 +95,13 @@ Appen validerar i dagsläget inte metadata i verifier info eller PoP (Proof of P
 
 Observera att appen endast stöder credentials med formatet `dc+sd-jwt`.
 
-Appen stöder endast attributsintyg med verifiable credential type (`vct`): `urn:eudi:pid:1` och matchar enbart claims från den.
-
 ### 2.1 [Credential query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-query) {#credential-query}
 
 | Parameter                              | Stöds                                    |
 | -------------------------------------- | ---------------------------------------- |
 | `id`                                   | ✅                                       |
 | `format`                               | Endast `dc+sd-jwt`                       |
-| `meta`                                 | ❌                                       |
+| `meta`                                 | ✅                                       |
 | `trusted_authorities`                  | ❌                                       |
 | `require_cryptographic_holder_binding` | Appen tillhandahåller alltid key binding |
 | `claims`                               | ✅                                       |
@@ -136,7 +134,7 @@ Appen stöder endast response type `vp_token`.
 | Response mode     | Stöds |
 | ----------------- | ----- |
 | `direct_post`     | ✅    |
-| `direct_post.jwt` | ❌    |
+| `direct_post.jwt` | ✅    |
 
 ---
 
@@ -145,6 +143,7 @@ Appen stöder endast response type `vp_token`.
 Appen stöder endast presentation för länkar med följande URL scheman:
 
 - `openid4vp://`
+- `haip-vp://`
 
 ## 5. [Wallet metadata](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-metadata-authorizati) {#wallet-metadata}
 
