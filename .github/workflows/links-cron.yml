@@ -6,8 +6,8 @@ name: Scheduled Link Verification
 
 on:
   schedule:
-    # Runs every Monday at 07:00 UTC
-    - cron: '0 7 * * 1'
+    # Runs daily at 07:00 UTC
+    - cron: '0 7 * * *'
   workflow_dispatch:
 
 permissions:
