@@ -12,7 +12,7 @@ max_retries = 3
 # Website timeout in seconds from connect to response finished
 timeout = 20
 
-# Accept these status codes as valid (202 Accepted is returned by eur-lex.europa.eu)
+# Accept these status codes as valid
 accept = [200, 202]
 
 # Exclude URLs from checking (regex)
