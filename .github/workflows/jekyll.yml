@@ -34,7 +34,7 @@ jobs:
           node-version: '24'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --include=dev
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@7886c6653556e1164c58a7603d88286b5f708293 # v1.228.0
