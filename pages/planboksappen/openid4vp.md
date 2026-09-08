@@ -140,7 +140,7 @@ Appen stöder endast response type `vp_token`.
 
 ## 4. [Djuplänkning](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation) {#djuplankning}
 
-Appen stöder endast presentation för länkar med följande URL scheman:
+Appen stöder endast presentation för länkar med följande URL-scheman:
 
 - `openid4vp://`
 - `haip-vp://`
