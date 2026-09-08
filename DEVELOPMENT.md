@@ -66,17 +66,9 @@ just verify          # Kör alla linters, länkar och tillgänglighetskontroller
 #### Granska tillgänglighetsresultat
 
 När du kör `just check-a11y` (eller `just a11y`) sparas detaljerade rapporter för varje sida
-i mappen `.lighthouseci/` som HTML- och JSON-filer. Om kontrollen rapporterar fel:
-
-1. Öppna motsvarande `.html`-fil i mappen `.lighthouseci/` i en webbläsare för att se exakt
-   vilka element, CSS-selektorer eller färgkontraster som underkänts.
-2. Alternativt kan du köra:
-
-   ```bash
-   npx lhci open
-   ```
-
-   för att öppna rapporterna direkt i din standardwebbläsare.
+i mappen `.lighthouseci/` som HTML- och JSON-filer. Om kontrollen rapporterar fel kan du öppna
+motsvarande `.html`-fil i mappen `.lighthouseci/` i en webbläsare för att se exakt vilka element,
+CSS-selektorer eller färgkontraster som underkänts.
 
 ## Testa och driftsätt din branch
 
