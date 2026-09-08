@@ -215,7 +215,6 @@ a {
   ol, ul {
     li {
       margin: 4px 0;
-      line-height: 1.6;
 
       > a {
         display: inline-block;
@@ -258,21 +257,9 @@ a {
 }
 
 // Page table of contents: sub-items carry their own 1.1-style numbers
-.page-toc {
-  li {
-    margin: 4px 0;
-  }
-
-  a {
-    display: inline-block;
-    min-height: 24px;
-    line-height: 24px;
-  }
-
-  ul {
-    list-style: none;
-    padding-left: 20px;
-  }
+.page-toc ul {
+  list-style: none;
+  padding-left: 20px;
 }
 
 dl dt {
