@@ -105,7 +105,7 @@ check-links: build
 # Build site and audit accessibility with Lighthouse CI
 [group('verify')]
 check-a11y: build
-    mise exec -- npx lhci autorun
+    npx lhci autorun
 
 # ==================================================================================== #
 # VERIFY - Quality assurance
@@ -187,7 +187,7 @@ lint-spelling:
     source "{{mise_tool}}"
     print_header "SPELLING"
     echo
-    if mise exec node@24 -- npx cspell 'pages/**/*.md' 2> /dev/null; then
+    if npx cspell 'pages/**/*.md' 2> /dev/null; then
       print_success "No spelling errors detected"
       emit_status "pass" "ok"
       exit 0
