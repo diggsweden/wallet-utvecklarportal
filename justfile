@@ -102,13 +102,20 @@ diagrams:
 check-links: build
     mise exec -- lychee --config lychee.toml --root-dir {{justfile_directory()}}/_site _site
 
+# Build site and audit accessibility with Lighthouse CI
+[group('verify')]
+check-a11y: build
+    npx lhci autorun
+
+alias a11y := check-a11y
+
 # ==================================================================================== #
 # VERIFY - Quality assurance
 # ==================================================================================== #
 
-# ▪ Run all checks (linters + link checks)
+# ▪ Run all checks (linters + link checks + accessibility)
 [group('verify')]
-verify: _ensure-devtools check-tools lint-all check-links
+verify: _ensure-devtools check-tools lint-all check-links check-a11y
 
 
 # ==================================================================================== #

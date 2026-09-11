@@ -59,7 +59,16 @@ just --list          # Visa alla tillgängliga kommandon
 just build           # Bygg Jekyll-webbplatsen
 just serve           # Starta den lokala utvecklingsservern
 just check-links     # Bygg och validera alla interna och externa länkar med Lychee
+just check-a11y      # Bygg och validera tillgänglighet (a11y) med Lighthouse CI (alias: just a11y)
+just verify          # Kör alla linters, länkar och tillgänglighetskontroller
 ```
+
+#### Granska tillgänglighetsresultat
+
+När du kör `just check-a11y` (eller `just a11y`) sparas detaljerade rapporter för varje sida
+i mappen `.lighthouseci/` som HTML- och JSON-filer. Om kontrollen rapporterar fel kan du öppna
+motsvarande `.html`-fil i mappen `.lighthouseci/` i en webbläsare för att se exakt vilka element,
+CSS-selektorer eller färgkontraster som underkänts.
 
 ## Testa och driftsätt din branch
 

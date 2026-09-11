@@ -33,8 +33,8 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install mermaid-cli
-        run: npm install -g @mermaid-js/mermaid-cli
+      - name: Install dependencies
+        run: npm ci --include=dev
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@7886c6653556e1164c58a7603d88286b5f708293 # v1.228.0
@@ -58,6 +58,16 @@ jobs:
           fail: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify Accessibility (Lighthouse CI)
+        run: |
+          base_path="${{ steps.pages.outputs.base_path }}"
+          if [ -n "$base_path" ] && [ "$base_path" != "/" ]; then
+            mkdir -p "_site$(dirname "$base_path")"
+            ln -sfn . "_site$base_path"
+            trap 'rm -f "_site$base_path"' EXIT
+          fi
+          npx lhci autorun
 
       - name: Upload artifact
         if: github.ref == 'refs/heads/main'

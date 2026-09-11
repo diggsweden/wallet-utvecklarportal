@@ -6,6 +6,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "@cspell/dict-sv": "^2.3.2",
+    "@lhci/cli": "^0.15.1",
     "@mermaid-js/mermaid-cli": "^11.2.0",
     "cspell": "^10.2.1"
   },
