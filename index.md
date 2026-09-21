@@ -30,8 +30,7 @@ Detta är navet för dig som vill förstå, integrera och testa lösningar mot d
 
 Den här portalen finns för att göra det enklare
 att integrera tekniskt mot det svenska plånbokssystemet.
-Här hittar du dokumentation och testmiljöer
-(Testplattform för digital identitetsplånbok)
+Här hittar du dokumentation om testplattformen
 för att du som utvecklare snabbt ska kunna komma igång
 och ansluta dina tjänster till infrastrukturen för digitala identiteter.
 

@@ -26,8 +26,7 @@ Vårt ekosystem utvecklas i linje med det europeiska ramverket för digital iden
 
 ## Testplattformen kontra den framtida produktionsmiljön
 
-Det är viktigt att skilja på de komponenter vi använder
-i Testplattform för digital identitetsplånbok
+Det är viktigt att skilja på de komponenter vi använder i testplattformen
 och hur rollfördelningen är planerad att se ut i den framtida produktionsmiljön.
 
 | Funktion / Roll | Testplattform för digital identitetsplånbok | Produktion (Framtida målbild) |

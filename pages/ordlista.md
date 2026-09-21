@@ -44,9 +44,9 @@ PID-utfärdare (PID Issuer)
 : **Källa:** [EUDI ARF, avsnitt 3.4 – Person Identification Data (PID) Providers](https://eudi.dev/3.0.0/main/03-roles-within-the-eudi-wallet-ecosystem/#34-person-identification-data-pid-providers)
 
 Testplattform för digital identitetsplånbok
-: Den test- och experimentmiljö som tillhandahålls av Digg
-där utvecklare och blivande förlitande parter
-kan bygga, testa och verifiera sina integrationer
+: Den testplattform som tillhandahålls av Digg
+där utvecklare och förlitande parter
+kan bygga och testa interoperabilitet för sina tjänster
 i en säker och isolerad miljö.
 Även kallad "testplattformen".
 
