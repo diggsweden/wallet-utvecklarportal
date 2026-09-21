@@ -227,6 +227,11 @@ lint-yaml-fix:
 lint-markdown-fix:
     @{{lint}}/markdown.sh fix
 
+# Fix semantic linebreaks
+[group('lint-fix')]
+lint-semantic-linebreaks-fix:
+    find . -type f -iname '*.md' -print0 | grep -zve 'node_modules' | xargs -0 linebreaker
+
 # Fix shell formatting
 [group('lint-fix')]
 lint-shell-fmt-fix:
