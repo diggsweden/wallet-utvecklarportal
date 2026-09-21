@@ -9,7 +9,12 @@ title: Wallet Utvecklarportal
 
 # Välkommen till Utvecklarportalen
 
-<div style="background: #FFF8E7; padding: 16px; border-radius: 6px; border: 1px solid #ECD2A5; border-left: 6px solid #D9822B; color: #2B2A28; margin: 20px 0;" role="note">
+<div style="background:
+#FFF8E7; padding: 16px;
+border-radius: 6px; border:
+1px solid #ECD2A5; border-left:
+6px solid #D9822B; color:
+#2B2A28; margin: 20px 0;" role="note">
   <span style="font-size: 1.2em; margin-right: 8px;">⚠️</span><strong>Viktig information om testdata
   och Testplattform för digital identitetsplånbok</strong>
   <p style="margin: 10px 0 10px 0; font-size: 0.95em;">Denna utvecklarportal
@@ -24,7 +29,8 @@ title: Wallet Utvecklarportal
   </ul>
 </div>
 
-Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet). Portalen riktar sig till utvecklare och förlitande parter som vill ansluta sina tjänster eller prova på tekniken bakom den statliga identitetsplånboken.
+Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet).
+Portalen riktar sig till utvecklare och förlitande parter som vill ansluta sina tjänster eller prova på tekniken bakom den statliga identitetsplånboken.
 
 ## Mål & Vision
 
@@ -39,7 +45,8 @@ och ansluta dina tjänster till infrastrukturen för digitala identiteter.
 För att kunna följa instruktionerna på denna sida
 och integrera mot Testplattform för digital identitetsplånbok behöver du:
 
-* En miljö för att köra **Docker-containrar** (om du vill sätta upp en egen verifierare).
+* En miljö för att köra **Docker-containrar**
+(om du vill sätta upp en egen verifierare).
 * En smartphone (**iOS eller Android**) för att testa mobilappen.
 
 ## Ekosystemets komponenter
@@ -67,10 +74,16 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 
 Är du redo att börja testa?
 
-* [**Guide: Prova mobilappen**](pages/planboksappen/prova-planboksappen.md) – Instruktioner för hur du installerar betaversionen och hämtar ditt första test-ID.
-* [**Anslut som förlitande part**](pages/anslutning-fp.md) – Steg-för-steg för dig som vill integrera din tjänst som förlitande part.
-* [**Teknisk Referens: Standarder & Profiler**](pages/standarder-och-profiler.md) – Läs mer om de öppna standarder (t.ex. OpenID4VCI, SD-JWT) som ekosystemet bygger på.
-* [**Ordlista**](pages/ordlista.md) – En ordlista med de vanligast förekommande termerna och begreppen
+* [**Guide: Prova mobilappen**](pages/planboksappen/prova-planboksappen.md)
+– Instruktioner för hur du installerar betaversionen och hämtar ditt första test-ID.
+* [**Anslut som förlitande part**](pages/anslutning-fp.md)
+– Steg-för-steg för dig som vill integrera din tjänst som förlitande part.
+* [**Teknisk Referens:
+Standarder & Profiler**](pages/standarder-och-profiler.md)
+– Läs mer om de öppna standarder (t.ex. OpenID4VCI, SD-JWT)
+som ekosystemet bygger på.
+* [**Ordlista**](pages/ordlista.md)
+– En ordlista med de vanligast förekommande termerna och begreppen
 
 ---
 *Har du frågor? Kontakta oss på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).*

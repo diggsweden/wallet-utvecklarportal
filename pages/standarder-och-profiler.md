@@ -9,9 +9,12 @@ title: Standarder & Profiler
 
 # Standarder & Profiler
 
-För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på. Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
+För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala identitetsplånboken,
+listar vi här de tekniska standarder och profiler som vår implementation bygger på.
+Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
 
-Istället för att återskapa specifikationer i detalj här, refererar vi direkt till de officiella standarderna.
+Istället för att återskapa specifikationer i detalj här,
+refererar vi direkt till de officiella standarderna.
 
 ---
 
@@ -19,7 +22,8 @@ Istället för att återskapa specifikationer i detalj här, refererar vi direkt
 
 Vårt ekosystem utvecklas i linje med det europeiska ramverket för digital identitet:
 
-* **[EUDI Architecture and Reference Framework (ARF)](https://eudi.dev/latest/architecture-and-reference-framework-main/)** – Det övergripande arkitekturramverket för EUDI-plånboken. Se även det officiella [ARF-arkivet på GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework).
+* **[EUDI Architecture and Reference Framework (ARF)](https://eudi.dev/latest/architecture-and-reference-framework-main/)** – Det övergripande arkitekturramverket för EUDI-plånboken.
+Se även det officiella [ARF-arkivet på GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework).
 * **[EUDI Standards and Technical Specifications](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/tree/main)** – Officiella tekniska specifikationer för EUDI-plånboken.
 
 ---
@@ -31,9 +35,14 @@ och hur rollfördelningen är planerad att se ut i den framtida produktionsmilj�
 
 | Funktion / Roll | Testplattform för digital identitetsplånbok | Produktion (Framtida målbild) |
 | :--- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :--- |
-| **Identitetshantering** | **Keycloak** används för att hantera testanvändare och simulera inloggning.                                                                                                                                          | **Polismyndigheten** utfärdar den statliga e-legitimationen [**Sverige-id**](https://polisen.se/tjanster-tillstand/pass-och-nationellt-id-kort/statlig-e-legitimation-sverige-id/). |
-| **PID-utfärdare** | En testtjänst som i dagsläget tillhandahålls av Digg för att utfärda fiktiva PID (Personidentitetsdata).                                                                                                             | **Polismyndigheten** är officiell PID-utfärdare via Sverige-id (planerad lansering 1 december 2026). |
-| **Tillitsvalidering** | EU:s referensimplementation för tillitsvalidering ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)) används för att kontrollera certifikat och tillitslistor. | **[Post- och telestyrelsen (PTS)](https://www.pts.se)** agerar tillsynsmyndighet för betrodda tjänster under eIDAS. |
+| **Identitetshantering** | **Keycloak** används för att hantera testanvändare och simulera inloggning.
+| **Polismyndigheten** utfärdar den statliga e-legitimationen [**Sverige-id**](https://polisen.se/tjanster-tillstand/pass-och-nationellt-id-kort/statlig-e-legitimation-sverige-id/). |
+| **PID-utfärdare** | En testtjänst som i dagsläget tillhandahålls av Digg för att utfärda fiktiva PID (Personidentitetsdata).
+| **Polismyndigheten** är officiell PID-utfärdare via Sverige-id (planerad lansering 1 december 2026). |
+| **Tillitsvalidering** | EU:s referensimplementation för tillitsvalidering
+([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator))
+används för att kontrollera certifikat och tillitslistor.
+| **[Post- och telestyrelsen (PTS)](https://www.pts.se)** agerar tillsynsmyndighet för betrodda tjänster under eIDAS. |
 
 ---
 
@@ -49,7 +58,8 @@ För att utfärda den personliga identiteten (PID) och andra intyg till plånbok
 
 ## Presentation av Intyg (Verification)
 
-När en e-tjänst (förlitande part) vill verifiera identitet eller attribut från plånboken sker detta via:
+När en e-tjänst (förlitande part)
+vill verifiera identitet eller attribut från plånboken sker detta via:
 
 * **[OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)**
   * Vi stöder svarsläget (response mode) `direct_post`.
@@ -70,7 +80,8 @@ Själva formatet på identitetsdatan (PID) som sparas i plånboken:
 
 ## Förklaring av Attesteringar (WUA, WIA, KA)
 
-För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, definierar ARF tre centrala kryptografiska attesteringar:
+För att säkerställa plånbokens integritet och skydda nycklar mot kopiering,
+definierar ARF tre centrala kryptografiska attesteringar:
 
 1. **WIA (Wallet Instance Attestation)**
    * *Vad det är:* Ett intyg på applikationsnivå utfärdat av plånboksleverantören (Wallet Provider).
@@ -88,7 +99,8 @@ För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, 
 
 För att etablera och distribuera tillit i ekosystemet används standardiserade tillitslistor:
 
-* **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** – *List of Trusted Entities (LoTE)*. Definierar formatet för maskinläsbara tillitslistor för plånboksleverantörer och utfärdare.
+* **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** – *List of Trusted Entities (LoTE)*.
+Definierar formatet för maskinläsbara tillitslistor för plånboksleverantörer och utfärdare.
   * Tillitslistan publiceras som en kryptografiskt signerad JWS (JSON Web Signature) med algoritmen **ES256**.
   * I Testplattform för digital identitetsplånbok publiceras tillitslistan på
     `<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>`
@@ -99,7 +111,8 @@ För att etablera och distribuera tillit i ekosystemet används standardiserade 
 
 ## Koppling till WE BUILD
 
-Det svenska plånbokssystemets testmiljö är utformad för att, där det är tillämpligt, efterleva de tekniska profiler och specifikationer som utvecklas inom det europeiska storskaliga pilotkonsortiet [**WE BUILD**](https://github.com/webuild-consortium).
+Det svenska plånbokssystemets testmiljö är utformad för att,
+där det är tillämpligt, efterleva de tekniska profiler och specifikationer som utvecklas inom det europeiska storskaliga pilotkonsortiet [**WE BUILD**](https://github.com/webuild-consortium).
 
 Syftet med detta är att:
 
