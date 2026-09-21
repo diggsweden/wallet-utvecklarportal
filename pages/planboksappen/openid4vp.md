@@ -10,7 +10,8 @@ description: Plånboksappens stöd för OpenID for Verifiable Presentations (Ope
 
 # Stöd för OpenID4VP
 
-Denna sida beskriver vilka delar av [OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) som plånboksappen stöder i dagsläget.
+Denna sida beskriver vilka delar av [OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
+som plånboksappen stöder i dagsläget.
 
 Tekniska termer från specifikationen behålls på engelska för att undvika tvetydigheter.
 
@@ -113,13 +114,17 @@ Stöds ej. Appen har för närvarande ingen mekanism för att verifiera "trusted
 
 ### 2.3 [Credential set query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-set-query) {#credential-set-query}
 
-Appen har delvis stöd för credential sets. När flera credentials anges i options-arrayen gör appen ingen antingen/eller-matchning, utan väljer alltid det första alternativet.
+Appen har delvis stöd för credential sets.
+När flera credentials anges i options-arrayen gör appen ingen antingen/eller-matchning,
+utan väljer alltid det första alternativet.
 
 Appen respekterar däremot flaggan required och låter användaren välja om icke-obligatoriska credential queries ska presenteras eller inte.
 
 ### 2.4 [Claims och claim sets](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-selecting-claims) {#claims-och-claim-sets}
 
-Appen stöder endast grundläggande matchning av claims i en DCQL-query. Den matchar enbart attribut som definieras i `claims`-arrayen. Vid avsaknad av `claims` parametern presenteras alla attribut från PID:en.
+Appen stöder endast grundläggande matchning av claims i en DCQL-query.
+Den matchar enbart attribut som definieras i `claims`-arrayen.
+Vid avsaknad av `claims` parametern presenteras alla attribut från PID:en.
 
 `claim_sets` ignoreras för närvarande.
 

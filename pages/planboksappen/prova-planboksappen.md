@@ -57,7 +57,8 @@ Kontrollera att din telefon uppfyller kraven innan du begär åtkomst.
 
 ### 2. Installera appen
 
-Installationen skiljer sig åt beroende på vilken plattform du använder. Följ instruktionerna för din plattform när du har fått din inbjudan:
+Installationen skiljer sig åt beroende på vilken plattform du använder.
+Följ instruktionerna för din plattform när du har fått din inbjudan:
 
 - [Installera på iOS (Apple)](installera-ios.md) – via TestFlight.
 - [Installera på Android (Google)](installera-android.md) – via Google Play.

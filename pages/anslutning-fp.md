@@ -54,7 +54,8 @@ och verifierar digitala intyg från användarens plånbok.
 
 ### Kontakt
 
-För tekniska frågor och hjälp med anslutningsprocessen och testmiljön, kontakta: [digitalwallet@digg.se](mailto:digitalwallet@digg.se)
+För tekniska frågor och hjälp med anslutningsprocessen och testmiljön, kontakta:
+[digitalwallet@digg.se](mailto:digitalwallet@digg.se)
 
 ### Dokumentation och specifikationer
 

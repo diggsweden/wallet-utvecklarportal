@@ -39,7 +39,10 @@ rake && jekyll serve
 
 ### Förutsättningar
 
-Projektet använder [mise](https://mise.jdx.dev/) och [just](https://github.com/casey/just) för att automatiskt hantera alla nödvändiga verktyg, versioner och linting-skript.
+Projektet använder [mise](https://mise.jdx.dev/)
+och [just](https://github.com/casey/just)
+för att automatiskt hantera alla nödvändiga verktyg,
+versioner och linting-skript.
 
 För att installera alla verktyg och linter-skript lokalt, kör:
 
