@@ -5,12 +5,17 @@
 
 layout: default
 title: Prova plånboksappen under utveckling
-description: Instruktioner för hur du får åtkomst till, installerar och provar den statliga identitetsplånboksappen under utveckling i Diggs Sandbox-miljö.
+description: Instruktioner för hur du får åtkomst till, installerar och provar
+  den statliga identitetsplånboksappen under utveckling
+  i Testplattform för digital identitetsplånbok.
 ---
 
 # Prova plånboksappen under utveckling
 
-Denna guide beskriver steg-för-steg hur du laddar ned, installerar och provar den statliga identitetsplånboksappen (hädanefter kallad appen) under utveckling i Diggs Sandbox-miljö.
+Denna guide beskriver steg-för-steg hur du laddar ned,
+installerar och provar den statliga identitetsplånboksappen
+(hädanefter kallad appen) under utveckling
+i Testplattform för digital identitetsplånbok.
 
 > **Obs:** Testning av plånboksappen är endast tillgänglig för
 > organisationer som har bjudits in av Digg.

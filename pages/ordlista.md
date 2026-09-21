@@ -43,8 +43,12 @@ PID-utfärdare (PID Issuer)
 : Den centrala tjänst som utfärdar och signerar användarens grundläggande identitetsdata (PID) till plånboken. I den framtida svenska produktionsmiljön är det Polismyndigheten som är PID-utfärdare (via den statliga e-legitimationen Sverige-id), men i testplattformen tillhandahålls denna tjänst i dagsläget av Digg.
 : **Källa:** [EUDI ARF, avsnitt 3.4 – Person Identification Data (PID) Providers](https://eudi.dev/3.0.0/main/03-roles-within-the-eudi-wallet-ecosystem/#34-person-identification-data-pid-providers)
 
-Sandbox
-: Den test- och experimentmiljö som tillhandahålls av Digg där utvecklare och blivande förlitande parter kan bygga, testa och verifiera sina integrationer i en säker och isolerad miljö.
+Testplattform för digital identitetsplånbok
+: Den testplattform som tillhandahålls av Digg
+där utvecklare och förlitande parter
+kan bygga och testa interoperabilitet för sina tjänster
+i en säker och isolerad miljö.
+Även kallad "testplattformen".
 
 SD-JWT VC
 : *Selective Disclosure for JWTs Verifiable Credentials*. Det kredentialformat som används för identitetsintygen i det svenska plånbokssystemet. Det tillåter selektivt utlämnande, vilket innebär att användaren kan välja att enbart dela specifika uppgifter (t.ex. bekräfta att man är över 18 år) utan att avslöja hela sitt personnummer eller namn.
