@@ -5,7 +5,9 @@
 
 layout: default
 title: Prova plånboksappen under utveckling
-description: Instruktioner för hur du får åtkomst till, installerar och provar den statliga identitetsplånboksappen under utveckling i Testplattform för digital identitetsplånbok.
+description: Instruktioner för hur du får åtkomst till, installerar och provar
+  den statliga identitetsplånboksappen under utveckling
+  i Testplattform för digital identitetsplånbok.
 ---
 
 # Prova plånboksappen under utveckling
