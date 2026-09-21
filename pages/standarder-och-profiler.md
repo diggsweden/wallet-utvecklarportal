@@ -27,10 +27,10 @@ Vårt ekosystem utvecklas i linje med det europeiska ramverket för digital iden
 ## Testplattformen kontra den framtida produktionsmiljön
 
 Det är viktigt att skilja på de komponenter vi använder
-i Diggs Testplattform för digital identitetsplånbok
+i Testplattform för digital identitetsplånbok
 och hur rollfördelningen är planerad att se ut i den framtida produktionsmiljön.
 
-| Funktion / Roll | Diggs Testplattform för digital identitetsplånbok | Produktion (Framtida målbild) |
+| Funktion / Roll | Testplattform för digital identitetsplånbok | Produktion (Framtida målbild) |
 | :--- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :--- |
 | **Identitetshantering** | **Keycloak** används för att hantera testanvändare och simulera inloggning.                                                                                                                                          | **Polismyndigheten** utfärdar den statliga e-legitimationen [**Sverige-id**](https://polisen.se/tjanster-tillstand/pass-och-nationellt-id-kort/statlig-e-legitimation-sverige-id/). |
 | **PID-utfärdare** | En testtjänst som i dagsläget tillhandahålls av Digg för att utfärda fiktiva PID (Personidentitetsdata).                                                                                                             | **Polismyndigheten** är officiell PID-utfärdare via Sverige-id (planerad lansering 1 december 2026). |
@@ -91,7 +91,7 @@ För att etablera och distribuera tillit i ekosystemet används standardiserade 
 
 * **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** – *List of Trusted Entities (LoTE)*. Definierar formatet för maskinläsbara tillitslistor för plånboksleverantörer och utfärdare.
   * Tillitslistan publiceras som en kryptografiskt signerad JWS (JSON Web Signature) med algoritmen **ES256**.
-  * I Diggs Testplattform för digital identitetsplånbok publiceras tillitslistan på
+  * I Testplattform för digital identitetsplånbok publiceras tillitslistan på
     `<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>`
     och konsumeras dynamiskt av tillitsvaliderare
     ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)).

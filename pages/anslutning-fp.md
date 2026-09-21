@@ -15,7 +15,7 @@ En förlitande part är den organisation eller tjänst som tar emot
 och verifierar digitala intyg från användarens plånbok.
 
 > **Obs:** Denna anslutningsguide avser **Diggs plånboksapp**
-> som använder sig av **Diggs Testplattform för digital identitetsplånbok**
+> som använder sig av **Testplattform för digital identitetsplånbok**
 > för test och utveckling.
 
 ---
@@ -24,13 +24,13 @@ och verifierar digitala intyg från användarens plånbok.
 
 - **OpenID4VP-stöd:** Er tjänst följer OpenID4VP (se vad vår app stödjer under [Stöd för OpenID4VP](planboksappen/openid4vp.md)).
 - **Nätverksåtkomst:**
-  Åtkomst till Diggs Testplattform för digital identitetsplånbok
+  Åtkomst till Testplattform för digital identitetsplånbok
   (publik på internet) från app och telefon.
 - **Betrodd HTTPS-domän:** Trafik mellan telefonen och er verifierare måste gå via en av android/ios betrodd HTTPS-domän.
   - Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`). Okrypterad `http://` avvisas av säkerhetsskäl av appen.
 - **Tillit till LoTE:**
   Verifieraren behöver lita på tillitslistan för
-  Diggs Testplattform för digital identitetsplånbok
+  Testplattform för digital identitetsplånbok
   ([List of Trusted Entities](https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json),
   se även [Tillitsramverk & Tillitslistor](standarder-och-profiler.md#tillitsramverk--tillitslistor-lote)).
 - **Vitlistning** I dagsläget har diggs plånbok ingen vitlista för betrodda tjänster utan litar på alla.

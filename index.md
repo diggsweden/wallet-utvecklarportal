@@ -11,9 +11,9 @@ title: Wallet Utvecklarportal
 
 <div style="background: #FFF8E7; padding: 16px; border-radius: 6px; border: 1px solid #ECD2A5; border-left: 6px solid #D9822B; color: #2B2A28; margin: 20px 0;" role="note">
   <span style="font-size: 1.2em; margin-right: 8px;">⚠️</span><strong>Viktig information om testdata
-  och Diggs Testplattform för digital identitetsplånbok</strong>
+  och Testplattform för digital identitetsplånbok</strong>
   <p style="margin: 10px 0 10px 0; font-size: 0.95em;">Denna utvecklarportal
-  och Diggs Testplattform för digital identitetsplånbok
+  och Testplattform för digital identitetsplånbok
   (inklusive testplånbok, test-PID, testutfärdare och verifieringsflöden)
   är enbart avsedda för test, demonstration och utvecklingsändamål.</p>
   <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; line-height: 1.5;">
@@ -31,14 +31,14 @@ Detta är navet för dig som vill förstå, integrera och testa lösningar mot d
 Den här portalen finns för att göra det enklare
 att integrera tekniskt mot det svenska plånbokssystemet.
 Här hittar du dokumentation och testmiljöer
-(Diggs Testplattform för digital identitetsplånbok)
+(Testplattform för digital identitetsplånbok)
 för att du som utvecklare snabbt ska kunna komma igång
 och ansluta dina tjänster till infrastrukturen för digitala identiteter.
 
 ## Förutsättningar
 
 För att kunna följa instruktionerna på denna sida
-och integrera mot Diggs Testplattform för digital identitetsplånbok behöver du:
+och integrera mot Testplattform för digital identitetsplånbok behöver du:
 
 * En miljö för att köra **Docker-containrar** (om du vill sätta upp en egen verifierare).
 * En smartphone (**iOS eller Android**) för att testa mobilappen.
