@@ -29,8 +29,7 @@ och verifierar digitala intyg från användarens plånbok.
 - **Betrodd HTTPS-domän:** Trafik mellan telefonen och er verifierare måste gå via en av android/ios betrodd HTTPS-domän.
   - Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`). Okrypterad `http://` avvisas av säkerhetsskäl av appen.
 - **Tillit till LoTE:**
-  Verifieraren behöver lita på tillitslistan för
-  Testplattform för digital identitetsplånbok
+  Verifieraren behöver lita på tillitslistan för testplattformen
   ([List of Trusted Entities](https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json),
   se även [Tillitsramverk & Tillitslistor](standarder-och-profiler.md#tillitsramverk--tillitslistor-lote)).
 - **Vitlistning** I dagsläget har diggs plånbok ingen vitlista för betrodda tjänster utan litar på alla.
