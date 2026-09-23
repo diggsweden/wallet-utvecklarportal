@@ -10,9 +10,9 @@ SPDX-License-Identifier: CC0-1.0
 
 En utvecklarportal med information och hjälp riktad till parter som vill ansluta till svenska plånbokssystemets testmiljö.
 
-**Gå till portalen:** [https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/)
+**Gå till portalen:** <https://diggsweden.github.io/wallet-utvecklarportal/>
 
----
+- - -
 
 ## Diagram (Mermaid)
 

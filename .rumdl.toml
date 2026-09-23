@@ -7,7 +7,13 @@
 # Global configuration options
 [global]
 # List of rules to disable
-disable = ["MD041"]
+disable = [
+    # HR style
+    "MD035",
+
+    # First line h1
+    "MD041",
+]
 
 # List of rules to enable exclusively (if provided, only these rules will run)
 # enable = ["MD001", "MD003", "MD004"]
