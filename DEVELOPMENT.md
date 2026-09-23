@@ -50,7 +50,7 @@ Detta kommando installerar:
    ```
 
 Servern kommer nu att finnas tillgänglig på:
-**<http://localhost:4000>**
+<http://localhost:4000>
 
 Webbplatsen byggs om automatiskt när du gör ändringar i filerna.
 
