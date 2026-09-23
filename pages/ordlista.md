@@ -10,7 +10,8 @@ description: Ordlista över centrala begrepp och termer som används i det svens
 
 # Ordlista
 
-Här hittar du definitioner och förklaringar av centrala begrepp och termer som används i det svenska plånbokssystemet och på denna utvecklarportal. Syftet är att underlätta kommunikation och säkerställa en enhetlig förståelse av de olika delarna i ekosystemet.
+Här hittar du definitioner och förklaringar av centrala begrepp och termer som används i det svenska plånbokssystemet och på denna utvecklarportal.
+Syftet är att underlätta kommunikation och säkerställa en enhetlig förståelse av de olika delarna i ekosystemet.
 
 ---
 
@@ -25,7 +26,8 @@ Digital plånbok (EUDI Wallet)
 : **Källa:** [EUDI ARF, avsnitt 4.3.2 – Components of a Wallet Unit](https://eudi.dev/3.0.0/main/04-high-level-architecture/#432-components-of-a-wallet-unit)
 
 EUDI Wallet Reference Framework (ARF)
-: *European Digital Identity Architecture and Reference Framework*. Det övergripande europeiska ramverket som anger gemensamma standarder, specifikationer och krav för de digitala identitetsplånböckerna inom EU.
+: *European Digital Identity Architecture and Reference Framework*.
+  Det övergripande europeiska ramverket som anger gemensamma standarder, specifikationer och krav för de digitala identitetsplånböckerna inom EU.
 :  **Källa:** [EUDI Architecture and Reference Framework (ARF)](https://eudi.dev/latest/architecture-and-reference-framework-main/) och dess [GitHub-arkiv](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework)
 
 Förlitande part (Relying Party)
@@ -36,26 +38,28 @@ Onboarding
 : Den övergripande administrativa och förberedande processen för en organisation som vill ansluta sina tjänster till det svenska plånbokssystemets miljöer.
 
 Personidentitetsdata (PID)
-: *Personal Identity Data*. Det grundläggande identitetsintyget (t.ex. namn, personnummer, födelsedatum) som utfärdas av den statliga PID-utfärdaren till användarens plånbok.
+: *Personal Identity Data*.
+  Det grundläggande identitetsintyget (t.ex. namn, personnummer, födelsedatum) som utfärdas av den statliga PID-utfärdaren till användarens plånbok.
 : **Källa:** [eIDAS-förordningen (EU 2024/1183)](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R1183) och [EUDI ARF, avsnitt A.2 – Definitions from the European Digital Identity Regulation](https://eudi.dev/3.0.0/annexes/annex-1/annex-1-definitions/#a2-definitions-from-the-european-digital-identity-regulation)
 
 PID-utfärdare (PID Issuer)
-: Den centrala tjänst som utfärdar och signerar användarens grundläggande identitetsdata (PID) till plånboken. I den framtida svenska produktionsmiljön är det Polismyndigheten som är PID-utfärdare (via den statliga e-legitimationen Sverige-id), men i testplattformen tillhandahålls denna tjänst i dagsläget av Digg.
+: Den centrala tjänst som utfärdar och signerar användarens grundläggande identitetsdata (PID) till plånboken.
+  I den framtida svenska produktionsmiljön är det Polismyndigheten som är PID-utfärdare (via den statliga e-legitimationen Sverige-id), men i testplattformen tillhandahålls denna tjänst i dagsläget av Digg.
 : **Källa:** [EUDI ARF, avsnitt 3.4 – Person Identification Data (PID) Providers](https://eudi.dev/3.0.0/main/03-roles-within-the-eudi-wallet-ecosystem/#34-person-identification-data-pid-providers)
 
 Testplattform för digital identitetsplånbok
-: Den testplattform som tillhandahålls av Digg
-där utvecklare och förlitande parter
-kan bygga och testa interoperabilitet för sina tjänster
-i en säker och isolerad miljö.
-Även kallad "testplattformen".
+: Den testplattform som tillhandahålls av Digg där utvecklare och förlitande parter kan bygga och testa interoperabilitet för sina tjänster i en säker och isolerad miljö.
+  Även kallad "testplattformen".
 
 SD-JWT VC
-: *Selective Disclosure for JWTs Verifiable Credentials*. Det kredentialformat som används för identitetsintygen i det svenska plånbokssystemet. Det tillåter selektivt utlämnande, vilket innebär att användaren kan välja att enbart dela specifika uppgifter (t.ex. bekräfta att man är över 18 år) utan att avslöja hela sitt personnummer eller namn.
+: *Selective Disclosure for JWTs Verifiable Credentials*.
+  Det kredentialformat som används för identitetsintygen i det svenska plånbokssystemet.
+  Det tillåter selektivt utlämnande, vilket innebär att användaren kan välja att enbart dela specifika uppgifter (t.ex. bekräfta att man är över 18 år) utan att avslöja hela sitt personnummer eller namn.
 : **Källa:** [IETF OAuth Selective Disclosure for JWTs (SD-JWT)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt) och [EUDI Standards and Technical Specifications](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications)
 
 Tillitslista / List of Trusted Entities (LoTE)
-: En kryptografiskt signerad förteckning (lista) över godkända och betrodda aktörer i plånbokssystemet enligt standarden **ETSI TS 119 602**, till exempel utfärdare av intyg (PID/QEAA) och plånboksleverantörer. Genom att läsa av tillitslistan (som publiceras som en signerad JWS) kan tillitsvaliderare automatiskt och dynamiskt verifiera att en part är behörig och att dess certifikat är giltiga inom tillitsramverket, utan manuellt certifikatsutbyte.
+: En kryptografiskt signerad förteckning (lista) över godkända och betrodda aktörer i plånbokssystemet enligt standarden **ETSI TS 119 602**, till exempel utfärdare av intyg (PID/QEAA) och plånboksleverantörer.
+  Genom att läsa av tillitslistan (som publiceras som en signerad JWS) kan tillitsvaliderare automatiskt och dynamiskt verifiera att en part är behörig och att dess certifikat är giltiga inom tillitsramverket, utan manuellt certifikatsutbyte.
 : **Källa:** [EUDI ARF, avsnitt 3.5 – Trusted List Provider or LoTE Provider](https://eudi.dev/3.0.0/main/03-roles-within-the-eudi-wallet-ecosystem/#35-trusted-list-provider-or-lote-provider) och [ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)
 
 Tillitsramverk
@@ -63,7 +67,8 @@ Tillitsramverk
 : **Källa:** [eIDAS-förordningen (EU 2024/1183)](https://eur-lex.europa.eu/legal-content/SV/TXT/?uri=CELEX:32024R1183) (förordningen om en europeisk digital identitet)
 
 Verifier Backend (Verifierare)
-: Den programvara eller tjänst som körs hos den förlitande parten. Den ansvarar för att skapa förfrågningar om intyg, skicka dem till plånboksappen samt ta emot och validera de presenterade uppgifterna.
+: Den programvara eller tjänst som körs hos den förlitande parten.
+  Den ansvarar för att skapa förfrågningar om intyg, skicka dem till plånboksappen samt ta emot och validera de presenterade uppgifterna.
 : **Källa:** [EUDI ARF, avsnitt 3.11.3 – Relying Party Instances](https://eudi.dev/3.0.0/main/03-roles-within-the-eudi-wallet-ecosystem/#3113-relying-party-instances)
 
 Wallet Provider

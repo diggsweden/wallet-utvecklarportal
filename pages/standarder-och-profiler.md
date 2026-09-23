@@ -9,7 +9,8 @@ title: Standarder & Profiler
 
 # Standarder & Profiler
 
-För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på. Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
+För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på.
+Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
 
 Istället för att återskapa specifikationer i detalj här, refererar vi direkt till de officiella standarderna.
 
@@ -19,15 +20,15 @@ Istället för att återskapa specifikationer i detalj här, refererar vi direkt
 
 Vårt ekosystem utvecklas i linje med det europeiska ramverket för digital identitet:
 
-* **[EUDI Architecture and Reference Framework (ARF)](https://eudi.dev/latest/architecture-and-reference-framework-main/)** – Det övergripande arkitekturramverket för EUDI-plånboken. Se även det officiella [ARF-arkivet på GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework).
+* **[EUDI Architecture and Reference Framework (ARF)](https://eudi.dev/latest/architecture-and-reference-framework-main/)** – Det övergripande arkitekturramverket för EUDI-plånboken.
+  Se även det officiella [ARF-arkivet på GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework).
 * **[EUDI Standards and Technical Specifications](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/tree/main)** – Officiella tekniska specifikationer för EUDI-plånboken.
 
 ---
 
 ## Testplattformen kontra den framtida produktionsmiljön
 
-Det är viktigt att skilja på de komponenter vi använder i testplattformen
-och hur rollfördelningen är planerad att se ut i den framtida produktionsmiljön.
+Det är viktigt att skilja på de komponenter vi använder i testplattformen och hur rollfördelningen är planerad att se ut i den framtida produktionsmiljön.
 
 | Funktion / Roll | Testplattform för digital identitetsplånbok | Produktion (Framtida målbild) |
 | :--- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :--- |
@@ -63,7 +64,8 @@ Själva formatet på identitetsdatan (PID) som sparas i plånboken:
 
 * **[SD-JWT VC (Selective Disclosure for JWTs Verifiable Credentials)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt)**
   * Tillåter att användaren endast delar specifika attribut (t.ex. ålder) istället för hela identiteten.
-  * I dagsläget har vi valt att **enbart stödja SD-JWT VC** som kredentialformat. **mso-mdoc** är inte aktuellt för oss i detta skede.
+  * I dagsläget har vi valt att **enbart stödja SD-JWT VC** som kredentialformat.
+    **mso-mdoc** är inte aktuellt för oss i detta skede.
 * **Kryptografi:** För signering av JWT och SD-JWT används **ECDSA med kurvan P-256 (ES256)**.
 
 ---
@@ -80,7 +82,8 @@ För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, 
    * *Syfte:* Bevisar för omvärlden att de privata nycklarna har genererats och skyddas inuti enhetens säkra hårdvarumodul (**WSCD** – *Wallet Secure Cryptographic Device*), till exempel ett Secure Element eller motsvarande.
 3. **WUA (Wallet Unit Attestation)**
    * *Vad det är:* Den sammanslagna attesteringen för hela plånboksenheten.
-   * *Syfte:* Intygar att plånboksenheten (kombinationen av applikation/WIA och hårdvara/KA) uppfyller kraven i tillitsramverket. Se vidare i [WUA-specifikationen](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md).
+   * *Syfte:* Intygar att plånboksenheten (kombinationen av applikation/WIA och hårdvara/KA) uppfyller kraven i tillitsramverket.
+     Se vidare i [WUA-specifikationen](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md).
 
 ---
 
@@ -88,12 +91,10 @@ För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, 
 
 För att etablera och distribuera tillit i ekosystemet används standardiserade tillitslistor:
 
-* **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** – *List of Trusted Entities (LoTE)*. Definierar formatet för maskinläsbara tillitslistor för plånboksleverantörer och utfärdare.
+* **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** – *List of Trusted Entities (LoTE)*.
+  Definierar formatet för maskinläsbara tillitslistor för plånboksleverantörer och utfärdare.
   * Tillitslistan publiceras som en kryptografiskt signerad JWS (JSON Web Signature) med algoritmen **ES256**.
-  * I Testplattform för digital identitetsplånbok publiceras tillitslistan på
-    `<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>`
-    och konsumeras dynamiskt av tillitsvaliderare
-    ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)).
+  * I Testplattform för digital identitetsplånbok publiceras tillitslistan på `<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>` och konsumeras dynamiskt av tillitsvaliderare ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)).
 
 ---
 

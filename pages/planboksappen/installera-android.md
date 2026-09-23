@@ -12,13 +12,15 @@ description: Instruktioner för hur du installerar den statliga identitetsplånb
 
 Denna sida beskriver hur du installerar den statliga identitetsplånboksappen på en Android-telefon via **Google Play**.
 
-Du behöver först ha blivit inbjuden som testare och fått en inbjudningslänk skickad till dig. Se [Få åtkomst till appen](prova-planboksappen.md#1-få-åtkomst-till-appen) om du inte har gjort det ännu.
+Du behöver först ha blivit inbjuden som testare och fått en inbjudningslänk skickad till dig.
+Se [Få åtkomst till appen](prova-planboksappen.md#1-få-åtkomst-till-appen) om du inte har gjort det ännu.
 
 ---
 
 ## Systemkrav
 
-Appen kräver en **Android-telefon med Android 12 (API-nivå 31) eller senare**. Den kan inte installeras på enheter med äldre Android-version.
+Appen kräver en **Android-telefon med Android 12 (API-nivå 31) eller senare**.
+Den kan inte installeras på enheter med äldre Android-version.
 
 ---
 

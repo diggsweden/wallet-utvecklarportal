@@ -35,8 +35,7 @@ Observera att dokumentet inte är komplett och uppdateras löpande i takt med at
 4. [Djuplänkning](#djuplankning)
 5. [Wallet metadata](#wallet-metadata)
 6. [Verifier attestation JWT](#verifier-attestation-jwt)
-7. [High Assurance Interoperability Profile (HAIP)](#haip)
-   {: .page-toc}
+7. [High Assurance Interoperability Profile (HAIP)](#haip) {: .page-toc}
 
 ---
 
@@ -109,17 +108,21 @@ Observera att appen endast stöder credentials med formatet `dc+sd-jwt`.
 
 ### 2.2 [Trusted authorities query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-trusted-authorities-query) {#trusted-authorities-query}
 
-Stöds ej. Appen har för närvarande ingen mekanism för att verifiera "trusted authorities".
+Stöds ej.
+Appen har för närvarande ingen mekanism för att verifiera "trusted authorities".
 
 ### 2.3 [Credential set query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-set-query) {#credential-set-query}
 
-Appen har delvis stöd för credential sets. När flera credentials anges i options-arrayen gör appen ingen antingen/eller-matchning, utan väljer alltid det första alternativet.
+Appen har delvis stöd för credential sets.
+När flera credentials anges i options-arrayen gör appen ingen antingen/eller-matchning, utan väljer alltid det första alternativet.
 
 Appen respekterar däremot flaggan required och låter användaren välja om icke-obligatoriska credential queries ska presenteras eller inte.
 
 ### 2.4 [Claims och claim sets](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-selecting-claims) {#claims-och-claim-sets}
 
-Appen stöder endast grundläggande matchning av claims i en DCQL-query. Den matchar enbart attribut som definieras i `claims`-arrayen. Vid avsaknad av `claims` parametern presenteras alla attribut från PID:en.
+Appen stöder endast grundläggande matchning av claims i en DCQL-query.
+Den matchar enbart attribut som definieras i `claims`-arrayen.
+Vid avsaknad av `claims` parametern presenteras alla attribut från PID:en.
 
 `claim_sets` ignoreras för närvarande.
 

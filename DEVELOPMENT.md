@@ -16,11 +16,13 @@ Denna guide beskriver hur du sätter upp en lokal miljö för att utveckla och f
 
 ## Installation och uppsättning
 
-Projektet använder [mise](https://mise.jdx.dev/) för verktygshantering och [just](https://github.com/casey/just) som task runner. Det innebär att alla beroenden (Ruby, Node, Mermaid-CLI, bundler, linters) installeras automatiskt i projektet.
+Projektet använder [mise](https://mise.jdx.dev/) för verktygshantering och [just](https://github.com/casey/just) som task runner.
+Det innebär att alla beroenden (Ruby, Node, Mermaid-CLI, bundler, linters) installeras automatiskt i projektet.
 
 ### Förutsättningar
 
-- Du behöver ha `mise` installerat på din maskin. Om du inte har det, följ [mises installationsguide](https://mise.jdx.dev/getting-started.html).
+- Du behöver ha `mise` installerat på din maskin.
+  Om du inte har det, följ [mises installationsguide](https://mise.jdx.dev/getting-started.html).
 - Systemberoenden för att kompilera eventuella gems (t.ex. `build-essential`, `gcc`, `make` på Ubuntu/Debian).
 
 ### 1. Installera utvecklingsverktyg och beroenden
@@ -65,17 +67,16 @@ just verify          # Kör alla linters, länkar och tillgänglighetskontroller
 
 #### Granska tillgänglighetsresultat
 
-När du kör `just check-a11y` (eller `just a11y`) sparas detaljerade rapporter för varje sida
-i mappen `.lighthouseci/` som HTML- och JSON-filer. Om kontrollen rapporterar fel kan du öppna
-motsvarande `.html`-fil i mappen `.lighthouseci/` i en webbläsare för att se exakt vilka element,
-CSS-selektorer eller färgkontraster som underkänts.
+När du kör `just check-a11y` (eller `just a11y`) sparas detaljerade rapporter för varje sida i mappen `.lighthouseci/` som HTML- och JSON-filer.
+Om kontrollen rapporterar fel kan du öppna motsvarande `.html`-fil i mappen `.lighthouseci/` i en webbläsare för att se exakt vilka element, CSS-selektorer eller färgkontraster som underkänts.
 
 ## Testa och driftsätt din branch
 
 Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du mergar till `main`:
 
 > [!IMPORTANT]
-> För att detta ska fungera och för att undvika det inbyggda, felaktiga GitHub Pages-bygget (som inte får med alla resurser som diagram och skapar ett race condition) måste GitHub Pages vara konfigurerat för att använda **GitHub Actions** som källa. Det ställs in under **Settings** -> **Pages** -> **Build and deployment** -> **Source: GitHub Actions**.
+> För att detta ska fungera och för att undvika det inbyggda, felaktiga GitHub Pages-bygget (som inte får med alla resurser som diagram och skapar ett race condition) måste GitHub Pages vara konfigurerat för att använda **GitHub Actions** som källa.
+> Det ställs in under **Settings** -> **Pages** -> **Build and deployment** -> **Source: GitHub Actions**.
 
 När detta är konfigurerat kan du testa en branch på följande sätt:
 
