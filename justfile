@@ -206,6 +206,14 @@ lint-spelling:
       exit 1
     fi
 
+# Lint semantic line breaks
+[group('lint')]
+lint-sembr:
+    #!/usr/bin/env bash
+    find . -type f -iname '*.md' -print0 |
+      grep -zve 'node_modules' |
+      xargs -0 snapper-fmt --check
+
 # ==================================================================================== #
 # LINT-FIX - Auto-fix code issues
 # ==================================================================================== #
@@ -231,6 +239,14 @@ lint-markdown-fix:
 [group('lint-fix')]
 lint-shell-fmt-fix:
     @{{lint}}/shell-fmt.sh fix
+
+# Fix semantic line breaks
+[group('lint-fix')]
+lint-sembr-fix:
+    #!/usr/bin/env bash
+    find . -type f -iname '*.md' -print0 |
+      grep -zve 'node_modules' |
+      xargs -0 snapper-fmt --in-place
 
 # ==================================================================================== #
 # INTERNAL
