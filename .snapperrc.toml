@@ -15,12 +15,12 @@
 format = "markdown"
 
 # Maximum line width (0 = unlimited)
-max_width = 0
+max_width = 120
 
 # Prefer breaks after independent-clause punctuation (, ; : em dash).
 # With max_width = 0 this still inserts a newline after each such mark
 # that is already followed by whitespace.
-# clause_breaks = false
+clause_breaks = true
 
 # Extra LaTeX environments / commands (added to the built-in lists).
 # [latex]

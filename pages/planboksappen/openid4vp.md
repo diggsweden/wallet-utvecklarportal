@@ -10,7 +10,9 @@ description: Plånboksappens stöd för OpenID for Verifiable Presentations (Ope
 
 # Stöd för OpenID4VP
 
-Denna sida beskriver vilka delar av [OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) som plånboksappen stöder i dagsläget.
+Denna sida beskriver vilka delar av
+[OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)
+som plånboksappen stöder i dagsläget.
 
 Tekniska termer från specifikationen behålls på engelska för att undvika tvetydigheter.
 
@@ -68,7 +70,8 @@ Stöds.
 
 Appen stöder för närvarande endast client identifier prefix `x509_san_dns`.
 
-Appen stöder ej ["pre-registered clients"](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-fallback).
+Appen stöder ej
+["pre-registered clients"](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-fallback).
 
 | Prefix                     | Stöds |
 | -------------------------- | ----- |
@@ -82,7 +85,8 @@ Appen stöder ej ["pre-registered clients"](https://openid.net/specs/openid-4-ve
 
 ### 1.5 [Request URI method POST](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-request-uri-method-post) {#request-uri-method-post}
 
-Appen stöder för närvarande ej att `wallet_metadata` eller `wallet_nonce` skickas med när POST-varianten av request URI används.
+Appen stöder för närvarande ej att `wallet_metadata` eller `wallet_nonce` skickas med när POST-varianten av request URI
+används.
 
 ### 1.6 [Verifier info](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-verifier-info) {#verifier-info}
 
@@ -114,9 +118,11 @@ Appen har för närvarande ingen mekanism för att verifiera "trusted authoritie
 ### 2.3 [Credential set query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-set-query) {#credential-set-query}
 
 Appen har delvis stöd för credential sets.
-När flera credentials anges i options-arrayen gör appen ingen antingen/eller-matchning, utan väljer alltid det första alternativet.
+När flera credentials anges i options-arrayen gör appen ingen antingen/eller-matchning,
+utan väljer alltid det första alternativet.
 
-Appen respekterar däremot flaggan required och låter användaren välja om icke-obligatoriska credential queries ska presenteras eller inte.
+Appen respekterar däremot flaggan required och låter användaren välja om icke-obligatoriska credential queries ska
+presenteras eller inte.
 
 ### 2.4 [Claims och claim sets](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-selecting-claims) {#claims-och-claim-sets}
 

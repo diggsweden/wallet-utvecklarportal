@@ -9,7 +9,8 @@ title: "Anslut som förlitande part"
 
 # Anslut som förlitande part
 
-**Roll:** Denna guide riktar sig till **förlitande parter** (Relying Parties) som vill ansluta sina tjänster till det svenska plånbokssystemet.
+**Roll:** Denna guide riktar sig till **förlitande parter** (Relying Parties) som vill ansluta sina tjänster till det
+svenska plånbokssystemet.
 En förlitande part är den organisation eller tjänst som tar emot och verifierar digitala intyg från användarens plånbok.
 
 > **Obs:** Denna anslutningsguide avser **Diggs plånboksapp**
@@ -20,12 +21,17 @@ En förlitande part är den organisation eller tjänst som tar emot och verifier
 
 ## Krav
 
-- **OpenID4VP-stöd:** Er tjänst följer OpenID4VP (se vad vår app stödjer under [Stöd för OpenID4VP](planboksappen/openid4vp.md)).
-- **Nätverksåtkomst:** Åtkomst till Testplattform för digital identitetsplånbok (publik på internet) från app och telefon.
-- **Betrodd HTTPS-domän:** Trafik mellan telefonen och er verifierare måste gå via en av android/ios betrodd HTTPS-domän.
+- **OpenID4VP-stöd:** Er tjänst följer OpenID4VP (se vad vår app stödjer under
+  [Stöd för OpenID4VP](planboksappen/openid4vp.md)).
+- **Nätverksåtkomst:** Åtkomst till Testplattform för digital identitetsplånbok (publik på internet) från app och
+  telefon.
+- **Betrodd HTTPS-domän:** Trafik mellan telefonen och er verifierare måste gå via en av android/ios betrodd
+  HTTPS-domän.
   - Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`).
     Okrypterad `http://` avvisas av säkerhetsskäl av appen.
-- **Tillit till LoTE:** Verifieraren behöver lita på testplattformens tillitslista ([List of Trusted Entities](https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json), se även [Tillitsramverk & Tillitslistor](standarder-och-profiler.md#tillitsramverk--tillitslistor-lote)).
+- **Tillit till LoTE:** Verifieraren behöver lita på testplattformens tillitslista
+  ([List of Trusted Entities](https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json),
+  se även [Tillitsramverk & Tillitslistor](standarder-och-profiler.md#tillitsramverk--tillitslistor-lote)).
 - **Vitlistning** I dagsläget har diggs plånbok ingen vitlista för betrodda tjänster utan litar på alla.
 
 ---
@@ -33,7 +39,8 @@ En förlitande part är den organisation eller tjänst som tar emot och verifier
 ## Testa med plånboksappen
 
 1. **Installera testappen och hämta PID:**
-   - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din telefon.
+   - Följ [Guiden för att prova plånboksappen](planboksappen/prova-planboksappen.md) för att installera appen på din
+     telefon.
    - Öppna appen, välj **Hämta personuppgifter**, logga in mot utfärdaren med en testanvändare och spara ditt test-PID.
 2. **Starta presentation i er tjänst:**
    - Gå till er tjänst i en webbläsare och starta ett presentationsflöde.
@@ -47,7 +54,8 @@ En förlitande part är den organisation eller tjänst som tar emot och verifier
 
 ### Kontakt
 
-För tekniska frågor och hjälp med anslutningsprocessen och testmiljön, kontakta: [digitalwallet@digg.se](mailto:digitalwallet@digg.se)
+För tekniska frågor och hjälp med anslutningsprocessen och testmiljön, kontakta:
+[digitalwallet@digg.se](mailto:digitalwallet@digg.se)
 
 ### Dokumentation och specifikationer
 

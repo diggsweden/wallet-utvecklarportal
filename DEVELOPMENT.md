@@ -16,7 +16,8 @@ Denna guide beskriver hur du sätter upp en lokal miljö för att utveckla och f
 
 ## Installation och uppsättning
 
-Projektet använder [mise](https://mise.jdx.dev/) för verktygshantering och [just](https://github.com/casey/just) som task runner.
+Projektet använder [mise](https://mise.jdx.dev/) för verktygshantering och [just](https://github.com/casey/just) som
+task runner.
 Det innebär att alla beroenden (Ruby, Node, Mermaid-CLI, bundler, linters) installeras automatiskt i projektet.
 
 ### Förutsättningar
@@ -67,15 +68,19 @@ just verify          # Kör alla linters, länkar och tillgänglighetskontroller
 
 #### Granska tillgänglighetsresultat
 
-När du kör `just check-a11y` (eller `just a11y`) sparas detaljerade rapporter för varje sida i mappen `.lighthouseci/` som HTML- och JSON-filer.
-Om kontrollen rapporterar fel kan du öppna motsvarande `.html`-fil i mappen `.lighthouseci/` i en webbläsare för att se exakt vilka element, CSS-selektorer eller färgkontraster som underkänts.
+När du kör `just check-a11y` (eller `just a11y`) sparas detaljerade rapporter för varje sida i mappen `.lighthouseci/`
+som HTML- och JSON-filer.
+Om kontrollen rapporterar fel kan du öppna motsvarande `.html`-fil i mappen `.lighthouseci/` i en webbläsare för att se
+exakt vilka element, CSS-selektorer eller färgkontraster som underkänts.
 
 ## Testa och driftsätt din branch
 
 Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du mergar till `main`:
 
 > [!IMPORTANT]
-> För att detta ska fungera och för att undvika det inbyggda, felaktiga GitHub Pages-bygget (som inte får med alla resurser som diagram och skapar ett race condition) måste GitHub Pages vara konfigurerat för att använda **GitHub Actions** som källa.
+> För att detta ska fungera och för att undvika det inbyggda,
+> felaktiga GitHub Pages-bygget (som inte får med alla resurser som diagram och skapar ett race condition) måste GitHub
+> Pages vara konfigurerat för att använda **GitHub Actions** som källa.
 > Det ställs in under **Settings** -> **Pages** -> **Build and deployment** -> **Source: GitHub Actions**.
 
 När detta är konfigurerat kan du testa en branch på följande sätt:
@@ -85,6 +90,8 @@ När detta är konfigurerat kan du testa en branch på följande sätt:
 3. Klicka på **Run workflow**-knappen till höger.
 4. Välj den branch du vill testa (t.ex. `feat/min-ändring`) under **Use workflow from**.
 5. Klicka på den gröna **Run workflow**-knappen.
-6. Det tar ungefär 1-2 minuter innan ändringarna visas på [https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/).
+6. Det tar ungefär 1-2 minuter innan ändringarna visas på
+   [https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/).
 
-**Viktigt:** Glöm inte att köra workflowet mot **main** igen när du är klar med testningen, så att den publika sidan återställs till det som är mergat i main!
+**Viktigt:** Glöm inte att köra workflowet mot **main** igen när du är klar med testningen,
+så att den publika sidan återställs till det som är mergat i main!

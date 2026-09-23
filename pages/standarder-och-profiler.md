@@ -9,7 +9,8 @@ title: Standarder & Profiler
 
 # Standarder & Profiler
 
-För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på.
+För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala
+identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på.
 Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
 
 Istället för att återskapa specifikationer i detalj här, refererar vi direkt till de officiella standarderna.
@@ -20,15 +21,19 @@ Istället för att återskapa specifikationer i detalj här, refererar vi direkt
 
 Vårt ekosystem utvecklas i linje med det europeiska ramverket för digital identitet:
 
-* **[EUDI Architecture and Reference Framework (ARF)](https://eudi.dev/latest/architecture-and-reference-framework-main/)** – Det övergripande arkitekturramverket för EUDI-plånboken.
-  Se även det officiella [ARF-arkivet på GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework).
-* **[EUDI Standards and Technical Specifications](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/tree/main)** – Officiella tekniska specifikationer för EUDI-plånboken.
+* **[EUDI Architecture and Reference Framework (ARF)](https://eudi.dev/latest/architecture-and-reference-framework-main/)**
+  – Det övergripande arkitekturramverket för EUDI-plånboken.
+  Se även det officiella
+  [ARF-arkivet på GitHub](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework).
+* **[EUDI Standards and Technical Specifications](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/tree/main)**
+  – Officiella tekniska specifikationer för EUDI-plånboken.
 
 ---
 
 ## Testplattformen kontra den framtida produktionsmiljön
 
-Det är viktigt att skilja på de komponenter vi använder i testplattformen och hur rollfördelningen är planerad att se ut i den framtida produktionsmiljön.
+Det är viktigt att skilja på de komponenter vi använder i testplattformen och hur rollfördelningen är planerad att se ut
+i den framtida produktionsmiljön.
 
 | Funktion / Roll | Testplattform för digital identitetsplånbok | Produktion (Framtida målbild) |
 | :--- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| :--- |
@@ -44,7 +49,8 @@ För att utfärda den personliga identiteten (PID) och andra intyg till plånbok
 
 * **[OpenID for Verifiable Credential Issuance (OpenID4VCI)](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html)**
   * Vi använder proof-type `openid4vci-proof+jwt`.
-* **[DPoP (Demonstrating Proof-of-Possession)](https://datatracker.ietf.org/doc/html/rfc9449)** – Används för att kryptografiskt binda tokens till plånboksinstansen.
+* **[DPoP (Demonstrating Proof-of-Possession)](https://datatracker.ietf.org/doc/html/rfc9449)** – Används för att
+  kryptografiskt binda tokens till plånboksinstansen.
 
 ---
 
@@ -54,7 +60,8 @@ När en e-tjänst (förlitande part) vill verifiera identitet eller attribut fr�
 
 * **[OpenID for Verifiable Presentations (OpenID4VP)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html)**
   * Vi stöder svarsläget (response mode) `direct_post`.
-* **[Digital Credentials Query Language (DCQL)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l)** – Används för att konstruera detaljerade och selektiva förfrågningar av attribut (claims) från plånboken.
+* **[Digital Credentials Query Language (DCQL)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-digital-credentials-query-l)**
+  – Används för att konstruera detaljerade och selektiva förfrågningar av attribut (claims) från plånboken.
 
 ---
 
@@ -72,18 +79,23 @@ Själva formatet på identitetsdatan (PID) som sparas i plånboken:
 
 ## Förklaring av Attesteringar (WUA, WIA, KA)
 
-För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, definierar ARF tre centrala kryptografiska attesteringar:
+För att säkerställa plånbokens integritet och skydda nycklar mot kopiering,
+definierar ARF tre centrala kryptografiska attesteringar:
 
 1. **WIA (Wallet Instance Attestation)**
    * *Vad det är:* Ett intyg på applikationsnivå utfärdat av plånboksleverantören (Wallet Provider).
-   * *Syfte:* Attesterar att plånboksappen som är installerad på enheten är äkta, inte har modifierats och tillhör en certifierad plånbokslösning.
+   * *Syfte:* Attesterar att plånboksappen som är installerad på enheten är äkta,
+     inte har modifierats och tillhör en certifierad plånbokslösning.
 2. **KA (Key Attestation)**
    * *Vad det är:* Ett intyg från hårdvaran (eller säker miljö) till plånboksappen.
-   * *Syfte:* Bevisar för omvärlden att de privata nycklarna har genererats och skyddas inuti enhetens säkra hårdvarumodul (**WSCD** – *Wallet Secure Cryptographic Device*), till exempel ett Secure Element eller motsvarande.
+   * *Syfte:* Bevisar för omvärlden att de privata nycklarna har genererats och skyddas inuti enhetens säkra
+     hårdvarumodul (**WSCD** – *Wallet Secure Cryptographic Device*), till exempel ett Secure Element eller motsvarande.
 3. **WUA (Wallet Unit Attestation)**
    * *Vad det är:* Den sammanslagna attesteringen för hela plånboksenheten.
-   * *Syfte:* Intygar att plånboksenheten (kombinationen av applikation/WIA och hårdvara/KA) uppfyller kraven i tillitsramverket.
-     Se vidare i [WUA-specifikationen](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md).
+   * *Syfte:* Intygar att plånboksenheten (kombinationen av applikation/WIA och hårdvara/KA) uppfyller kraven i
+     tillitsramverket.
+     Se vidare i
+     [WUA-specifikationen](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation.md).
 
 ---
 
@@ -91,18 +103,27 @@ För att säkerställa plånbokens integritet och skydda nycklar mot kopiering, 
 
 För att etablera och distribuera tillit i ekosystemet används standardiserade tillitslistor:
 
-* **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** – *List of Trusted Entities (LoTE)*.
+* **[ETSI TS 119 602](https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf)** –
+  *List of Trusted Entities (LoTE)*.
   Definierar formatet för maskinläsbara tillitslistor för plånboksleverantörer och utfärdare.
+
   * Tillitslistan publiceras som en kryptografiskt signerad JWS (JSON Web Signature) med algoritmen **ES256**.
-  * I Testplattform för digital identitetsplånbok publiceras tillitslistan på `<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>` och konsumeras dynamiskt av tillitsvaliderare ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)).
+  * I Testplattform för digital identitetsplånbok publiceras tillitslistan på
+    `<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>` och konsumeras dynamiskt av
+    tillitsvaliderare
+    ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)).
 
 ---
 
 ## Koppling till WE BUILD
 
-Det svenska plånbokssystemets testmiljö är utformad för att, där det är tillämpligt, efterleva de tekniska profiler och specifikationer som utvecklas inom det europeiska storskaliga pilotkonsortiet [**WE BUILD**](https://github.com/webuild-consortium).
+Det svenska plånbokssystemets testmiljö är utformad för att, där det är tillämpligt,
+efterleva de tekniska profiler och specifikationer som utvecklas inom det europeiska storskaliga pilotkonsortiet
+[**WE BUILD**](https://github.com/webuild-consortium).
 
 Syftet med detta är att:
 
-* Säkerställa att svenska förlitande parters e-tjänster har de tekniska förutsättningarna som krävs för att kunna ta emot och fungera med plånböcker som följer de gemensamma europeiska profilerna
-* Ge utvecklare en testmiljö som speglar de internationella kraven på interoperabilitet inför den skarpa driftsättningen av EUDI-plånböckerna.
+* Säkerställa att svenska förlitande parters e-tjänster har de tekniska förutsättningarna som krävs för att kunna ta
+  emot och fungera med plånböcker som följer de gemensamma europeiska profilerna
+* Ge utvecklare en testmiljö som speglar de internationella kraven på interoperabilitet inför den skarpa driftsättningen
+  av EUDI-plånböckerna.
