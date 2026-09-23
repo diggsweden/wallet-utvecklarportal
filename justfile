@@ -124,7 +124,7 @@ verify: _ensure-devtools check-tools lint-all check-links check-a11y
 
 # ▪ Run all linters with summary
 [group('lint')]
-lint-all: _ensure-devtools lint-spelling
+lint-all: _ensure-devtools lint-spelling lint-sembr
     @{{devtools_dir}}/scripts/verify.sh
 
 # Validate version control
@@ -220,7 +220,7 @@ lint-sembr:
 
 # ▪ Fix all auto-fixable issues
 [group('lint-fix')]
-lint-fix: _ensure-devtools lint-yaml-fix lint-markdown-fix lint-shell-fmt-fix
+lint-fix: _ensure-devtools lint-yaml-fix lint-markdown-fix lint-shell-fmt-fix lint-sembr-fix
     #!/usr/bin/env bash
     source "{{colors}}"
     just_success "All auto-fixes completed"
