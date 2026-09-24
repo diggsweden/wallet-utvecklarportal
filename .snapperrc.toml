@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+# snapper project configuration
+# https://snapper.turtletech.us/docs/reference/config/
+
+# Maximum line width (0 = unlimited)
+max_width = 120
+
+# Prefer breaks after independent-clause punctuation (, ; : em dash).
+# With max_width = 0 this still inserts a newline after each such mark
+# that is already followed by whitespace.
+clause_breaks = true

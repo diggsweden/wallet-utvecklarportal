@@ -8,9 +8,11 @@ SPDX-License-Identifier: CC0-1.0
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/diggsweden/wallet-utvecklarportal/badge)](https://securityscorecards.dev/viewer/?uri=github.com/diggsweden/wallet-utvecklarportal)
 
-En utvecklarportal med information och hjälp riktad till parter som vill ansluta till svenska plånbokssystemets testmiljö.
+En utvecklarportal med information och hjälp riktad till parter som vill ansluta till svenska plånbokssystemets
+testmiljö.
 
-**Gå till portalen:** [https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/)
+**Gå till portalen:**
+[https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/)
 
 ---
 
@@ -39,7 +41,8 @@ rake && jekyll serve
 
 ### Förutsättningar
 
-Projektet använder [mise](https://mise.jdx.dev/) och [just](https://github.com/casey/just) för att automatiskt hantera alla nödvändiga verktyg, versioner och linting-skript.
+Projektet använder [mise](https://mise.jdx.dev/) och [just](https://github.com/casey/just) för att automatiskt hantera
+alla nödvändiga verktyg, versioner och linting-skript.
 
 För att installera alla verktyg och linter-skript lokalt, kör:
 
