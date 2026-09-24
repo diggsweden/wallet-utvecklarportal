@@ -210,6 +210,7 @@ lint-spelling:
 [group('lint')]
 lint-sembr:
     #!/usr/bin/env bash
+    set -euo pipefail
     source "{{colors}}"
     source "{{mise_tool}}"
     print_header "SEMANTIC LINE BREAKS (SNAPPER)"
@@ -259,6 +260,7 @@ lint-shell-fmt-fix:
 [group('lint-fix')]
 lint-sembr-fix:
     #!/usr/bin/env bash
+    set -euo pipefail
     source "{{colors}}"
     source "{{mise_tool}}"
     print_header "SEMANTIC LINE BREAKS (SNAPPER)"
