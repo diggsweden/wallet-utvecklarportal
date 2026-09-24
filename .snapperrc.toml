@@ -5,15 +5,6 @@
 # snapper project configuration
 # https://snapper.turtletech.us/docs/reference/config/
 
-# Extra abbreviations (merged with built-in list)
-# extra_abbreviations = ["GROMACS", "LAMMPS", "DFT"]
-
-# File patterns to ignore
-# ignore = ["*.bib", "*.cls", "*.sty"]
-
-# Default format (auto-detected from extension if omitted)
-format = "markdown"
-
 # Maximum line width (0 = unlimited)
 max_width = 120
 
@@ -21,48 +12,3 @@ max_width = 120
 # With max_width = 0 this still inserts a newline after each such mark
 # that is already followed by whitespace.
 clause_breaks = true
-
-# Extra LaTeX environments / commands (added to the built-in lists).
-# [latex]
-# verbatim_envs = ["Verbatim"]
-# structure_envs = ["algorithm", "comment"]
-# verbatim_commands = ["Verb"]
-
-# Advisory long-line threshold when max_width is 0 (default 120)
-# long_threshold = 120
-
-# Per-language code-block reflow and formatter delegation.
-# Each language entry may set any combination of:
-#   line_comment   -- marker for single-line comments
-#   block_comment  -- ["open", "close"] markers for multi-line comments
-#   formatter      -- argv passed to std::process::Command for --format-code
-# Missing fields are no-ops for that language.
-
-[code.rust]
-line_comment = "//"
-block_comment = ["/*", "*/"]
-formatter = ["rustfmt", "--edition", "2024"]
-
-[code.python]
-line_comment = "#"
-block_comment = ["\"\"\"", "\"\"\""]
-formatter = ["ruff", "format", "-"]
-
-[code.toml]
-line_comment = "#"
-formatter = ["taplo", "format", "-"]
-
-[code.lua]
-line_comment = "--"
-block_comment = ["--[[", "]]"]
-
-[code.lisp]
-line_comment = ";"
-
-[code.html]
-block_comment = ["<!--", "-->"]
-
-[code.javascript]
-line_comment = "//"
-block_comment = ["/*", "*/"]
-formatter = ["prettier", "--stdin-filepath", "src.js"]
