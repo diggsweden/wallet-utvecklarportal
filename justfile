@@ -210,9 +210,24 @@ lint-spelling:
 [group('lint')]
 lint-sembr:
     #!/usr/bin/env bash
-    find . -type f -iname '*.md' -print0 |
-      grep -zve 'node_modules' |
-      xargs -0 snapper-fmt --check
+    source "{{colors}}"
+    source "{{mise_tool}}"
+    print_header "SEMANTIC LINE BREAKS (SNAPPER)"
+    if find . -type f -iname '*.md' -print0 |
+        grep -zve 'node_modules' |
+        xargs -0 snapper-fmt --check 2> /dev/null; then
+
+      print_success "No missing line breaks detected"
+      emit_status "pass" "ok"
+      exit 0
+    else
+      print_error "At least one formatting issue was detected!
+
+      Please run \`just lint-sembr-fix\` to automatically fix the problems."
+
+      emit_status "fail" "failed"
+      exit 1
+    fi
 
 # ==================================================================================== #
 # LINT-FIX - Auto-fix code issues
@@ -244,9 +259,16 @@ lint-shell-fmt-fix:
 [group('lint-fix')]
 lint-sembr-fix:
     #!/usr/bin/env bash
-    find . -type f -iname '*.md' -print0 |
-      grep -zve 'node_modules' |
-      xargs -0 snapper-fmt --in-place
+    source "{{colors}}"
+    source "{{mise_tool}}"
+    print_header "SEMANTIC LINE BREAKS (SNAPPER)"
+    if find . -type f -iname '*.md' -print0 |
+        grep -zve 'node_modules' |
+        xargs -0 snapper-fmt --in-place; then
+      print_success "Text formatted"
+    else
+      print_error "Something went wrong"
+    fi
 
 # ==================================================================================== #
 # INTERNAL
