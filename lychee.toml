@@ -30,7 +30,6 @@ include_verbatim = false
 # Remap GitHub Pages baseurl to local build output folder
 remap = [
   "file://(.*)/_site/wallet-utvecklarportal/(.*) file://$1/_site/$2",
-  "file://(.*)/_site/wallet-utvecklarportal$ file://$1/_site/index.html",
-  "^https://github\\.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/main/docs/technical-specifications/ts3-wallet-unit-attestation\\.md$ https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/main/docs/technical-specifications/ts3-wallet-unit-attestation.md",
-  "^https://github\\.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/blob/5924eb77ab4495d4dc0a874e54ac3e5de1fbd5b1/docs/technical-specifications/ts3-wallet-unit-attestation\\.md$ https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/5924eb77ab4495d4dc0a874e54ac3e5de1fbd5b1/docs/technical-specifications/ts3-wallet-unit-attestation.md"
+  "file://(.*)/_site/wallet-utvecklarportal$ file://$1/_site/index.html"
 ]
+
