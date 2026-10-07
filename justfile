@@ -189,7 +189,9 @@ lint-spelling:
     source "{{mise_tool}}"
     print_header "SPELLING"
     echo
-    if npx cspell 'pages/**/*.md' 2> /dev/null; then
+    if find . -type f -iname '*.md' -print0 |
+               grep -zve 'node_modules' |
+               xargs -0 npx cspell 2> /dev/null; then
       print_success "No spelling errors detected"
       emit_status "pass" "ok"
       exit 0
