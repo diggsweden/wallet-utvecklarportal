@@ -18,7 +18,7 @@ Denna guide beskriver hur du sätter upp en lokal miljö för att utveckla och f
 
 Projektet använder [mise](https://mise.jdx.dev/) för verktygshantering och [just](https://github.com/casey/just) som
 task runner.
-Det innebär att alla beroenden (Ruby, Node, Mermaid-CLI, bundler, linters) installeras automatiskt i projektet.
+Det innebär att alla beroenden installeras automatiskt i projektet.
 
 ### Förutsättningar
 
@@ -37,7 +37,7 @@ just install
 Detta kommando installerar:
 
 - Rätt Ruby- och Node.js-versioner lokalt för projektet.
-- Alla linters och utvecklingsverktyg.
+- Alla utvecklingsverktyg.
 - Alla npm-paket lokalt (`mermaid-cli`).
 - Alla Ruby-gems (`bundle install`).
 
@@ -63,7 +63,7 @@ just build           # Bygg Jekyll-webbplatsen
 just serve           # Starta den lokala utvecklingsservern
 just check-links     # Bygg och validera alla interna och externa länkar med Lychee
 just check-a11y      # Bygg och validera tillgänglighet (a11y) med Lighthouse CI (alias: just a11y)
-just verify          # Kör alla linters, länkar och tillgänglighetskontroller
+just verify          # Kör alla kvalitetsgrindar, inklusive kontroll av länkar och tillgänglighet
 ```
 
 #### Granska tillgänglighetsresultat
@@ -75,7 +75,7 @@ exakt vilka element, CSS-selektorer eller färgkontraster som underkänts.
 
 ## Testa och driftsätt din branch
 
-Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du mergar till `main`:
+Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du tar in ändringarna till `main`:
 
 > [!IMPORTANT]
 > För att detta ska fungera och för att undvika det inbyggda,
@@ -85,13 +85,13 @@ Om du vill förhandsgranska dina ändringar på den publika webbplatsen innan du
 
 När detta är konfigurerat kan du testa en branch på följande sätt:
 
-1. Gå till [Actions](https://github.com/diggsweden/wallet-utvecklarportal/actions) i repot.
-2. Välj workflowet **Build and Deploy** i listan till vänster.
+1. Gå till [Actions](https://github.com/diggsweden/wallet-utvecklarportal/actions) i kodförrådet.
+2. Välj arbetsflödet **Build and Deploy** i listan till vänster.
 3. Klicka på **Run workflow**-knappen till höger.
 4. Välj den branch du vill testa (t.ex. `feat/min-ändring`) under **Use workflow from**.
 5. Klicka på den gröna **Run workflow**-knappen.
 6. Det tar ungefär 1-2 minuter innan ändringarna visas på
    [https://diggsweden.github.io/wallet-utvecklarportal/](https://diggsweden.github.io/wallet-utvecklarportal/).
 
-**Viktigt:** Glöm inte att köra workflowet mot **main** igen när du är klar med testningen,
-så att den publika sidan återställs till det som är mergat i main!
+**Viktigt:** Glöm inte att köra arbetsflödet mot **main** igen när du är klar med testningen,
+så att den publika sidan återställs till det som ligger på huvudgrenen!
