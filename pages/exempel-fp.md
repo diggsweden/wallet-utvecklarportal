@@ -133,7 +133,7 @@ Den sätter upp:
   (<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>).
 - **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.15`) på port `3002`.
 
-<!-- cspell:disable -->
+[//]: # (spell-checker:disable)
 
 ```yaml
 services:
@@ -195,7 +195,7 @@ services:
       - verifier-backend
 ```
 
-<!-- cspell:enable -->
+[//]: # (spell-checker:enable)
 
 Starta tjänsterna:
 
