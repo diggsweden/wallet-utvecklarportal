@@ -126,25 +126,25 @@ Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier_backend.p12
 Den sätter upp:
 
 - **`verifier-backend`**:
-  EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
+  EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.12.0`).
 - **`trust-validator`**:
-  EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.2.2-alpha`),
+  EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.3.1-alpha`),
   förkonfigurerad med en LoTE som litar på Testplattform för digital identitetsplånbok
   (<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>).
-- **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10`) på port `3002`.
+- **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.15`) på port `3002`.
 
 [//]: # (spell-checker:disable)
 
 ```yaml
 services:
   verifier-backend:
-    image: ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0
+    image: ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.12.0
     container_name: verifier-backend
     volumes:
       - ./verifier_backend.p12:/opt/common/verifier_backend.p12:ro
     environment:
       SPRING_WEBFLUX_BASEPATH: "/verifier"
-      VERIFIER_PUBLICURL: "${VERIFIER_PUBLIC_URL:-http://localhost:8080}/verifier"
+      VERIFIER_PUBLICURL: "${VERIFIER_PUBLIC_URL:?Ange VERIFIER_PUBLIC_URL i .env}/verifier"
       VERIFIER_ORIGINALCLIENTID: "${VERIFIER_CLIENT_ID:-localhost}"
       VERIFIER_CLIENTIDPREFIX: "x509_san_dns"
       SPRING_PROFILES_ACTIVE: "self-signed"
@@ -165,12 +165,13 @@ services:
       - trust-validator
 
   trust-validator:
-    image: ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.2.2-alpha
+    image: ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.3.1-alpha
     container_name: trust-validator
     environment:
       SPRING_WEBFLUX_BASE_PATH: "/trust-validator"
-      TRUST_VALIDATOR_DSS_CACHE_LOCATION: "/tmp/dss-cache"
-      TRUST_VALIDATOR_LOTE_CACHE_LOCATION: "/tmp/lote-cache"
+      TRUST_VALIDATOR_ENABLE_CERTIFICATE_REVOCATION_CHECK: "false"
+      TRUST_VALIDATOR_DSS_FILE_CACHE_LOCATION: "/tmp/dss-cache"
+      TRUST_VALIDATOR_LOTE_FILE_CACHE_LOCATION: "/tmp/lote-cache"
       TRUST_VALIDATOR_TRUST_SOURCES_PID_PROVIDERS_LOTE_LOCATION: "https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json"
       TRUST_VALIDATOR_TRUST_SOURCES_PID_PROVIDERS_LOTE_ISSUANCE_SERVICE: "http://uri.etsi.org/19602/SvcType/PID/Issuance"
       TRUST_VALIDATOR_TRUST_SOURCES_PID_PROVIDERS_LOTE_REVOCATION_SERVICE: "http://uri.etsi.org/19602/SvcType/PID/Revocation"
@@ -179,7 +180,7 @@ services:
       TRUST_VALIDATOR_TRUST_SOURCES_WALLET_PROVIDERS_LOTE_REVOCATION_SERVICE: "http://uri.etsi.org/19602/SvcType/WalletSolution/Revocation"
 
   demo-verifier:
-    image: ghcr.io/diggsweden/wallet-verifier-test-web:0.1.10
+    image: ghcr.io/diggsweden/wallet-verifier-test-web:0.1.15
     container_name: demo-verifier
     environment:
       HOST_API: "http://verifier-backend:8080/verifier"
