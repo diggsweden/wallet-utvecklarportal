@@ -131,7 +131,7 @@ Den sätter upp:
   EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.3.1-alpha`),
   förkonfigurerad med en LoTE som litar på Testplattform för digital identitetsplånbok
   (<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>).
-- **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1.15`) på port `3002`.
+- **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1`) på port `3002`.
 
 [//]: # (spell-checker:disable)
 
@@ -180,7 +180,7 @@ services:
       TRUST_VALIDATOR_TRUST_SOURCES_WALLET_PROVIDERS_LOTE_REVOCATION_SERVICE: "http://uri.etsi.org/19602/SvcType/WalletSolution/Revocation"
 
   demo-verifier:
-    image: ghcr.io/diggsweden/wallet-verifier-test-web:0.1.15
+    image: ghcr.io/diggsweden/wallet-verifier-test-web:0.1
     container_name: demo-verifier
     environment:
       HOST_API: "http://verifier-backend:8080/verifier"
