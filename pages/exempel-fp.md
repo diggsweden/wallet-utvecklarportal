@@ -52,6 +52,16 @@ curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/clou
 /tmp/cloudflared tunnel --url http://localhost:8080
 ```
 
+> **Obs om felloggar i tunneln:**
+> Innan tjänsterna har startats i Steg 3 kommer Cloudflare-tunneln kontinuerligt att logga
+> `connect: connection refused` mot port `8080`.
+> Detta är helt normalt och upphör så snart Docker Compose-miljön startats.
+>
+> **Viktigt om tunnelns livscykel:**
+> Cloudflares snabbtunnlar (`https://*.trycloudflare.com`) tilldelar en ny slumpmässig domän vid varje omstart.
+> Om tunneln avbryts eller startas om måste du uppdatera `.env` och köra om Steg 2 (certifikatgenereringen),
+> eftersom certifikatets SAN är strikt bundet till den specifika tunneldomänen.
+
 Kopiera den tilldelade HTTPS-adressen från loggen (t.ex. `https://random-namn.trycloudflare.com`) och skapa filen `.env`
 i din projektmapp:
 
@@ -79,11 +89,16 @@ Kör följande skript i samma mapp för att generera certifikaten och keystore:
 [//]: # (spell-checker:disable)
 
 ```bash
-# Läs domän från .env (eller använd localhost som fallback)
+# Läs domän från .env
 if [ -f .env ]; then
   export $(grep -v '^#' .env | xargs)
 fi
-CLIENT_HOST="${VERIFIER_CLIENT_ID:-localhost}"
+
+if [ -z "${VERIFIER_CLIENT_ID:-}" ]; then
+  echo "Fel: VERIFIER_CLIENT_ID saknas. Skapa .env enligt Steg 1 först." >&2
+  exit 1
+fi
+CLIENT_HOST="${VERIFIER_CLIENT_ID}"
 
 # 1. Skapa lokal Root CA (EC P-256)
 openssl ecparam -name prime256v1 -genkey -noout -out ca_key.pem
@@ -126,7 +141,7 @@ Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier_backend.p12
 Den sätter upp:
 
 - **`verifier-backend`**:
-  EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.12.0`).
+  EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
 - **`trust-validator`**:
   EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.3.1-alpha`),
   förkonfigurerad med en LoTE som litar på Testplattform för digital identitetsplånbok
@@ -138,7 +153,7 @@ Den sätter upp:
 ```yaml
 services:
   verifier-backend:
-    image: ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.12.0
+    image: ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0
     container_name: verifier-backend
     volumes:
       - ./verifier_backend.p12:/opt/common/verifier_backend.p12:ro
@@ -201,6 +216,18 @@ Starta tjänsterna:
 
 ```bash
 docker compose up -d
+```
+
+### Kontrollera att tjänsterna svarar
+
+Verifiera att backend och tunnel är redo innan du testar inloggningen i appen:
+
+```bash
+# Verifiera lokal backend (ska svara HTTP 200)
+curl -sI http://localhost:8080/verifier/actuator/health
+
+# Verifiera publik tunnel (ska svara HTTP 200)
+curl -sI "${VERIFIER_PUBLIC_URL}/verifier/actuator/health"
 ```
 
 ---
