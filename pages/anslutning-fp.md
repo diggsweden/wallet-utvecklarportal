@@ -23,6 +23,8 @@ En förlitande part är den organisation eller tjänst som tar emot och verifier
 
 - **OpenID4VP-stöd:** Er tjänst följer OpenID4VP (se vad vår app stödjer under
   [Stöd för OpenID4VP](planboksappen/openid4vp.md)).
+- **Åtkomstcertifikat och registreringscertifikat från Digg:** Verifieraren behöver ett åtkomstcertifikat för att
+  signera förfrågningar och ett registreringscertifikat att skicka med i dem.
 - **Nätverksåtkomst:** Åtkomst till Testplattform för digital identitetsplånbok (publik på internet) från app och
   telefon.
 - **Betrodd HTTPS-domän:** Trafik mellan telefonen och er verifierare måste gå via en av android/ios betrodd
@@ -33,6 +35,54 @@ En förlitande part är den organisation eller tjänst som tar emot och verifier
   ([List of Trusted Entities](https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json),
   se även [Tillitsramverk & Tillitslistor](standarder-och-profiler.md#tillitsramverk--tillitslistor-lote)).
 - **Vitlistning** I dagsläget har diggs plånbok ingen vitlista för betrodda tjänster utan litar på alla.
+
+---
+
+## Hämta och konfigurera certifikat
+
+Digg tillhandahåller för närvarande publikt certifikatmaterial för anslutning till testplattformen.
+De CA:er som utfärdar testmaterialets åtkomst- och registreringscertifikat är för närvarande betrodda via
+[testplattformens LoTE](https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json).
+
+1. **Hämta åtkomstcertifikatet:**
+   - Ladda ned
+     [PKCS#12-filen (`.p12`)](https://wallet.sandbox.digg.se/trust-source/utvecklarportalen/verifier/verifier-access-certificate.p12).
+     Filen innehåller åtkomstcertifikat, privat nyckel och certifikatkedja.
+     Lösenordet för det publika testmaterialet är `abcd1234`.
+   - Konfigurera verifieraren att signera OpenID4VP-förfrågningar med den privata nyckeln i `.p12`-filen.
+     Ange `.p12`-filens sökväg och lösenordet ovan.
+     Den privata nyckelns alias är `verifier_access_certificate`.
+   - Det gemensamma testcertifikatet har DNS-namnet `localhost`.
+     Förfrågans `client_id` ska därför vara `x509_san_dns:localhost`.
+     Diggs plånboksapp validerar ännu inte certifikatets SAN.
+2. **Hämta registreringscertifikatet:**
+   - Ladda ned
+     [registreringscertifikatet som signerad JWT](https://wallet.sandbox.digg.se/trust-source/utvecklarportalen/verifier/registration_certificate.jwt).
+   - Lägg den nedladdade JWT-strängen oförändrad i `data` i ett objekt i `verifier_info`-arrayen,
+     med `format` satt till `registration_cert`.
+     Fältet ingår i den signerade OpenID4VP-förfrågan (*Request Object*):
+
+     ```json
+     {
+       "verifier_info": [
+         {
+           "format": "registration_cert",
+           "data": "<hela den nedladdade JWT-strängen>"
+         }
+       ]
+     }
+     ```
+
+     Utdraget visar endast registreringscertifikatets placering; övriga förfrågningsfält behöver också anges.
+     Se [Verifier Info i OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.11).
+3. **Konfigurera den publika HTTPS-adressen:**
+   - Ange verifierarens publika adress så att plånboksappen kan hämta förfrågningar och skicka presentationer dit.
+   - Adressen behöver ett betrott HTTPS-certifikat.
+     Åtkomstcertifikatet används för signering och ersätter inte HTTPS-certifikatet.
+
+Det publika certifikatmaterialet är en tillfällig lösning.
+Framöver behöver ni beställa åtkomst- och registreringscertifikat utfärdade till er organisation,
+även för användning i testplattformen.
 
 ---
 
