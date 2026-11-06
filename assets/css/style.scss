@@ -15,6 +15,7 @@ $bg-light: #F5F5F5;
 $primary-green: #546850;
 $light-green: #D6E0D2;
 $accent-red: #A0483C;
+$accent-red-dark: #672f27;
 
 body {
   font-family: 'Ubuntu', sans-serif;
@@ -80,6 +81,12 @@ body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.1em;
   font-weight: 400;
+
+  a {
+    // We need a darker color to provide enough contrast
+    color: $accent-red-dark;
+    text-decoration-color: $accent-red-dark;
+  }
   
   .inner {
     padding: 10px 10px;
