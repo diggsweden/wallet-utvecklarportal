@@ -15,6 +15,7 @@ $bg-light: #F5F5F5;
 $primary-green: #546850;
 $light-green: #D6E0D2;
 $accent-red: #A0483C;
+$accent-red-dark: #672f27;
 
 body {
   font-family: 'Ubuntu', sans-serif;
@@ -80,6 +81,12 @@ body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.1em;
   font-weight: 400;
+
+  a {
+    // We need a darker color to provide enough contrast
+    color: $accent-red-dark;
+    text-decoration-color: $accent-red-dark;
+  }
   
   .inner {
     padding: 10px 10px;
@@ -272,4 +279,49 @@ dl dt {
 
 dl dd {
   margin-top: 0.5ex;
+}
+
+.card {
+  padding: 8px 16px 0 16px;
+  border-left: 6px solid #666;
+  color: #2B2A28;
+  margin: 20px 0;
+
+  header {
+    color: $text-dark;
+    text-transform: uppercase;
+  }
+
+  main {
+    .title {
+      font-weight: bold;
+      font-size: 22px;
+      margin: 1ex 0 1.5ex 0;
+    }
+  }
+}
+
+.card.important {
+  background: #FFF8E7;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #ECD2A5;
+  border-left: 6px solid #D9822B;
+
+  header {
+    color: $primary-green;
+  }
+
+  footer {
+    margin-top: 2em;
+
+    p {
+      color: #666;
+      margin: 0 0 0 0;
+
+      strong {
+        color: $primary-green;
+      }
+    }
+  }
 }
