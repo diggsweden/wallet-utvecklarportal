@@ -57,3 +57,11 @@ För nuvarande har vi inga planerade förändringar.
     <p>Nya fält visas efter delning av uppgifter från plånboken</p>
   </main>
 </div>
+
+<div class="card" role="note">
+  <header>Genomförd · 10 september</header>
+  <main>
+    <div class="title">Testplattformen tillgänglig för pilottest</div>
+    <p>Nu är Testplattform för digital identitetsplånbok tillgänglig för ett begränsat antal aktörer.</p>
+  </main>
+</div>
