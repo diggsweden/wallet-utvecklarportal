@@ -42,15 +42,15 @@ tables = false
 
 [MD033]
 allowed_elements = [
+    "a",
+    "br",
     "div",
-    "span",
-    "strong",
-    "p",
-    "ul",
-    "li",
+    "figcaption",
     "figure",
     "img",
-    "figcaption",
-    "a",
-    "br"
+    "li",
+    "p",
+    "span",
+    "strong",
+    "ul"
 ]
