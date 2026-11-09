@@ -18,10 +18,9 @@ För Testplattform för digital identitetsplånbok
 
 ## Pågående drift
 
-<!--
 Vi har inga kända driftstörningar.
--->
 
+<!--
 <div class="card important" role="note">
   <header>Pågående driftstörning</header>
   <main>
@@ -33,13 +32,13 @@ Vi har inga kända driftstörningar.
     <p><strong>Status: felsökning pågår</strong></p>
   </footer>
 </div>
+-->
 
 ## Kommande händelser
 
-<!--
-För nuvarande har vi inga kommande händelser att informera om.
--->
+Vi har för nuvarande inga kommande händelser att informera om.
 
+<!--
 <div class="card" role="note">
   <header>Planerat underhåll · 3 oktober klockan 09:00-10:00</header>
   <main>
@@ -47,9 +46,13 @@ För nuvarande har vi inga kommande händelser att informera om.
     <p>Korta avbrott kan förekomma. Ingen åtgärd krävs för anslutna testare</p>
   </main>
 </div>
+-->
 
 ## Tidigare händelser
 
+Vi har inga tidigare händelser att visa här.
+
+<!--
 <div class="card" role="note">
   <header>Genomförd · 24 september</header>
   <main>
@@ -65,3 +68,4 @@ För nuvarande har vi inga kommande händelser att informera om.
     <p>Nu är Testplattform för digital identitetsplånbok tillgänglig för ett begränsat antal aktörer.</p>
   </main>
 </div>
+-->
