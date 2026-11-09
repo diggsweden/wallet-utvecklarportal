@@ -51,7 +51,7 @@ Observera att dokumentet inte är komplett och uppdateras löpande i takt med at
 | `client_metadata`    | ✅                                                                              |
 | `request_uri_method` | ✅                                                                              |
 | `transaction_data`   | ❌                                                                              |
-| `verifier_info`      | ❌                                                                              |
+| `verifier_info`      | ✅                                                                              |
 | `nonce`              | ✅                                                                              |
 | `scope`              | ❌                                                                              |
 | `response_mode`      | ✅                                                                              |
@@ -68,7 +68,8 @@ Stöds.
 
 ### 1.4 [Client identifiers och prefixes](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.9.3) {#client-identifiers-och-prefixes}
 
-Appen stöder för närvarande endast client identifier prefix `x509_san_dns`.
+Appen stöder client identifier prefix `x509_san_dns` och `x509_hash`.
+Anslutningsexemplet använder `x509_hash` med en certifikathash beräknad från åtkomstcertifikatet.
 
 Appen stöder ej
 ["pre-registered clients"](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-fallback).
@@ -80,7 +81,7 @@ Appen stöder ej
 | `decentralized_identifier` | ❌    |
 | `verifier_attestation`     | ❌    |
 | `x509_san_dns`             | ✅    |
-| `x509_hash`                | ❌    |
+| `x509_hash`                | ✅    |
 | `origin`                   | ❌    |
 
 ### 1.5 [Request URI method POST](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-request-uri-method-post) {#request-uri-method-post}

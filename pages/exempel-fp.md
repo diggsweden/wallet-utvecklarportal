@@ -59,85 +59,87 @@ curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/clou
 >
 > **Viktigt om tunnelns livscykel:**
 > Cloudflares snabbtunnlar (`https://*.trycloudflare.com`) tilldelar en ny slumpmässig domän vid varje omstart.
-> Om tunneln avbryts eller startas om måste du uppdatera `.env` och köra om Steg 2 (certifikatgenereringen),
-> eftersom certifikatets SAN är strikt bundet till den specifika tunneldomänen.
+> Om tunneln avbryts eller startas om måste du uppdatera `VERIFIER_PUBLIC_URL` i `.env` och köra
+> `docker compose up -d` igen.
+> Klientidentifieraren och de nedladdade certifikaten kan behållas i den nuvarande testmiljön, se Steg 2.
 
-Kopiera den tilldelade HTTPS-adressen från loggen (t.ex. `https://random-namn.trycloudflare.com`) och skapa filen `.env`
-i din projektmapp:
+Kopiera den tilldelade HTTPS-adressen från loggen (t.ex. `https://random-namn.trycloudflare.com`).
+Skapa filen `.env` i projektets rotmapp med följande innehåll.
+Ersätt exempeladressen i `VERIFIER_PUBLIC_URL` med din tunneladress.
 
-```bash
-TUNNEL_URL="https://random-namn.trycloudflare.com" # Ersätt med din faktiska tunnel-URL
-TUNNEL_HOST=$(echo "$TUNNEL_URL" | sed -e 's|^https://||' -e 's|/.*||')
-
-cat << EOF > .env
-VERIFIER_PUBLIC_URL=${TUNNEL_URL}
-VERIFIER_CLIENT_ID=${TUNNEL_HOST}
+```dotenv
+VERIFIER_PUBLIC_URL=https://random-namn.trycloudflare.com
+VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_PASSWORD=abcd1234
+VERIFIER_ACCESS_CERTIFICATE_ALIAS=verifier_access_certificate
 DEMO_PUBLIC_BASE_URL=http://localhost:3002
-EOF
 ```
 
 ---
 
-## Steg 2: Skapa certifikatkedja och keystore
+## Steg 2: Hämta åtkomstcertifikat och registreringscertifikat
 
-Verifierarens backend (`eudi-srv-verifier-endpoint`) signerar förfrågningar enligt OpenID4VP och kräver en
-PKCS#12-keystore (`verifier_backend.p12`) med en tvåstegs certifikatkedja (Root CA + verifierarcertifikat).
-Certifikatets SAN (*Subject Alternative Name*) måste matcha verifierarens `client_id` (tunneldomänen).
+Hämta följande testmaterial från Digg:
 
-Kör följande skript i samma mapp för att generera certifikaten och keystore:
+- **`verifier-access-certificate.p12`:** En `.p12`-fil med åtkomstcertifikat, privat nyckel och certifikatkedja.
+  Backend använder den för att signera OpenID4VP-förfrågningar.
+  Se till att filen är läsbar för användaren som kör backend-containern.
+- **`registration_certificate.jwt`:** Ett registreringscertifikat som signerad JWT.
+  Backend skickar med det i förfrågningarna för avsedd användning med id `1`.
 
-[//]: # (spell-checker:disable)
+Exemplet förutsätter lösenordet `abcd1234` och nyckelaliaset `verifier_access_certificate`.
+Kontrollera uppgifterna som följer med materialet och anpassa `.env` vid behov.
+Lösenordet för `.p12`-filen och den privata nyckelns lösenord förutsätts vara samma.
+
+> **Om klientidentifieraren och den publika adressen:** Compose-exemplet använder `VERIFIER_CLIENT_ID` från `.env`
+> för att sätta EU-verifierarens miljövariabel `VERIFIER_ORIGINALCLIENTID`.
+> Med `VERIFIER_CLIENTIDPREFIX=x509_hash` blir förfrågans `client_id` då `x509_hash:<certifikathash>`.
+> Värdet i `VERIFIER_CLIENT_ID` ska vara SHA-256 av åtkomstcertifikatet i DER-format,
+> kodat som base64url utan utfyllnad (`=`), utan prefixet `x509_hash:`.
+> Kommandona nedan beräknar värdet från lövcertifikatet i `.p12`-filen och lägger till det i `.env`.
+> Behåll värdet även när tunneln får en ny adress och beräkna om det när åtkomstcertifikatet byts ut.
+> Den publika adressen måste fortfarande ha ett betrott HTTPS-certifikat.
+
+Kör i samma projektmapp som `.env`:
 
 ```bash
-# Läs domän från .env
-if [ -f .env ]; then
-  export $(grep -v '^#' .env | xargs)
-fi
+set -euo pipefail
 
-if [ -z "${VERIFIER_CLIENT_ID:-}" ]; then
-  echo "Fel: VERIFIER_CLIENT_ID saknas. Skapa .env enligt Steg 1 först." >&2
-  exit 1
-fi
-CLIENT_HOST="${VERIFIER_CLIENT_ID}"
+. ./.env
 
-# 1. Skapa lokal Root CA (EC P-256)
-openssl ecparam -name prime256v1 -genkey -noout -out ca_key.pem
-openssl req -new -x509 -key ca_key.pem -out ca_cert.pem -days 3650 \
-  -subj "/C=SE/O=Test CA/CN=Test Verifier Root CA"
+curl --fail --show-error --location \
+  https://wallet.sandbox.digg.se/trust-source/utvecklarportalen/verifier/verifier-access-certificate.p12 \
+  --output verifier-access-certificate.p12
+curl --fail --show-error --location \
+  https://wallet.sandbox.digg.se/trust-source/utvecklarportalen/verifier/registration_certificate.jwt \
+  --output registration_certificate.jwt
 
-# 2. Skapa privat nyckel och CSR för Verifier Backend
-openssl ecparam -name prime256v1 -genkey -noout -out verifier_key.pem
+VERIFIER_CLIENT_ID=$(
+  openssl pkcs12 -in verifier-access-certificate.p12 -clcerts -nokeys \
+    -passin "pass:${VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_PASSWORD}" |
+    openssl x509 -outform DER |
+    openssl dgst -sha256 -binary |
+    openssl base64 -A |
+    tr '+/' '-_' | tr -d '='
+)
+printf 'VERIFIER_CLIENT_ID=%s\n' "$VERIFIER_CLIENT_ID" >> .env
+printf 'client_id=x509_hash:%s\n' "$VERIFIER_CLIENT_ID"
 
-cat << EOF > verifier_ext.cnf
-basicConstraints = CA:FALSE
-keyUsage = digitalSignature, nonRepudiation
-extendedKeyUsage = serverAuth, clientAuth
-subjectAltName = DNS:localhost,DNS:${CLIENT_HOST}
-EOF
-
-openssl req -new -key verifier_key.pem -out verifier_csr.pem \
-  -subj "/C=SE/O=Min Organisation/CN=Verifier Backend"
-
-# 3. Signera verifierarcertifikatet med Root CA
-openssl x509 -req -in verifier_csr.pem -CA ca_cert.pem -CAkey ca_key.pem \
-  -CAcreateserial -out verifier_cert.pem -days 365 -extfile verifier_ext.cnf
-
-# 4. Paketera certifikatkedjan i verifier_backend.p12
-cat verifier_cert.pem ca_cert.pem > full_chain.pem
-openssl pkcs12 -export -in full_chain.pem -inkey verifier_key.pem \
-  -out verifier_backend.p12 -name "verifier_backend" -passout pass:pass1234
-
-# 5. Sätt läsrättigheter så att containern kan läsa filen
-chmod 644 verifier_backend.p12
+printf 'VERIFIER_REGISTRATION_CERTIFICATE=%s\n' \
+  "$(tr -d '\r\n' < registration_certificate.jwt)" >> .env
 ```
 
-[//]: # (spell-checker:enable)
+Kommandona ovan sparar registreringscertifikatets JWT-sträng på en rad i `.env`,
+så att den kan läsas in via `environment` för `verifier-backend` i nästa steg.
+
+Det publika certifikatmaterialet och lösenordet tillhandahålls tillfälligt för användning i testmiljön.
+Framöver behöver ni beställa åtkomst- och registreringscertifikat för er egen organisation även för att använda
+testplattformen.
 
 ---
 
 ## Steg 3: Starta tjänsterna med Docker Compose
 
-Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier_backend.p12`.
+Skapa en `docker-compose.yaml` i samma mapp som `.env` och `verifier-access-certificate.p12`.
 Den sätter upp:
 
 - **`verifier-backend`**:
@@ -156,19 +158,21 @@ services:
     image: ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0
     container_name: verifier-backend
     volumes:
-      - ./verifier_backend.p12:/opt/common/verifier_backend.p12:ro
+      - ./verifier-access-certificate.p12:/opt/common/verifier-access-certificate.p12:ro
     environment:
       SPRING_WEBFLUX_BASEPATH: "/verifier"
       VERIFIER_PUBLICURL: "${VERIFIER_PUBLIC_URL:?Ange VERIFIER_PUBLIC_URL i .env}/verifier"
-      VERIFIER_ORIGINALCLIENTID: "${VERIFIER_CLIENT_ID:-localhost}"
-      VERIFIER_CLIENTIDPREFIX: "x509_san_dns"
-      SPRING_PROFILES_ACTIVE: "self-signed"
+      VERIFIER_ORIGINALCLIENTID: "${VERIFIER_CLIENT_ID:?Ange VERIFIER_CLIENT_ID i .env}"
+      VERIFIER_CLIENTIDPREFIX: "x509_hash"
       VERIFIER_ACCESS_CERTIFICATE_SIGNING_ALGORITHM: "ES256"
-      VERIFIER_ACCESS_CERTIFICATE_KEYSTORE: "file:///opt/common/verifier_backend.p12"
+      VERIFIER_ACCESS_CERTIFICATE_KEYSTORE: "file:///opt/common/verifier-access-certificate.p12"
       VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_TYPE: "PKCS12"
-      VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_PASSWORD: "pass1234"
-      VERIFIER_ACCESS_CERTIFICATE_ALIAS: "verifier_backend"
-      VERIFIER_ACCESS_CERTIFICATE_PASSWORD: "pass1234"
+      VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_PASSWORD: "${VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_PASSWORD:?Ange lösenord i .env}"
+      VERIFIER_ACCESS_CERTIFICATE_ALIAS: "${VERIFIER_ACCESS_CERTIFICATE_ALIAS:?Ange nyckelalias i .env}"
+      VERIFIER_ACCESS_CERTIFICATE_PASSWORD: "${VERIFIER_ACCESS_CERTIFICATE_KEYSTORE_PASSWORD:?Ange lösenord i .env}"
+      VERIFIER_INTENDEDUSES_0_ID: "1"
+      VERIFIER_INTENDEDUSES_0_DESCRIPTION: "Identifiering med personuppgifter"
+      VERIFIER_INTENDEDUSES_0_REGISTRATIONCERTIFICATE: "${VERIFIER_REGISTRATION_CERTIFICATE:?Ange registreringscertifikat i .env}"
       VERIFIER_DEFAULTHTTPRESPONSEMODE: "DirectPost"
       VERIFIER_ATTESTATIONCLASSIFICATIONS_PID_VCTS: "urn:eudi:pid:1"
       VERIFIER_TRUST_VALIDATOR_SERVICE_URL: "http://trust-validator:8080/trust-validator/trust"
@@ -227,6 +231,7 @@ Verifiera att backend och tunnel är redo innan du testar inloggningen i appen:
 curl -sI http://localhost:8080/verifier/actuator/health
 
 # Verifiera publik tunnel (ska svara HTTP 200)
+. ./.env
 curl -sI "${VERIFIER_PUBLIC_URL}/verifier/actuator/health"
 ```
 
