@@ -34,10 +34,10 @@ Vi har inga kända driftstörningar.
   </footer>
 </div>
 
-## Kommande förändringar
+## Kommande händelser
 
 <!--
-För nuvarande har vi inga planerade förändringar.
+För nuvarande har vi inga kommande händelser att informera om.
 -->
 
 <div class="card" role="note">
@@ -48,7 +48,7 @@ För nuvarande har vi inga planerade förändringar.
   </main>
 </div>
 
-## Genomförda förändringar
+## Tidigare händelser
 
 <div class="card" role="note">
   <header>Genomförd · 24 september</header>
