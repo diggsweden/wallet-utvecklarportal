@@ -20,7 +20,7 @@ För Testplattform för digital identitetsplånbok
 
 Vi har inga kända driftstörningar.
 
-<!--
+<!-- Example message for service interruption. Please update with actual information.
 <div class="card important" role="note">
   <header>Pågående driftstörning</header>
   <main>
