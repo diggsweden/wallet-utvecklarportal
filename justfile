@@ -218,7 +218,7 @@ lint-sembr:
     print_header "SEMANTIC LINE BREAKS (SNAPPER)"
     if find . -type f -iname '*.md' -print0 |
         grep -zve 'node_modules' |
-        xargs -0 snapper-fmt --check 2> /dev/null; then
+        xargs -0 snapper-fmt --native --check 2> /dev/null; then
 
       print_success "No missing line breaks detected"
       emit_status "pass" "ok"
@@ -268,7 +268,7 @@ lint-sembr-fix:
     print_header "SEMANTIC LINE BREAKS (SNAPPER)"
     if find . -type f -iname '*.md' -print0 |
         grep -zve 'node_modules' |
-        xargs -0 snapper-fmt --in-place; then
+        xargs -0 snapper-fmt --native --in-place; then
       print_success "Text formatted"
     else
       print_error "Something went wrong"
