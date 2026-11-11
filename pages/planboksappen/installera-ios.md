@@ -33,7 +33,8 @@ Den kan inte installeras på enheter med äldre iOS-version.
 
    <img src="../../assets/images/screenshots/testflight-banner-oppna.jpg" alt="TestFlight-banner högst upp i webbläsaren med knappen Öppna" width="500" style="display: block;">
 
-   Alternativt kan du scrolla ned till *Identitetsplånboken - Demo Beta* och klicka på **View in TestFlight** (Visa i TestFlight):
+   Alternativt kan du scrolla ned till *Identitetsplånboken - Demo Beta* och klicka på **View in TestFlight** (Visa i
+   TestFlight):
 
    <img src="../../assets/images/screenshots/testflight-view-in-testflight.png" alt="Sidan på testflight.apple.com som visar Identitetsplånboken - Demo Beta med knappen View in TestFlight" width="350" style="display: block;">
 
@@ -45,8 +46,10 @@ Den kan inte installeras på enheter med äldre iOS-version.
 
 ## Nästa steg
 
-Gå vidare till [Första uppstart av appen och hämtning av test-ID (PID)](prova-planboksappen.md#3-första-uppstart-av-appen-och-hämtning-av-test-id-pid).
+Gå vidare till
+[Första uppstart av appen och hämtning av test-ID (PID)](prova-planboksappen.md#3-första-uppstart-av-appen-och-hämtning-av-test-id-pid).
 
 ## Återkoppling och Support
 
-* Vid frågor, feedback eller tekniska problem, kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).
+* Vid frågor, feedback eller tekniska problem,
+  kontakta utvecklingsteamet på [digitalwallet@digg.se](mailto:digitalwallet@digg.se).
