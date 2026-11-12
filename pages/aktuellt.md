@@ -12,7 +12,15 @@ description: >
 
 # Aktuellt
 
-För Testplattform för digital identitetsplånbok
+Testplattform för digital identitetsplånbok gör det möjligt för myndigheter,
+företag och andra organisationer att testa sina tjänster,
+bidra till utvecklingen och få kunskap om hur plånböckerna kan användas i praktiken.
+
+I december 2026 lanserar vi Testplattform för digital identitetsplånbok som gör det möjligt för fler aktörer,
+exempelvis förlitande parter och utfärdare av attributsintyg,
+att testa lösningar och delta i utvecklingen av ekosystemet.
+Läs mer på
+[digg.se](https://www.digg.se/digitala-tjanster/digital-identitetsplanbok/testplattform-for-digital-identitetsplanbok).
 
 ---
 
