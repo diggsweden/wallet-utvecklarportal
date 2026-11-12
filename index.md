@@ -9,19 +9,21 @@ title: Wallet Utvecklarportal
 
 # Välkommen till Utvecklarportalen
 
-<div style="background: #FFF8E7; padding: 16px; border-radius: 6px; border: 1px solid #ECD2A5; border-left: 6px solid #D9822B; color: #2B2A28; margin: 20px 0;" role="note">
-  <span style="font-size: 1.2em; margin-right: 8px;">⚠️</span><strong>Viktig information om testdata
+<div class="card important" role="note">
+  <main>
+  <span class="icon">⚠️</span><strong>Viktig information om testdata
   och Testplattform för digital identitetsplånbok</strong>
-  <p style="margin: 10px 0 10px 0; font-size: 0.95em;">Denna utvecklarportal
+  <p>Denna utvecklarportal
   och Testplattform för digital identitetsplånbok
   (inklusive testplånbok, test-PID, testutfärdare och verifieringsflöden)
   är enbart avsedda för test, demonstration och utvecklingsändamål.</p>
-  <ul style="margin: 0; padding-left: 20px; font-size: 0.9em; line-height: 1.5;">
+  <ul>
     <li><strong>Endast fiktiv testdata:</strong>
     Testplattformen och alla testflöden använder uteslutande fiktiv testdata.</li>
     <li><strong>Inga verkliga personuppgifter:</strong> Miljön får under inga omständigheter användas med verkliga personuppgifter eller produktionsdata.</li>
     <li><strong>Ej i produktion:</strong> Testtjänsterna (såsom Diggs test-PID-utfärdare och testplånbok) är inte produktionssatta tjänster och representerar inte en skarp driftsättning eller färdiga produktionsmiljöer.</li>
   </ul>
+  </main>
 </div>
 
 Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet).
@@ -48,8 +50,8 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 
 1. **Digital plånbok (EUDI Wallet)** – Den mobila appen där användaren lagrar och väljer att dela sina intyg.
 2. **PID-utfärdare** – Tjänsten som utfärdar och signerar det grundläggande identitetsintyget (PID) – i testmiljön tillhandahålls denna i dagsläget av Digg (i framtida produktion är det Polismyndigheten).
-    <div style="background: #e7f5ff; padding: 12px; border-radius: 4px; border-left: 4px solid #0066cc; margin: 10px 0 15px 25px;" role="note">
-      <span style="color: #0052cc; margin-right: 8px;" aria-label="Information">ℹ️</span>
+    <div class="card info" role="note">
+      <span class="icon">ℹ️</span>
       Vi använder enbart fiktiva identiteter med svenska testpersonnummer.
     </div>
 3. **Förlitande part** – Den organisation eller tjänst som tar emot och verifierar intyg via en **Verifier Backend**.
