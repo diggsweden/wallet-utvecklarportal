@@ -115,7 +115,7 @@ alias a11y := check-a11y
 
 # ▪ Run all checks (linters + link checks + accessibility)
 [group('verify')]
-verify: _ensure-devtools check-tools lint-all check-links check-a11y
+verify: _ensure-devtools check-tools lint-all
 
 
 # ==================================================================================== #
@@ -124,7 +124,11 @@ verify: _ensure-devtools check-tools lint-all check-links check-a11y
 
 # ▪ Run all linters with summary
 [group('lint')]
-lint-all: _ensure-devtools lint-spelling lint-sembr
+lint-all: lint-fast check-links check-a11y
+
+# Run fast linters only (excludes checks for links and accessibility)
+[group('lint')]
+lint-fast: _ensure-devtools lint-spelling lint-sembr
     @{{devtools_dir}}/scripts/verify.sh
 
 # Validate version control
