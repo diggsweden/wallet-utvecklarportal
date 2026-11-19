@@ -5,6 +5,7 @@
 [tools]
 ruby = "3.3"
 node = "24"
+pipx = "latest"
 "aqua:casey/just" = "1.46.0"
 "aqua:rhysd/actionlint" = "v1.7.12"
 "aqua:zricethezav/gitleaks" = "v8.30.1"
