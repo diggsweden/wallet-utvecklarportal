@@ -58,22 +58,19 @@ Vi har för nuvarande inga kommande händelser att informera om.
 
 ## Tidigare händelser
 
-Vi har inga tidigare händelser att visa här.
-
-<!--
 <div class="card" role="note">
-  <header>Genomförd · 24 september</header>
+  <header>Genomförd · 19 november</header>
   <main>
-    <div class="title">Exempelflödet för verifiering har uppdaterats</div>
-    <p>Nya fält visas efter delning av uppgifter från plånboken</p>
+    <div class="title">Uppdatering av plånboksappen och exemplet för förlitande parter</div>
+    <p>
+      Plånboksappens uppdatering innehåller bland annat validering av den förlitande partens åtkomstcertifikat och
+      registreringscertifikat.
+      Vi har också uppdaterat <a href="exempel-fp.html">exemplet för förlitande parter</a>.
+    </p>
+    <p>
+      Uppdatera appen på de telefoner ni använder för test.
+      Om ni använder exemplet behöver ni följa instruktionerna och sätta upp
+      <a href="exempel-fp.html">exemplet</a> på nytt innan ni fortsätter testa.
+    </p>
   </main>
 </div>
-
-<div class="card" role="note">
-  <header>Genomförd · 10 september</header>
-  <main>
-    <div class="title">Testplattformen tillgänglig för pilottest</div>
-    <p>Nu är Testplattform för digital identitetsplånbok tillgänglig för ett begränsat antal aktörer.</p>
-  </main>
-</div>
--->
