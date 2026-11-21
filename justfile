@@ -128,8 +128,10 @@ lint-all: lint-fast check-links check-a11y
 
 # Run fast linters only (excludes checks for links and accessibility)
 [group('lint')]
-lint-fast: _ensure-devtools lint-spelling lint-sembr
-    @{{devtools_dir}}/scripts/verify.sh
+lint-fast: _ensure-devtools
+    @{{devtools_dir}}/scripts/verify.sh \
+      --extension='Spelling|cspell|just lint-spelling' \
+      --extension='Semantic line breaks|snapper|just lint-sembr'
 
 # Validate version control
 [group('lint')]
