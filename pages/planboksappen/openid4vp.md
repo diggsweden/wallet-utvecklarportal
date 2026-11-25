@@ -109,7 +109,7 @@ Observera att appen endast stöder credentials med formatet `dc+sd-jwt`.
 | `trusted_authorities`                  | ❌                                       |
 | `require_cryptographic_holder_binding` | Appen tillhandahåller alltid key binding |
 | `claims`                               | ✅                                       |
-| `claim_sets`                           | ✅                                       |
+| `claim_sets`                           | ❌                                       |
 
 ### 2.2 [Trusted authorities query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-trusted-authorities-query) {#trusted-authorities-query}
 
@@ -145,6 +145,16 @@ Appen stöder endast response type `vp_token`.
 | ----------------- | ----- |
 | `direct_post`     | ✅    |
 | `direct_post.jwt` | ✅    |
+
+Vid `direct_post.jwt` krypterar appen svaret som en JWE. Verifieraren anger `alg` i sin JWK i `client_metadata.jwks`
+och erbjuder `enc`-värden i `encrypted_response_enc_values_supported`. Om listan utelämnas används `A128GCM`.
+När både `A256GCM` och `A128GCM` erbjuds föredrar appen `A256GCM`.
+[OpenID4VP, avsnitt 8.3](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-8.3)
+
+| JWE-parameter | Algoritmer                                                      | iOS | Android |
+| ------------- | --------------------------------------------------------------- | --- | ------- |
+| `alg`         | `ECDH-ES`, `ECDH-ES+A128KW`, `ECDH-ES+A192KW`, `ECDH-ES+A256KW` | ✅  | ✅      |
+| `enc`         | `A128GCM`, `A256GCM`                                            | ✅  | ✅      |
 
 ---
 
