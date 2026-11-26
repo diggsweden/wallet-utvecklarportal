@@ -61,7 +61,7 @@ curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/clou
 > Cloudflares snabbtunnlar (`https://*.trycloudflare.com`) tilldelar en ny slumpmässig domän vid varje omstart.
 > Om tunneln avbryts eller startas om måste du uppdatera `VERIFIER_PUBLIC_URL` i `.env` och köra
 > `docker compose up -d` igen.
-> Klientidentifieraren och de nedladdade certifikaten kan behållas i den nuvarande testmiljön, se Steg 2.
+> Klientidentifieraren och de nedladdade certifikaten kan behållas i den nuvarande testplattformen, se Steg 2.
 
 Kopiera den tilldelade HTTPS-adressen från loggen (t.ex. `https://random-namn.trycloudflare.com`).
 Skapa filen `.env` i projektets rotmapp med följande innehåll.
@@ -131,7 +131,7 @@ printf 'VERIFIER_REGISTRATION_CERTIFICATE=%s\n' \
 Kommandona ovan sparar registreringscertifikatets JWT-sträng på en rad i `.env`,
 så att den kan läsas in via `environment` för `verifier-backend` i nästa steg.
 
-Det publika certifikatmaterialet och lösenordet tillhandahålls tillfälligt för användning i testmiljön.
+Det publika certifikatmaterialet och lösenordet tillhandahålls tillfälligt för användning i testplattformen.
 Framöver behöver ni beställa åtkomst- och registreringscertifikat för er egen organisation även för att använda
 testplattformen.
 

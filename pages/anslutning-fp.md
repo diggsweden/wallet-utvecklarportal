@@ -88,7 +88,7 @@ Framöver behöver ni beställa åtkomst- och registreringscertifikat för er eg
 
 ### Kontakt
 
-För tekniska frågor och hjälp med anslutningsprocessen och testmiljön, kontakta:
+För tekniska frågor och hjälp med anslutningsprocessen och testplattformen, kontakta:
 [digitalwallet@digg.se](mailto:digitalwallet@digg.se)
 
 ### Dokumentation och specifikationer
