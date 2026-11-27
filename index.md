@@ -27,8 +27,8 @@ title: Wallet Utvecklarportal
 </div>
 
 Detta är navet för dig som vill förstå, integrera och testa lösningar mot det svenska plånbokssystemet (EUDI Wallet).
-Portalen riktar sig till utvecklare och verifierare som vill ansluta sina tjänster eller prova på tekniken bakom den
-statliga identitetsplånboken.
+Portalen riktar sig till utvecklare och förlitande parter som vill ansluta sina tjänster eller prova på tekniken bakom
+den statliga identitetsplånboken.
 
 ## Mål & Vision
 
@@ -54,8 +54,7 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
       <span class="icon">ℹ️</span>
       Vi använder enbart fiktiva identiteter med svenska testpersonnummer.
     </div>
-3. **Verifierare (förlitande part)** – Den organisation eller tjänst som tar emot och verifierar intyg via en
-   **Verifier Backend**.
+3. **Förlitande part** – Den organisation eller tjänst som tar emot och verifierar intyg via en **Verifier Backend**.
 4. **Wallet Provider** – Leverantören som tillhandahåller plånboksinfrastrukturen och kommunikationsprotokollen.
 5. **Tillitsramverk** – Det regelverk och den tekniska infrastruktur (t.ex. tillitslistor) som säkerställer att alla
    aktörer litar på varandra.
