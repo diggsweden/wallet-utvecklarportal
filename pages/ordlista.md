@@ -31,9 +31,9 @@ Attributsintyg (Electronic Attestation of Attributes, EAA)
 : **Källa:** [EUDI ARF, bilaga 1 – Definitions](https://eudi.dev/3.0.0/annexes/annex-1/annex-1-definitions/)
 
 Certifikatmaterial
-: Det som Digg tillhandahåller för att ansluta en verifierare eller utfärdare till testplattformen:
+: Det som Digg tillhandahåller för att ansluta en förlitande part eller utfärdare till testplattformen:
   ett åtkomstcertifikat och ett registreringscertifikat.
-  För verifierare levereras åtkomstcertifikatet i en `.p12`-fil,
+  För förlitande parter levereras åtkomstcertifikatet i en `.p12`-fil,
   tillsammans med dess privata nyckel och certifikatkedja.
 
 Digital plånbok (EUDI Wallet)
@@ -52,14 +52,14 @@ EUDI Wallet Reference Framework (ARF)
 
 Förlitande part (Relying Party)
 : I ARF och i portalen en tjänsteleverantör som begär och tar emot attribut från plånboken.
-  I portalen kallad **verifierare**.
   Den organisation eller e-tjänst som tar emot och verifierar digitala intyg från användarens digitala plånbok för att
   till exempel identifiera en person eller kontrollera ett attribut.
 : Enligt ARF omfattar begreppet "wallet-relying party" i förordningen om europeisk digital identitet juridiskt även
   leverantörer av attesteringar (QEAA, PuB-EAA och icke-kvalificerade EAA).
   ARF använder det inte så, utan reserverar förlitande part för tjänsteleverantörer.
 : ARF använder *Verifier* bara för interaktioner mellan två plånböcker.
-  Portalen använder verifierare för samma roll som förlitande part, efter OpenID4VP.
+  I OpenID4VP kallas den som begär intyg *Verifier*.
+  I portalen är verifierare programvaran hos den förlitande parten, se Verifier Backend.
 : **Källa:**
   [EUDI ARF, avsnitt 3.11.1 – Relying Parties](https://eudi.dev/3.0.0/main/03-roles-within-the-eudi-wallet-ecosystem/#3111-relying-parties)
 
