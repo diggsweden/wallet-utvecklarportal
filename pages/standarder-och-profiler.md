@@ -49,6 +49,7 @@ För att utfärda den personliga identiteten (PID) och andra intyg till plånbok
 
 * **[OpenID for Verifiable Credential Issuance (OpenID4VCI)](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html)**
   * Vi använder proof-type `openid4vci-proof+jwt`.
+  * Se vad plånboksappen stödjer under [OpenID4VCI-stöd](planboksappen/openid4vci.md).
 * **[DPoP (Demonstrating Proof-of-Possession)](https://datatracker.ietf.org/doc/html/rfc9449)** – Används för att
   kryptografiskt binda tokens till plånboksinstansen.
 

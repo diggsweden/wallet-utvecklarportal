@@ -20,6 +20,8 @@ Observera att dokumentet inte är komplett och uppdateras löpande i takt med at
 
 ## Innehåll
 
+{: .page-toc}
+
 1. [Authorization request](#authorization-request)
    - [1.1 Parametrar](#parametrar)
    - [1.2 Scope values](#scope-values)
@@ -37,7 +39,8 @@ Observera att dokumentet inte är komplett och uppdateras löpande i takt med at
 4. [Djuplänkning](#djuplankning)
 5. [Wallet metadata](#wallet-metadata)
 6. [Verifier attestation JWT](#verifier-attestation-jwt)
-7. [High Assurance Interoperability Profile (HAIP)](#haip) {: .page-toc}
+7. [High Assurance Interoperability Profile (HAIP)](#haip)
+8. [Specifikationer](#specifikationer)
 
 ---
 
@@ -58,15 +61,15 @@ Observera att dokumentet inte är komplett och uppdateras löpande i takt med at
 | `client_id`          | Delvis – se [Client identifiers och prefixes](#client-identifiers-och-prefixes) |
 | `state`              | ✅                                                                              |
 
-### 1.2 [Scope values](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-using-scope-parameter-to-re) {#scope-values}
+### 1.2 Scope values {#scope-values}
 
 Stöds ej.
 
-### 1.3 [Response type vp_token](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-response-type-vp_token) {#response-type-vp-token}
+### 1.3 Response type vp_token {#response-type-vp-token}
 
 Stöds.
 
-### 1.4 [Client identifiers och prefixes](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.9.3) {#client-identifiers-och-prefixes}
+### 1.4 Client identifiers och prefixes {#client-identifiers-och-prefixes}
 
 Appen stöder client identifier prefix `x509_san_dns` och `x509_hash`.
 I [Anslut som förlitande part](../anslutning-fp.md) används `x509_hash` med en certifikathash beräknad från
@@ -85,12 +88,12 @@ Appen stöder ej
 | `x509_hash`                | ✅    |
 | `origin`                   | ❌    |
 
-### 1.5 [Request URI method POST](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-request-uri-method-post) {#request-uri-method-post}
+### 1.5 Request URI method POST {#request-uri-method-post}
 
 Appen stöder för närvarande ej att `wallet_metadata` eller `wallet_nonce` skickas med när POST-varianten av request URI
 används.
 
-### 1.6 [Verifier info](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-verifier-info) {#verifier-info}
+### 1.6 Verifier info {#verifier-info}
 
 Appen validerar i dagsläget inte metadata i verifier info eller PoP (Proof of Possession).
 
@@ -100,7 +103,7 @@ Appen validerar i dagsläget inte metadata i verifier info eller PoP (Proof of P
 
 Observera att appen endast stöder credentials med formatet `dc+sd-jwt`.
 
-### 2.1 [Credential query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-query) {#credential-query}
+### 2.1 Credential query {#credential-query}
 
 | Parameter                              | Stöds                                    |
 | -------------------------------------- | ---------------------------------------- |
@@ -112,12 +115,12 @@ Observera att appen endast stöder credentials med formatet `dc+sd-jwt`.
 | `claims`                               | ✅                                       |
 | `claim_sets`                           | ✅                                       |
 
-### 2.2 [Trusted authorities query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-trusted-authorities-query) {#trusted-authorities-query}
+### 2.2 Trusted authorities query {#trusted-authorities-query}
 
 Stöds ej.
 Appen har för närvarande ingen mekanism för att verifiera "trusted authorities".
 
-### 2.3 [Credential set query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-set-query) {#credential-set-query}
+### 2.3 Credential set query {#credential-set-query}
 
 Appen har delvis stöd för credential sets.
 När flera credentials anges i options-arrayen gör appen ingen antingen/eller-matchning,
@@ -126,7 +129,7 @@ utan väljer alltid det första alternativet.
 Appen respekterar däremot flaggan required och låter användaren välja om icke-obligatoriska credential queries ska
 presenteras eller inte.
 
-### 2.4 [Claims och claim sets](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-selecting-claims) {#claims-och-claim-sets}
+### 2.4 Claims och claim sets {#claims-och-claim-sets}
 
 Appen stöder endast grundläggande matchning av claims i en DCQL-query.
 Den matchar enbart attribut som definieras i `claims`-arrayen.
@@ -136,7 +139,7 @@ Vid avsaknad av `claims` parametern presenteras alla attribut från PID:en.
 
 ---
 
-## 3. [Response](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-response) {#response}
+## 3. Response {#response}
 
 Appen stöder endast response type `vp_token`.
 
@@ -149,21 +152,44 @@ Appen stöder endast response type `vp_token`.
 
 ---
 
-## 4. [Djuplänkning](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation) {#djuplankning}
+## 4. Djuplänkning {#djuplankning}
 
 Appen stöder endast presentation för länkar med följande URL-scheman:
 
 - `openid4vp://`
 - `haip-vp://`
 
-## 5. [Wallet metadata](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-metadata-authorizati) {#wallet-metadata}
+## 5. Wallet metadata {#wallet-metadata}
 
 Stöds ej.
 
-## 6. [Verifier attestation JWT](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-verifier-attestation-jwt) {#verifier-attestation-jwt}
+## 6. Verifier attestation JWT {#verifier-attestation-jwt}
 
 Stöds ej.
 
-## 7. [High Assurance Interoperability Profile (HAIP)](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html#name-openid-for-verifiable-prese) {#haip}
+## 7. High Assurance Interoperability Profile (HAIP) {#haip}
 
 Appen stöder ännu ej OpenID4VP-presentationer enligt HAIP.
+
+---
+
+## 8. Specifikationer {#specifikationer}
+
+Avsnitten på den här sidan motsvarar följande avsnitt i specifikationerna.
+
+| Avsnitt på sidan | Avsnitt i specifikationen |
+| --- | --- |
+| [1.2 Scope values](#scope-values) | [OpenID4VP 5.5. Using scope Parameter to Request Presentations](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-using-scope-parameter-to-re) |
+| [1.3 Response type vp_token](#response-type-vp-token) | [OpenID4VP 5.6. Response Type vp_token](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-response-type-vp_token) |
+| [1.4 Client identifiers och prefixes](#client-identifiers-och-prefixes) | [OpenID4VP 5.9.3. Defined Client Identifier Prefixes](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.9.3) |
+| [1.5 Request URI method POST](#request-uri-method-post) | [OpenID4VP 5.10. Request URI Method post](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-request-uri-method-post) |
+| [1.6 Verifier info](#verifier-info) | [OpenID4VP 5.11. Verifier Info](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-verifier-info) |
+| [2.1 Credential query](#credential-query) | [OpenID4VP 6.1. Credential Query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-query) |
+| [2.2 Trusted authorities query](#trusted-authorities-query) | [OpenID4VP 6.1.1. Trusted Authorities Query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-trusted-authorities-query) |
+| [2.3 Credential set query](#credential-set-query) | [OpenID4VP 6.2. Credential Set Query](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-credential-set-query) |
+| [2.4 Claims och claim sets](#claims-och-claim-sets) | [OpenID4VP 6.4.1. Selecting Claims](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-selecting-claims) |
+| [3 Response](#response) | [OpenID4VP 8. Response](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-response) |
+| [4 Djuplänkning](#djuplankning) | [OpenID4VP 9. Wallet Invocation](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-invocation) |
+| [5 Wallet metadata](#wallet-metadata) | [OpenID4VP 10. Wallet Metadata (Authorization Server Metadata)](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-wallet-metadata-authorizati) |
+| [6 Verifier attestation JWT](#verifier-attestation-jwt) | [OpenID4VP 12. Verifier Attestation JWT](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-verifier-attestation-jwt) |
+| [7 High Assurance Interoperability Profile (HAIP)](#haip) | [HAIP 5. OpenID for Verifiable Presentations](https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0.html#name-openid-for-verifiable-prese) |
