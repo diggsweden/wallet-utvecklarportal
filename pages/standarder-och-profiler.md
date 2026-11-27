@@ -9,7 +9,7 @@ title: Standarder & Profiler
 
 # Standarder & Profiler
 
-För att underlätta för förlitande parter att ansluta sina e-tjänster till ekosystemet för den svenska digitala
+För att underlätta för verifierare och utfärdare att ansluta sina e-tjänster till ekosystemet för den svenska digitala
 identitetsplånboken, listar vi här de tekniska standarder och profiler som vår implementation bygger på.
 Syftet är att ge er den information ni behöver för att säkerställa interoperabilitet.
 
@@ -38,7 +38,7 @@ i den framtida produktionsmiljön.
 | Funktion / Roll | Testplattform för digital identitetsplånbok | Produktion (Framtida målbild)                                                                                                                                                     |
 | :--- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Identitetshantering** | **Keycloak** används för att hantera testanvändare och simulera inloggning.                                                                                                                                          | **Polismyndigheten** utfärdar den statliga e-legitimationen [**SverigeID**](https://polisen.se/tjanster-tillstand/pass-och-nationellt-id-kort/statlig-e-legitimation-sverigeId/). |
-| **PID-utfärdare** | En testtjänst som i dagsläget tillhandahålls av Digg för att utfärda fiktiva PID (Personidentitetsdata).                                                                                                             | **Polismyndigheten** är officiell PID-utfärdare via Sverige-id (planerad lansering 1 december 2026).                                                                              |
+| **PID-utfärdare** | En testtjänst som i dagsläget tillhandahålls av Digg för att utfärda fiktiva PID (personidentifieringsuppgifter).                                                                                                             | **Polismyndigheten** är officiell PID-utfärdare via Sverige-id (planerad lansering 1 december 2026).                                                                              |
 | **Tillitsvalidering** | EU:s referensimplementation för tillitsvalidering ([**eudi-srv-trust-validator**](https://github.com/eu-digital-identity-wallet/eudi-srv-trust-validator)) används för att kontrollera certifikat och tillitslistor. | **[Post- och telestyrelsen (PTS)](https://www.pts.se)** agerar tillsynsmyndighet för betrodda tjänster under eIDAS.                                                               |
 
 ---
@@ -69,7 +69,7 @@ När en e-tjänst (förlitande part) vill verifiera identitet eller attribut fr�
 
 Själva formatet på identitetsdatan (PID) som sparas i plånboken:
 
-* **[SD-JWT VC (Selective Disclosure for JWTs Verifiable Credentials)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt)**
+* **[SD-JWT VC (Selective Disclosure for JWTs Verifiable Credentials)](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/)**
   * Tillåter att användaren endast delar specifika attribut (t.ex. ålder) istället för hela identiteten.
   * I dagsläget har vi valt att **enbart stödja SD-JWT VC** som kredentialformat.
     **mso-mdoc** är inte aktuellt för oss i detta skede.
@@ -117,7 +117,7 @@ För att etablera och distribuera tillit i ekosystemet används standardiserade 
 
 ## Koppling till WE BUILD
 
-Det svenska plånbokssystemets testmiljö är utformad för att, där det är tillämpligt,
+Det svenska plånbokssystemets testplattform är utformad för att, där det är tillämpligt,
 efterleva de tekniska profiler och specifikationer som utvecklas inom det europeiska storskaliga pilotkonsortiet
 [**WE BUILD**](https://github.com/webuild-consortium).
 
@@ -125,5 +125,5 @@ Syftet med detta är att:
 
 * Säkerställa att svenska förlitande parters e-tjänster har de tekniska förutsättningarna som krävs för att kunna ta
   emot och fungera med plånböcker som följer de gemensamma europeiska profilerna
-* Ge utvecklare en testmiljö som speglar de internationella kraven på interoperabilitet inför den skarpa driftsättningen
-  av EUDI-plånböckerna.
+* Ge utvecklare en testplattform som speglar de internationella kraven på interoperabilitet inför den skarpa
+  driftsättningen av EUDI-plånböckerna.

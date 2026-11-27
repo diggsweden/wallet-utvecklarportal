@@ -61,7 +61,8 @@ Följ instruktionerna för din plattform när du har fått din inbjudan:
 
 ### 3. Första uppstart av appen och hämtning av test-ID (PID)
 
-När du öppnar appen första gången behöver du konfigurera den och ladda den med ett test-ID (Personidentitetsdata / PID).
+När du öppnar appen första gången behöver du konfigurera den och ladda den med ett test-ID
+(personidentifieringsuppgifter / PID).
 
 1. **Öppna appen** och klicka på **Nästa** i introvyn.
 2. **Skapa en PIN-kod** (välj en kod du vill använda för att logga in i appen framöver) och klicka på **Nästa**.
