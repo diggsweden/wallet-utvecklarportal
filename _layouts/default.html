@@ -47,8 +47,13 @@ SPDX-License-Identifier: EUPL-1.2
               <ul>
                 <li><a href="{{ "/" | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Startsida</a></li>
                 <li><a href="{{ "/pages/aktuellt.html" | relative_url }}" class="{% if page.url == '/pages/aktuellt.html' %}active{% endif %}">Aktuellt</a></li>
-                <li><a href="{{ "/pages/anslutning-fp.html" | relative_url }}" class="{% if page.url == '/pages/anslutning-fp.html' or page.url == '/pages/anslutning-fp/' %}active{% endif %}">Anslut som förlitande part</a></li>
-                <li><a href="{{ "/pages/exempel-fp.html" | relative_url }}" class="{% if page.url == '/pages/exempel-fp.html' or page.url == '/pages/exempel-fp/' %}active{% endif %}">Anslut som förlitande part med exempel</a></li>
+                <li class="nav-section">
+                  <span class="nav-section-title">Verifierare</span>
+                  <ul>
+                    <li><a href="{{ "/pages/anslutning-verifier.html" | relative_url }}" class="{% if page.url == '/pages/anslutning-verifier.html' or page.url == '/pages/anslutning-verifier/' %}active{% endif %}">Anslut som verifierare</a></li>
+                    <li><a href="{{ "/pages/exempel-verifier.html" | relative_url }}" class="{% if page.url == '/pages/exempel-verifier.html' or page.url == '/pages/exempel-verifier/' %}active{% endif %}">Exempel</a></li>
+                  </ul>
+                </li>
                 <li><a href="{{ "/pages/standarder-och-profiler.html" | relative_url }}" class="{% if page.url == '/pages/standarder-och-profiler.html' or page.url == '/pages/standarder-och-profiler/' %}active{% endif %}">Standarder & Profiler</a></li>
                 <li class="nav-section">
                   <span class="nav-section-title">Plånboksappen</span>

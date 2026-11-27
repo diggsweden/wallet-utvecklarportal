@@ -65,12 +65,12 @@ Vi har för nuvarande inga kommande händelser att informera om.
     <p>
       Plånboksappens uppdatering innehåller bland annat validering av den förlitande partens åtkomstcertifikat och
       registreringscertifikat.
-      Vi har också uppdaterat <a href="exempel-fp.html">exemplet för förlitande parter</a>.
+      Vi har också uppdaterat <a href="exempel-verifier.html">exemplet för förlitande parter</a>.
     </p>
     <p>
       Uppdatera appen på de telefoner ni använder för test.
       Om ni använder exemplet behöver ni följa instruktionerna och sätta upp
-      <a href="exempel-fp.html">exemplet</a> på nytt innan ni fortsätter testa.
+      <a href="exempel-verifier.html">exemplet</a> på nytt innan ni fortsätter testa.
     </p>
   </main>
 </div>

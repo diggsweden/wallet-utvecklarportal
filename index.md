@@ -73,8 +73,10 @@ Det svenska plånbokssystemet består av fem centrala delar som samverkar för e
 
 * [**Guide: Prova mobilappen**](pages/planboksappen/prova-planboksappen.md) – Instruktioner för hur du installerar
   betaversionen och hämtar ditt första test-ID.
-* [**Anslut som förlitande part**](pages/anslutning-fp.md) – Steg-för-steg för dig som vill integrera din tjänst som
-  förlitande part.
+* [**Anslut som verifierare**](pages/anslutning-verifier.md) – Steg-för-steg för dig som vill integrera din tjänst som
+  verifierare (förlitande part).
+* [**Exempel: verifierare**](pages/exempel-verifier.md) – Sätt upp en verifierare lokalt så att plånboksappen kan nå
+  den.
 * [**Teknisk Referens: Standarder & Profiler**](pages/standarder-och-profiler.md) – Läs mer om de öppna standarder
   (t.ex. OpenID4VCI, SD-JWT) som ekosystemet bygger på.
 * [**Ordlista**](pages/ordlista.md) – En ordlista med de vanligast förekommande termerna och begreppen

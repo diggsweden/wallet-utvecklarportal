@@ -4,26 +4,39 @@
 # SPDX-License-Identifier: CC0-1.0
 
 layout: default
-title: "Anslut som förlitande part med exempel"
+title: "Exempel: verifierare"
 ---
 
-# Anslut som förlitande part med exempel
+# Exempel: verifierare
 
-> **Obs:** Läs [Anslut som förlitande part](anslutning-fp.md) först.
-> Specifikt begär åtkomst till plånboksappen
-> så att du har tillgång till den när det är dags att testa anslutningen.
+Här sätter du upp en verifierare lokalt så att plånboksappen kan nå den.
+Exemplet använder OpenID4VP för att verifieraren ska begära och ta emot intyg från plånboken.
+Det använder Docker Compose för att köra Diggs verifierar-frontend tillsammans med EU:s referensimplementation av en
+verifierar-backend.
+Sidan kompletterar [Anslut som verifierare](anslutning-verifier.md).
+Protokollen beskrivs i [Standarder & Profiler](standarder-och-profiler.md).
+
+> **Obs:** Du behöver tillgång till plånboksappen för att testa anslutningen.
+> Se [Prova plånboksappen](planboksappen/prova-planboksappen.md).
 
 ---
 
-## Anslutningsflöde
+> **Testat med** (2026-11-23): `eudi-srv-verifier-endpoint` v0.11.0, `eudi-srv-trust-validator` 0.3.1-alpha och
+> plånboksappen byggd från `main` (Android).
+> Steg 1–3 är körda som de står.
 
-> Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`).
-> Okrypterad `http://` avvisas av säkerhetsskäl av appen.
-> Vid lokal utveckling och testning mot en fysisk mobiltelefon används därför en HTTPS-tunnel (t.ex. Cloudflare Tunnel).
-> Om tjänsterna istället körs i en servermiljö används er befintliga publika domän.
+## Krav
 
-Här följer ett exempel som använder Docker Compose för att köra Diggs verifierar-frontend tillsammans med EU:s
-referensimplementation av en verifierar-backend för OpenID4VP.
+> **Viktigt: verifieraren måste nås via HTTPS.**
+> Plånboksappen kräver strikt HTTPS (`https://`) för alla adresser den anropar under en presentation:
+> `request_uri` och adressen som presentationen skickas till (`DirectPost`).
+> En `http://`-adress avvisas av appen, också om den pekar på en lokal IP-adress i samma nätverk.
+> Adressen behöver dessutom ett certifikat som telefonen litar på.
+>
+> **Lokalt mot en fysisk telefon:** Exponera verifieraren via en HTTPS-tunnel, till exempel Cloudflare Tunnel.
+> Det görs i [Steg 1](#steg-1-förbered-publik-https-adress-och-env).
+>
+> **I en servermiljö:** Använd er befintliga publika domän med ett betrott HTTPS-certifikat.
 
 ---
 
@@ -32,7 +45,7 @@ referensimplementation av en verifierar-backend för OpenID4VP.
 ### Lokal testning med Cloudflare Tunnel
 
 Om du utvecklar lokalt och vill kunna skanna QR-koden med en fysisk telefon kan du exponera verifierarporten (`8080`)
-via en snabbtunnel.
+via en Cloudflare Tunnel.
 Trafiken kommer då att gå via en betrodd HTTPS-domän över internet.
 
 Ladda ner och starta Cloudflare Tunnel i en separat terminal:
@@ -58,7 +71,8 @@ curl -sL https://github.com/cloudflare/cloudflared/releases/latest/download/clou
 > Detta är helt normalt och upphör så snart Docker Compose-miljön startats.
 >
 > **Viktigt om tunnelns livscykel:**
-> Cloudflares snabbtunnlar (`https://*.trycloudflare.com`) tilldelar en ny slumpmässig domän vid varje omstart.
+> En Cloudflare Tunnel som startas på det här sättet (en adress som slutar på `.trycloudflare.com`) tilldelar en ny
+> slumpmässig domän vid varje omstart.
 > Om tunneln avbryts eller startas om måste du uppdatera `VERIFIER_PUBLIC_URL` i `.env` och köra
 > `docker compose up -d` igen.
 > Klientidentifieraren och de nedladdade certifikaten kan behållas i den nuvarande testplattformen, se Steg 2.
@@ -78,7 +92,7 @@ DEMO_PUBLIC_BASE_URL=http://localhost:3002
 
 ## Steg 2: Hämta åtkomstcertifikat och registreringscertifikat
 
-Hämta följande testmaterial från Digg:
+Hämta följande certifikatmaterial från Digg:
 
 - **`verifier-access-certificate.p12`:** En `.p12`-fil med åtkomstcertifikat, privat nyckel och certifikatkedja.
   Backend använder den för att signera OpenID4VP-förfrågningar.
@@ -146,7 +160,7 @@ Den sätter upp:
   EU:s referensverifierare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-verifier-endpoint:v0.11.0`).
 - **`trust-validator`**:
   EU:s tillitsvaliderare (`ghcr.io/eu-digital-identity-wallet/eudi-srv-trust-validator:0.3.1-alpha`),
-  förkonfigurerad med en LoTE som litar på Testplattform för digital identitetsplånbok
+  förkonfigurerad med en LoTE som litar på testplattformen
   (<https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json>).
 - **`demo-verifier`**: Testwebbgränssnitt (`ghcr.io/diggsweden/wallet-verifier-test-web:0.1`) på port `3002`.
 
