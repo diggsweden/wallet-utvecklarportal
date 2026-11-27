@@ -61,16 +61,13 @@ Vi har för nuvarande inga kommande händelser att informera om.
 <div class="card" role="note">
   <header>Genomförd · 19 november</header>
   <main>
-    <div class="title">Uppdatering av plånboksappen och exemplet för förlitande parter</div>
+    <div class="title">Uppdatering av plånboksappen</div>
     <p>
       Plånboksappens uppdatering innehåller bland annat validering av den förlitande partens åtkomstcertifikat och
       registreringscertifikat.
-      Vi har också uppdaterat <a href="exempel-fp.html">exemplet för förlitande parter</a>.
     </p>
     <p>
       Uppdatera appen på de telefoner ni använder för test.
-      Om ni använder exemplet behöver ni följa instruktionerna och sätta upp
-      <a href="exempel-fp.html">exemplet</a> på nytt innan ni fortsätter testa.
     </p>
   </main>
 </div>

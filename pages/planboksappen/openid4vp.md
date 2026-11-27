@@ -69,7 +69,8 @@ Stöds.
 ### 1.4 [Client identifiers och prefixes](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.9.3) {#client-identifiers-och-prefixes}
 
 Appen stöder client identifier prefix `x509_san_dns` och `x509_hash`.
-Anslutningsexemplet använder `x509_hash` med en certifikathash beräknad från åtkomstcertifikatet.
+I [Anslut som förlitande part](../anslutning-fp.md) används `x509_hash` med en certifikathash beräknad från
+åtkomstcertifikatet.
 
 Appen stöder ej
 ["pre-registered clients"](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-fallback).

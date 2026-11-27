@@ -31,9 +31,19 @@ En förlitande part är den organisation eller tjänst som tar emot och verifier
   HTTPS-domän.
   - Plånboksappen **kräver strikt HTTPS (`https://`)** för alla presentationsadresser (`request_uri` och `DirectPost`).
     Okrypterad `http://` avvisas av säkerhetsskäl av appen.
+  - Vid lokal utveckling och testning mot en fysisk mobiltelefon kan ni använda en HTTPS-tunnel,
+    till exempel Cloudflare Tunnel.
 - **Tillit till LoTE:** Verifieraren behöver lita på testplattformens tillitslista
   ([List of Trusted Entities](https://wallet.sandbox.digg.se/trust-source/signed/trusted-entities.json),
   se även [Tillitsramverk & Tillitslistor](standarder-och-profiler.md#tillitsramverk--tillitslistor-lote)).
+
+  - För att kontrollera PID:
+    tjänstetyperna `http://uri.etsi.org/19602/SvcType/PID/Issuance` och
+    `http://uri.etsi.org/19602/SvcType/PID/Revocation`.
+  - För att kontrollera plånboksattesteringar:
+    tjänstetyperna `http://uri.etsi.org/19602/SvcType/WalletSolution/Issuance` och
+    `http://uri.etsi.org/19602/SvcType/WalletSolution/Revocation`.
+
 - **Vitlistning** I dagsläget har diggs plånbok ingen vitlista för betrodda tjänster utan litar på alla.
 
 ---
@@ -47,19 +57,43 @@ De CA:er som utfärdar materialet är betrodda via
 1. **Hämta och konfigurera åtkomstcertifikatet:** Ladda ned
    [.p12-filen](https://wallet.sandbox.digg.se/trust-source/utvecklarportalen/verifier/verifier-access-certificate.p12).
    Den innehåller åtkomstcertifikat, privat nyckel och certifikatkedja.
-   Lösenordet är `abcd1234`.
+   Lösenordet är `abcd1234`, för både filen och den privata nyckeln.
+   Nyckelaliaset är `verifier_access_certificate`.
    Använd nyckeln för att signera OpenID4VP-förfrågningar.
 
    Sätt förfrågans `client_id` till `x509_hash:<certifikathash>`.
    Beräkna hashen från lövcertifikatet i förfrågans `x5c`-header med SHA-256 över DER-formatet,
    kodat som base64url utan utfyllnad (`=`).
-   Se kommandon i [exemplets steg 2](exempel-fp.md#steg-2-hämta-åtkomstcertifikat-och-registreringscertifikat).
+   Kommandot nedan beräknar värdet från lövcertifikatet i `.p12`-filen:
+
+   ```bash
+   openssl pkcs12 -in verifier-access-certificate.p12 -clcerts -nokeys -passin "pass:abcd1234" |
+     openssl x509 -outform DER |
+     openssl dgst -sha256 -binary |
+     openssl base64 -A |
+     tr '+/' '-_' | tr -d '='
+   ```
+
    Värdet behöver bara beräknas om när åtkomstcertifikatet byts ut.
+
 2. **Hämta och konfigurera registreringscertifikatet:** Ladda ned
    [registreringscertifikatet som signerad JWT](https://wallet.sandbox.digg.se/trust-source/utvecklarportalen/verifier/registration_certificate.jwt).
    Lägg JWT-strängen oförändrad i `data` i ett objekt i förfrågans
    `verifier_info`-array, med `format` satt till `registration_cert`.
    Se [Verifier Info i OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.11).
+
+   Plånboksappen avvisar en förfrågan som inte ryms i registreringscertifikatet.
+   Det publicerade certifikatet gäller formatet `dc+sd-jwt`, intygstypen `urn:eudi:pid:1` och följande claims:
+
+   - `personal_administrative_number`
+   - `given_name`
+   - `family_name`
+   - `birthdate`
+   - `address.street_address`
+   - `address.postal_code`
+   - `address.locality`
+   - `address.country`
+
 3. **Konfigurera den publika HTTPS-adressen:** Ange verifierarens publika adress så att plånboksappen kan hämta
    förfrågningar och skicka presentationer dit.
    Adressen behöver ett betrott HTTPS-certifikat.
@@ -95,7 +129,8 @@ För tekniska frågor och hjälp med anslutningsprocessen och testplattformen, k
 
 För en djupare förståelse av plånbokssystemet:
 
-- **Exempel på en lokal uppsättning:** [Anslut som förlitande part med exempel](exempel-fp.md)
-- **Huvudprojekt:** [diggsweden/wallet-ecosystem](https://github.com/diggsweden/wallet-ecosystem)
+- **Huvudprojekt:** [diggsweden/wallet-ecosystem](https://github.com/diggsweden/wallet-ecosystem),
+  med Compose-filer för att starta plånboksmiljöns tjänster lokalt,
+  bland annat Diggs demo-verifier och EU:s referensverifierare.
 - **Tekniska standarder:** [Standarder & Profiler](standarder-och-profiler.md) (OpenID4VP, OpenID4VCI, SD-JWT VC).
 - **EUDIW-dokumentation:** [eudi-doc-architecture-and-reference-framework](https://eudi.dev/latest/)
