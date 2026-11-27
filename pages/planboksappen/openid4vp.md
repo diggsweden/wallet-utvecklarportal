@@ -127,9 +127,8 @@ presenteras eller inte.
 
 ### 2.4 [Claims och claim sets](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-selecting-claims) {#claims-och-claim-sets}
 
-Appen stöder endast grundläggande matchning av claims i en DCQL-query.
-Den matchar enbart attribut som definieras i `claims`-arrayen.
-Vid avsaknad av `claims` parametern presenteras alla attribut från PID:en.
+Appen har stöd för DCQL queries som innehåller en lista med `claims` och även queries där `claims` saknas (då
+presenteras endast en SD-JWT + Key binding utan några disclosures).
 
 `claim_sets` ignoreras för närvarande.
 
